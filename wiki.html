@@ -1,0 +1,1285 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>艾爾登法環 LLM Wiki</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet"><style>
+:root{--bg:#0f0d0a;--bg2:#17140f;--panel:#1f1b14;--line:#3a3224;--text:#ece4d4;--muted:#a89c86;--gold:#d9b45a;--gold2:#f3d98c;--t-text:#6fbf8e;--t-inter:#d9b45a;--t-guess:#e07a5f;color-scheme:dark}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){--bg:#f6f1e6;--bg2:#efe7d6;--panel:#fffaf0;--line:#d8ccb2;--text:#2a2418;--muted:#6e624c;--gold:#9a7420;--gold2:#7a5a12;--t-text:#2f7d4f;--t-inter:#9a7420;--t-guess:#b8492c;color-scheme:light}}
+:root[data-theme="light"]{--bg:#f6f1e6;--bg2:#efe7d6;--panel:#fffaf0;--line:#d8ccb2;--text:#2a2418;--muted:#6e624c;--gold:#9a7420;--gold2:#7a5a12;--t-text:#2f7d4f;--t-inter:#9a7420;--t-guess:#b8492c;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.75 "Noto Sans TC",system-ui,sans-serif}
+a{color:var(--gold)}
+h1,h2,h3,h4,h5{font-family:"Noto Serif TC",serif;color:var(--gold2);line-height:1.35}
+code{background:var(--bg2);padding:.1em .35em;border-radius:4px;font-size:.9em}
+pre{background:var(--bg2);border:1px solid var(--line);border-radius:8px;padding:12px;overflow:auto;font-size:.85em}
+pre.mermaid{background:#fffaf0;color:#2a2418;text-align:center}
+blockquote{margin:1em 0;padding:.6em 1em;border-left:3px solid var(--gold);background:var(--panel);border-radius:0 8px 8px 0}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.9em;margin:1em 0}
+th,td{border:1px solid var(--line);padding:.45em .6em;vertical-align:top;text-align:left}
+th{background:var(--panel);color:var(--gold2)}
+hr{border:0;border-top:1px dashed var(--line);margin:2em 0}
+.tag{display:inline-block;font-size:.72em;line-height:1;padding:.3em .5em;border-radius:99px;border:1px solid currentColor;margin:0 .2em;vertical-align:.1em}
+.t-text{color:var(--t-text)}.t-inter{color:var(--t-inter)}.t-guess{color:var(--t-guess)}
+.cite{color:var(--muted);font-size:.8em}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg2);border-bottom:1px solid var(--line);padding:10px 16px;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.top b{color:var(--gold2);font-family:"Noto Serif TC",serif}
+.top a{text-decoration:none}
+.wrap{max-width:960px;margin:0 auto;padding:16px}
+
+.layout{display:grid;grid-template-columns:280px 1fr;max-width:1240px;margin:0 auto}
+aside{position:sticky;top:calc(49px + env(safe-area-inset-top,0px));height:calc(100vh - 49px);overflow:auto;border-right:1px solid var(--line);padding:12px 16px;font-size:.9em}
+aside h2{font-size:1.1em}aside h3{font-size:.95em;margin:1em 0 .2em}aside ul{padding-left:1em;margin:0}aside li{margin:.15em 0}
+aside blockquote{font-size:.85em}
+main{padding:16px 28px;min-width:0}
+.meta{color:var(--muted);font-size:.85em}
+@media (max-width:760px){.layout{grid-template-columns:1fr}aside{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line)}main{padding:16px}}
+</style></head><body><nav class="top"><b>艾爾登法環 LLM Wiki 作業</b><a href="index.html">作業報告</a><a href="wiki.html">LLM Wiki</a><a href="slides.html">教學簡報</a></nav><div class="layout"><aside><p><a href="#home">← Wiki 首頁</a></p><h2>Wiki 目錄</h2>
+<blockquote>39 頁｜來源 6 篇｜最後更新 2026-11-14</blockquote>
+<h3>來源（sources）</h3>
+<ul>
+<li><a class="wl" href="#p17">環學01重製</a>：全系列的時間線骨架，從生命熔爐講到結局光譜（系列最後一期，最新）</li>
+<li><a class="wl" href="#p18">環學03</a>：法環的本質、瑪莉卡的四次繁衍與三層詭計（DLC 前）</li>
+<li><a class="wl" href="#p19">環學08</a>：黑刀陰謀之夜始末、死亡的演變、瑪莉卡詭計修正版</li>
+<li><a class="wl" href="#p21">環學15</a>：破碎戰爭各場戰役、作者的考據方法（文本優先）</li>
+<li><a class="wl" href="#p22">環學19</a>：從奴隸到無上意志的權力層級、資訊壁壘</li>
+<li><a class="wl" href="#p20">環學10</a>：金面具與食糞者兩個結局、結局光譜的完整排列</li>
+</ul>
+<h3>人物與勢力（entities）</h3>
+<ul>
+<li><a class="wl" href="#p13">無上意志</a>：宇宙外神，透過指頭之母、指頭、艾爾登之獸操縱交界地</li>
+<li><a class="wl" href="#p35">雙指</a>：無上意志的代理人，挑選神人、賜予大盧恩、多頭下注</li>
+<li><a class="wl" href="#p14">瑪莉卡</a>：黃金時代的神，打碎法環的人，整個故事的起點</li>
+<li><a class="wl" href="#p06">拉達岡</a>：瑪莉卡的半身與第二任王夫，黃金基本主義的提出者</li>
+<li><a class="wl" href="#p29">葛弗雷</a>：初始艾爾登之王，也是第一個褪色者</li>
+<li><a class="wl" href="#p32">褪色者</a>：被奪走賜福、放逐，又被召回的人；玩家的身分</li>
+<li><a class="wl" href="#p02">半神</a>：受賜大盧恩的瑪莉卡子嗣，破碎戰爭的主角</li>
+<li><a class="wl" href="#p28">菈妮</a>：拒絕雙指的神人，在黑刀之夜殺死自己的肉體；群星結局</li>
+<li><a class="wl" href="#p30">葛德溫</a>：瑪莉卡長子，黑刀之夜後靈魂死、肉體活，成為死王子；「躺贏之王」</li>
+<li><a class="wl" href="#p08">梅琳娜</a>：陪伴褪色者的瑪莉卡之女，擁有命定之死，防範癲火的殺手鐧</li>
+<li><a class="wl" href="#p31">蒙葛特</a>：被丟進下水道的惡兆之子，破碎戰爭中奪下王城、守護黃金樹</li>
+<li><a class="wl" href="#p16">瑪蓮妮亞</a>：天生帶猩紅腐敗的神人，艾奧尼亞之戰讓腐敗之花綻放</li>
+<li><a class="wl" href="#p34">金面具</a>：不說話的學者褪色者，推論拉達岡即瑪莉卡，提出讓神隱身的完美律法</li>
+<li><a class="wl" href="#p36">食糞者</a>：被唾棄者的代表，想用詛咒玷汙整個律法</li>
+</ul>
+<h3>概念（concepts）</h3>
+<ul>
+<li><a class="wl" href="#p01">交界地</a>：遊戲的舞台</li>
+<li><a class="wl" href="#p04">幽影地</a>：交界地中心、靈魂匯聚之地，被瑪莉卡封印（DLC）</li>
+<li><a class="wl" href="#p27">艾爾登法環</a>：交界地的力量來源，誰掌握誰就是艾爾登之王（來源有爭議 C1）</li>
+<li><a class="wl" href="#p38">黃金樹</a>：瑪莉卡種下的信仰中心，本質是靈魂收集器</li>
+<li><a class="wl" href="#p37">黃金律法</a>：掌管黃金之民生死的規則，讓信徒不會真正死去</li>
+<li><a class="wl" href="#p33">賜福</a>：黃金樹的恩惠，接受者眼睛變金色</li>
+<li><a class="wl" href="#p03">大盧恩</a>：雙指賜給半神的力量，褪色者要收集它</li>
+<li><a class="wl" href="#p10">死亡盧恩</a>：「死亡」的力量，被封印、被偷、最後被釋放</li>
+<li><a class="wl" href="#p25">結局光譜</a>：各結局是從「繁衍」到「歸一」的意識形態選擇（01重製＋環學10 合併版）</li>
+<li><a class="wl" href="#p24">神人</a>：雙指挑選的下一任神候選人，附帶監視用的影子</li>
+<li><a class="wl" href="#p05">惡兆之子</a>：長角的返祖孩子，被黃金王朝藏進下水道</li>
+<li><a class="wl" href="#p11">死誕者</a>：死後又復活的人，死亡沿樹根擴散造成的黃金律法漏洞</li>
+<li><a class="wl" href="#p26">考據方法</a>：作者怎麼拼湊故事：文本優先、機率推論、沒有標準答案</li>
+<li><a class="wl" href="#p09">權力層級</a>：權力金字塔（奴隸→貴族→半神→瑪莉卡→無上意志）與資訊壁壘</li>
+</ul>
+<h3>事件（events）</h3>
+<ul>
+<li><a class="wl" href="#p07">時代總覽</a>：熔爐 → 古龍 → 角人 → 黃金 → 法環破碎 → 褪色者回歸</li>
+<li><a class="wl" href="#p39">黑刀陰謀之夜</a>：刺客用死亡盧恩行刺；葛德溫靈魂死去、菈妮肉體死去</li>
+<li><a class="wl" href="#p12">法環破碎</a>：瑪莉卡打碎法環，切斷和雙指的聯繫</li>
+<li><a class="wl" href="#p23">破碎戰爭</a>：半神爭奪大盧恩；兩次王城保衛戰、火山官邸、艾奧尼亞，最後沒有贏家</li>
+<li><a class="wl" href="#p15">瑪莉卡的詭計</a>：四次繁衍試驗＋三層備案（碎片戰爭→褪色者→死王子托底）</li>
+</ul><h3>其他</h3><ul><li><a href="#rules">維護規則（CLAUDE.md）</a></li><li><a href="#log">操作紀錄（log.md）</a></li></ul></aside><main><article id="home"><h2>LLM Wiki：艾爾登法環世界觀</h2><p>由 6 集「環學」考據影片整理而成，共 39 頁、384 條重點。每條重點都有：</p><ul><li>可信度標籤：<span class="tag t-text">文本</span>遊戲原文　<span class="tag t-inter">考據</span>影片作者的解讀　<span class="tag t-guess">推測</span>作者自己承認沒有直接證據</li><li>出處：［環學08 §區塊三 <a>14:09</a>］＝第幾集、影片的第幾段、時間點（點時間會跳到 YouTube 該秒）</li><li>⚠ 矛盾與更正：不同集數說法不同時，兩種說法都保留</li></ul><p>從左邊目錄選一頁開始；建議從「時代總覽」或「艾爾登法環」看起。Wiki 的維護規則見<a href="#rules">維護規則</a>，逐筆操作紀錄見<a href="#log">操作紀錄</a>。</p></article><article id="p01" hidden><p class="meta">概念　·　資料來源：環學01重製, 環學15</p><h2>交界地</h2>
+<blockquote>遊戲的舞台。整個故事就是各方勢力爭奪交界地統治權的歷史。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>交界地的中心是幽影地，最早是靈魂聚集、文明誕生的地方<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊一 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=57s" target="_blank" rel="noopener">00:57</a>］</span></li>
+<li>無上意志的使者指頭之母最初降落在交界地中心的幽影地，這是本地勢力和外來勢力的第一次對決<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊一 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=120s" target="_blank" rel="noopener">02:00</a>］</span></li>
+<li>黃金時代第一次擴張後，除了蓋利德與火山地區，幾乎整個交界地都歸於黃金樹之下<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1133s" target="_blank" rel="noopener">18:53</a>］</span></li>
+<li>褪色者回歸時，交界地已經殘破，連圓桌廳堂也殘破了<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">31:54</a>］</span></li>
+<li>主要地區（褪色者追殺半神時的路線）：東南是紅土蓋利德（拉塔恩），西北是火山官邸（拉卡德），東北雪原是聖樹（瑪蓮妮亞），王城是羅德爾（蒙葛特）<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2127s" target="_blank" rel="noopener">35:27</a>］</span></li>
+<li>破碎戰爭時各地的情況<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊五 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=1748s" target="_blank" rel="noopener">29:08</a>；<a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=1906s" target="_blank" rel="noopener">31:46</a>；<a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=1948s" target="_blank" rel="noopener">32:28</a>］</span>：</li>
+<ul>
+<li>蓋爾密火山（亞壇高原西邊）：火山官邸對王城，戰況最慘烈</li>
+<li>利耶尼亞：學院在東面與南門設下魔法封印，閉門不參戰，內部進行學院與王室的戰爭</li>
+<li>史東薇爾城、摩恩城：逃出王城的葛瑞克佔領</li>
+<li>蓋利德：拉塔恩的紅獅子城，艾奧尼亞之戰後被猩紅腐敗蔓延</li>
+</ul>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p04">幽影地</a>、<a class="wl" href="#p07">時代總覽</a>、<a class="wl" href="#p02">半神</a>、<a class="wl" href="#p23">破碎戰爭</a></li>
+</ul></article><article id="p02" hidden><p class="meta">人物與勢力　·　資料來源：環學01重製, 環學15, 環學19</p><h2>半神</h2>
+<blockquote>瑪莉卡的子孫中，被雙指賜予大盧恩的人。法環破碎後他們各自為政，彼此爭奪大盧恩，也是褪色者要擊敗的 Boss。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>半神的資格來自在神授塔受賜大盧恩；梅琳娜和梅瑟莫是瑪莉卡的孩子，卻沒有大盧恩<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1448s" target="_blank" rel="noopener">24:08</a>］</span></li>
+<li>兩大血脈<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=917s" target="_blank" rel="noopener">15:17</a>、<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1190s" target="_blank" rel="noopener">19:50</a>；§區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1448s" target="_blank" rel="noopener">24:08</a>］</span>：</li>
+</ul>
+<div class="tw"><table><thead><tr><th>父系</th><th>子嗣</th></tr></thead><tbody><tr><td>葛弗雷 × 瑪莉卡</td><td>葛德溫、蒙葛特、蒙格</td></tr><tr><td>拉達岡 × 蕾娜菈</td><td>拉塔恩、拉卡德、菈妮</td></tr><tr><td>拉達岡 × 瑪莉卡（「自交」）</td><td>米凱拉、瑪蓮妮亞</td></tr></tbody></table></div>
+<ul>
+<li>破碎戰爭的王城保衛戰，本質上是葛弗雷的子嗣對拉達岡的子嗣<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">28:50</a>］</span></li>
+<li>褪色者回歸時的半神現況<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2127s" target="_blank" rel="noopener">35:27</a>］</span>：</li>
+<ul>
+<li>拉塔恩（蓋利德）：被猩紅腐敗侵蝕、失去意志</li>
+<li>拉卡德（火山官邸）：與大蛇融合，想透過吞噬成神</li>
+<li>瑪蓮妮亞（聖樹）：瀕死沉睡，等待哥哥米凱拉</li>
+<li>米凱拉：被蒙格擄走，之後進入幽影地準備成神</li>
+<li>葛德溫：在黃金樹根底成為「死王子」</li>
+<li>蒙葛特：守在王城，等待葛弗雷</li>
+</ul>
+<li>半神是神的第一批「啃食者」：在法環的世界，弒神是為了取代神的職能<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊一 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=234s" target="_blank" rel="noopener">03:54</a>］</span></li>
+<li>破碎戰爭的諷刺：力量強大的半神已無法成為神，能繼承世界力量的只能是弱小的人<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊六 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=2374s" target="_blank" rel="noopener">39:34</a>］</span></li>
+<li>半神制度不是來自瑪莉卡，而是她背後的無上意志，由指頭決定賜予<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊四 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=889s" target="_blank" rel="noopener">14:49</a>］</span></li>
+<li>半神是各軍隊的權力核心；靈廟中還有許多無頭半神的屍體<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊五 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1143s" target="_blank" rel="noopener">19:03</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p03">大盧恩</a>、<a class="wl" href="#p23">破碎戰爭</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p06">拉達岡</a>、<a class="wl" href="#p29">葛弗雷</a>、<a class="wl" href="#p31">蒙葛特</a>、<a class="wl" href="#p16">瑪蓮妮亞</a>、<a class="wl" href="#p09">權力層級</a></li>
+</ul></article><article id="p03" hidden><p class="meta">概念　·　資料來源：環學01重製, 環學03</p><h2>大盧恩</h2>
+<blockquote>法環破碎後散落在半神身上的力量碎片；收集大盧恩是褪色者成為艾爾登之王的條件。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>大盧恩不是天生就有，而是雙指在各座神授塔賜給瑪莉卡的子嗣，受賜者成為「半神」；證據是梅琳娜和梅瑟莫同樣是瑪莉卡的孩子，卻沒有大盧恩<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1448s" target="_blank" rel="noopener">24:08</a>］</span></li>
+<li>雙指賜予大盧恩的目的：一是增強力量，讓半神像分封制度一樣穩住各地；二是把他們納入「半神—神人—神」的政治體系<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1448s" target="_blank" rel="noopener">24:08</a>］</span></li>
+<li>法環破碎後，雙指唯一想到的修復方法是收回分出去的大盧恩 → 引發 <a class="wl" href="#p23">破碎戰爭</a><span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1703s" target="_blank" rel="noopener">28:23</a>］</span></li>
+<li>破碎戰爭的目標是攻陷王城、取得至少兩個大盧恩來修復法環<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">28:50</a>］</span></li>
+<li>褪色者要收集半神體內的大盧恩，才能前往王城、進入黃金樹修復法環、成為艾爾登之王；這是透過恩雅轉達的雙指說法<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">31:54</a>］</span></li>
+<li>要見到圓桌廳堂裡的雙指，條件是取得一個大盧恩（多數人在擊敗接肢葛瑞克後達成）<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">31:54</a>］</span></li>
+<li>大盧恩的授予一定是雙指的行為：連褪色者拿到大盧恩都要經過雙指認證<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊四 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1503s" target="_blank" rel="noopener">25:03</a>］</span></li>
+<li>每個大盧恩都寫著「碎片君主某某的大盧恩」；這次的接收者還包括以前不被看好的蒙葛特和蒙格<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊四 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1503s" target="_blank" rel="noopener">25:03</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p02">半神</a>、<a class="wl" href="#p35">雙指</a>、<a class="wl" href="#p27">艾爾登法環</a>、<a class="wl" href="#p23">破碎戰爭</a>、<a class="wl" href="#p32">褪色者</a>、<a class="wl" href="#p05">惡兆之子</a></li>
+</ul>
+<h3>⚠ 矛盾與更正</h3>
+<ul>
+<li><b>C3 大盧恩何時送出</b>：</li>
+<ul>
+<li><a class="wl" href="#p17">環學01重製</a>（較新，正文採用）：黃金王朝時期就在神授塔賜給子嗣<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1448s" target="_blank" rel="noopener">24:08</a>］</span></li>
+<li><a class="wl" href="#p18">環學03</a>：少數提前送出（滿月女王的琥珀卵、菈妮），多數在法環破碎<b>後</b>才送出；片頭也說半神是在黑刀之夜後才拿到碎片<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊四 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1503s" target="_blank" rel="noopener">25:03</a>］</span></li>
+</ul>
+</ul></article><article id="p04" hidden><p class="meta">概念　·　資料來源：環學01重製</p><h2>幽影地（DLC）</h2>
+<blockquote>交界地的中心、死者靈魂聚集的地方；被瑪莉卡封印，是 DLC「黃金樹幽影」的舞台。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>死後的靈魂逐漸聚集在交界地中心的幽影地，殘存的力量化為靈墓碑石；幽影地因此成為靈魂力量的中心，文明也在這裡誕生<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊一 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=57s" target="_blank" rel="noopener">00:57</a>］</span></li>
+<li>龍王時代結束後，由塔之鎮的角人統治；角人透過「降神」讓靈魂降到自己身上<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊三 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=395s" target="_blank" rel="noopener">06:35</a>］</span></li>
+<li>瑪莉卡出身幽影地北方的巫者村，在這裡擊敗宵色眼眸女王、透過神之門成神<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊三 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=494s" target="_blank" rel="noopener">08:14</a>；<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=573s" target="_blank" rel="noopener">09:33</a>；<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=669s" target="_blank" rel="noopener">11:09</a>］</span></li>
+<li>梅瑟莫的聖戰屠殺角人，瑪莉卡用拒絕之刺封印螺旋塔與神之門；聖戰的最終目的是封印幽影地，讓靈魂無法再聚集到這裡，被迫流向黃金樹<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1307s" target="_blank" rel="noopener">21:47</a>］</span></li>
+<li>米凱拉利用蒙格的身體進入被封印的幽影地，並在此準備成神<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2127s" target="_blank" rel="noopener">35:27</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p01">交界地</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p38">黃金樹</a>、<a class="wl" href="#p07">時代總覽</a></li>
+</ul></article><article id="p05" hidden><p class="meta">概念　·　資料來源：環學01重製, 環學03, 環學15, 環學10</p><h2>惡兆之子</h2>
+<blockquote>身上長角的「返祖」孩子。黃金王朝視他們為汙點，把他們藏起來；瑪莉卡和葛弗雷的兩個兒子蒙葛特、蒙格就是惡兆之子。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>《熔爐百相護符》：身上長出生物鱗片是生命起源「熔爐」殘留的痕跡，屬於局部的隔代遺傳；在古代有神聖意義，文明發展後卻被視為玷汙<span class="tag t-text">文本</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=870s" target="_blank" rel="noopener">14:30</a>］</span></li>
+<li>瑪莉卡把黃金王朝定義為文明，把熔爐百相定義為低賤的野人；但所有生自熔爐的生命體內都有百相特徵，所以返祖的孩子仍會出生<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=917s" target="_blank" rel="noopener">15:17</a>］</span></li>
+<li>普通人家生出惡兆之子會砍角、等他死去，倖存者被送進軍隊當士兵；王室的惡兆之子不砍角，而是被偷偷丟進地底（王城下水道）終生幽禁<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=870s" target="_blank" rel="noopener">14:30</a>］</span></li>
+<li>「不受賜福」不是真的沒有賜福，而是不被別人認同；蒙葛特和蒙格身上確實有大盧恩<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=870s" target="_blank" rel="noopener">14:30</a>］</span></li>
+<li>蒙葛特的角只切了一半，可能是他自己切掉的<span class="tag t-guess">推測</span>；他的追憶說他仍願成為黃金樹之王，「不是因為被愛想要回報，而是單純地希望去愛」<span class="tag t-text">文本</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=870s" target="_blank" rel="noopener">14:30</a>］</span></li>
+<li>瑪莉卡消失後，被關在下水道的惡兆雙子失去禁錮回到地面，在破碎戰爭中擋下兩次聯軍<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">28:50</a>］</span></li>
+<li>第一次羅德爾保衛戰是惡兆雙子共同禦敵：蒙格在城外用咒血瓦解聯軍<span class="tag t-guess">推測</span>，蒙葛特在城內擊敗葛瑞克奪下王位<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊三 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=993s" target="_blank" rel="noopener">16:33</a>］</span></li>
+<li>王城始終把惡兆之子視為詛咒，所以蒙葛特可能以「惡兆妖鬼」的身分作戰；蒙格也有分身，守在地下教堂的癲火入口<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊四 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=1382s" target="_blank" rel="noopener">23:02</a>］</span></li>
+<li>《惡兆幼子》：惡兆幼子會被切除所有醜陋的角，絕大部分孩子因此喪命，此為供養用的雕像，「請別怨恨我，請別詛咒我」<span class="tag t-text">文本</span> <span class="cite">［環學10 §區塊四 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=1318s" target="_blank" rel="noopener">21:58</a>］</span></li>
+<li>作者的形容：「生而遺棄，長而有怨」；蒙格因真實之母的庇佑而深愛自己的詛咒，他的鮮血王朝其實就是不繼承律法的食糞者行為<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊四 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=1318s" target="_blank" rel="noopener">21:58</a>］</span></li>
+<li>食糞者的盔甲上掛著惡兆之子被削下的角 → 見 <a class="wl" href="#p36">食糞者</a><span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊四 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=1318s" target="_blank" rel="noopener">21:58</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p29">葛弗雷</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p37">黃金律法</a>、<a class="wl" href="#p23">破碎戰爭</a>、<a class="wl" href="#p02">半神</a>、<a class="wl" href="#p31">蒙葛特</a>、<a class="wl" href="#p36">食糞者</a></li>
+</ul>
+<h3>⚠ 矛盾與更正</h3>
+<ul>
+<li>環學03 認為隔代遺傳「只能來自葛弗雷」，理由是瑪莉卡是來自交界地之外的希人，不是熔爐所生<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=980s" target="_blank" rel="noopener">16:20</a>］</span>。但較新的 <a class="wl" href="#p17">環學01重製</a> 說瑪莉卡是在幽影地巫者村長大（見 <a class="wl" href="#p14">瑪莉卡</a> 的 C2），這個推論的前提可能不成立。</li>
+</ul></article><article id="p06" hidden><p class="meta">人物與勢力　·　資料來源：環學01重製, 環學03, 環學19, 環學10</p><h2>拉達岡</h2>
+<blockquote>瑪莉卡的「半身」與第二任王夫。他提出黃金基本主義，和瑪莉卡內鬥，最後也被雙指一起囚禁。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>巨人之戰時以瑪莉卡半身的身分現身，厭惡自己的紅髮，認為那是紅髮巨人的詛咒<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=956s" target="_blank" rel="noopener">15:56</a>］</span></li>
+<li>以隱藏身分擔任利耶尼亞之戰的主帥，最後與卡利亞的滿月女王蕾娜菈聯姻，結束戰爭<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1133s" target="_blank" rel="noopener">18:53</a>］</span></li>
+<li>與蕾娜菈的子嗣：拉塔恩、拉卡德、菈妮，成為黃金王朝第二次擴張的代表<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1190s" target="_blank" rel="noopener">19:50</a>］</span></li>
+<li>葛弗雷離開後成為第二任王夫，帶著從地下取得的猩紅腐敗之力回到王城<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1190s" target="_blank" rel="noopener">19:50</a>］</span></li>
+<li>提出「黃金基本主義」，雕像逐漸取代瑪莉卡；與瑪莉卡「自交」生下米凱拉和瑪蓮妮亞<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1448s" target="_blank" rel="noopener">24:08</a>］</span></li>
+<li>鬥爭的結果：瑪莉卡成為外在律法，拉達岡成為內在律法<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1448s" target="_blank" rel="noopener">24:08</a>］</span></li>
+<li>破碎戰爭期間在黃金樹入口設下拒絕之刺，不希望新王出現；雙指一直沒有察覺<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">28:50</a>］</span></li>
+<li>瑪莉卡的真言：「哦，拉達岡，我的半身啊，擊碎彼此吧」<span class="tag t-text">文本</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1017s" target="_blank" rel="noopener">16:57</a>］</span></li>
+<li>紅髮暗示他的誕生不只用了黃金樹的力量，還融入了熔爐或巨人的力量 → 瑪莉卡的第二次繁衍試驗<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1017s" target="_blank" rel="noopener">16:57</a>］</span></li>
+<li>身為蕾娜菈的丈夫時學魔法、身為瑪莉卡的丈夫時學禱告，英雄的目標是成為完美的存在<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1184s" target="_blank" rel="noopener">19:44</a>］</span></li>
+<li>環學03 稱他為黃金基本主義的「走狗」、信奉無上意志；瑪莉卡打碎法環時把他一起困在黃金樹裡<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊五 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1712s" target="_blank" rel="noopener">28:32</a>；<a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1801s" target="_blank" rel="noopener">30:01</a>］</span></li>
+<li>真言完整版：「哦，拉達岡，黃金律法的忠犬啊，你還不是我，還不是神，我的半身啊，擊碎彼此吧。」（環學03 引用的是縮短版）<span class="tag t-text">文本</span> <span class="cite">［環學19 §區塊三 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=647s" target="_blank" rel="noopener">10:47</a>］</span></li>
+<li>他認為黃金基本主義不需要變革，瑪莉卡認為需要；他視瑪莉卡為黃金律法的叛徒<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊三 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=647s" target="_blank" rel="noopener">10:47</a>；§區塊六 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1562s" target="_blank" rel="noopener">26:02</a>］</span></li>
+<li>金面具從律法中找到「王夫拉達岡」的名字，推論出拉達岡的真實身分就是瑪莉卡；交界地多數人只把他當作王夫，連金面具一開始都不知道 → 見 <a class="wl" href="#p34">金面具</a><span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊三 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=636s" target="_blank" rel="noopener">10:36</a>；<a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=724s" target="_blank" rel="noopener">12:04</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p37">黃金律法</a>、<a class="wl" href="#p02">半神</a>、<a class="wl" href="#p23">破碎戰爭</a>、<a class="wl" href="#p38">黃金樹</a>、<a class="wl" href="#p15">瑪莉卡的詭計</a>、<a class="wl" href="#p09">權力層級</a>、<a class="wl" href="#p34">金面具</a></li>
+</ul></article><article id="p07" hidden><p class="meta">事件　·　資料來源：環學01重製</p><h2>時代總覽</h2>
+<blockquote>交界地歷史的六個階段。每個時代都是「誰和無上意志的使者合作、誰掌握法環」的更替。</blockquote>
+<h3>時間線</h3>
+<div class="tw"><table><thead><tr><th>#</th><th>時代</th><th>統治者／主角</th><th>關鍵事件</th><th>來源</th></tr></thead><tbody><tr><td>1</td><td>熔爐時代</td><td>生命熔爐（混沌）</td><td>生命分化、死亡出現、靈魂聚集於幽影地；無上意志降下指頭之母<span class="tag t-inter">考據</span></td><td><span class="cite">［環學01重製 §區塊一 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=14s" target="_blank" rel="noopener">00:14</a>］</span></td></tr><tr><td>2</td><td>古龍時代</td><td>龍王</td><td>指頭賜龍族法環；永恆之城被流星毀滅<span class="tag t-guess">推測</span>；貝勒叛亂，龍王時代結束<span class="tag t-inter">考據</span></td><td><span class="cite">［環學01重製 §區塊二 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=141s" target="_blank" rel="noopener">02:21</a>］</span></td></tr><tr><td>3</td><td>角人時代（DLC）</td><td>角人 → 瑪莉卡</td><td>角人降神統治幽影地；瑪莉卡擊敗宵色眼眸女王，透過神之門成神<span class="tag t-inter">考據</span></td><td><span class="cite">［環學01重製 §區塊三 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=395s" target="_blank" rel="noopener">06:35</a>］</span></td></tr><tr><td>4</td><td>黃金時代</td><td>瑪莉卡＋葛弗雷 → 拉達岡</td><td>黃金樹、黃金律法；巨人之戰；葛弗雷褪色被放逐；利耶尼亞聯姻；聖戰封印幽影地<span class="tag t-inter">考據</span></td><td><span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=848s" target="_blank" rel="noopener">14:08</a>］</span></td></tr><tr><td>5</td><td>法環破碎</td><td>雙指 vs 瑪莉卡</td><td>黃金基本主義內鬥 → <a class="wl" href="#p39">黑刀陰謀之夜</a> → <a class="wl" href="#p12">法環破碎</a> → <a class="wl" href="#p23">破碎戰爭</a><span class="tag t-inter">考據</span></td><td><span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1448s" target="_blank" rel="noopener">24:08</a>］</span></td></tr><tr><td>6</td><td>褪色者回歸</td><td>褪色者（玩家）</td><td>收集大盧恩、燒樹、擊敗艾爾登之獸 → <a class="wl" href="#p25">結局光譜</a><span class="tag t-inter">考據</span></td><td><span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">31:54</a>］</span></td></tr></tbody></table></div>
+<h3>貫穿全時代的主線</h3>
+<ul>
+<li>指頭之母最初降落在幽影地，是本地勢力與外來勢力的最初對決<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊一 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=120s" target="_blank" rel="noopener">02:00</a>］</span></li>
+<li>之後雙指永遠多頭下注，只要扶持的代理人贏就好（龍族 → 瑪莉卡 → 三位神人）<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊三 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=573s" target="_blank" rel="noopener">09:33</a>］</span></li>
+<li>死亡的力量從死之鳥、宵色眼眸女王，轉移到黑劍手上，再被偷出、最後被釋放 → 見 <a class="wl" href="#p10">死亡盧恩</a><span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊一 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=57s" target="_blank" rel="noopener">00:57</a>；§區塊三 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=669s" target="_blank" rel="noopener">11:09</a>；§區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1612s" target="_blank" rel="noopener">26:52</a>；§區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2269s" target="_blank" rel="noopener">37:49</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p01">交界地</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p35">雙指</a>、<a class="wl" href="#p39">黑刀陰謀之夜</a>、<a class="wl" href="#p12">法環破碎</a>、<a class="wl" href="#p23">破碎戰爭</a>、<a class="wl" href="#p25">結局光譜</a></li>
+</ul></article><article id="p08" hidden><p class="meta">人物與勢力　·　資料來源：環學01重製, 環學08</p><h2>梅琳娜</h2>
+<blockquote>在賜福旁陪伴褪色者的少女，是瑪莉卡的女兒，身上帶有「命定之死」。影片認為她是瑪莉卡留給褪色者的保險。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>瑪莉卡利用宵色眼眸女王的力量與蛇的特性，生下梅瑟莫和具有命定之死的梅琳娜<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊三 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=669s" target="_blank" rel="noopener">11:09</a>］</span></li>
+<li>是瑪莉卡的孩子，卻沒有大盧恩 → 證明大盧恩是雙指賜的，不是天生的<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1448s" target="_blank" rel="noopener">24:08</a>］</span></li>
+<li>她的戰鬥方式都來自瑪莉卡的私人武裝希人刺客<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=956s" target="_blank" rel="noopener">15:56</a>］</span></li>
+<li>冒險中承擔指頭巫女的責任：幫褪色者提升等級、解讀瑪莉卡的真言<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">31:54</a>］</span></li>
+<li>燒樹時有兩個選擇：讓梅琳娜成為火種點燃巨人的大鍋，或像維克一樣找癲火讓自己成為火種<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2269s" target="_blank" rel="noopener">37:49</a>］</span></li>
+<li>擁有死亡盧恩最初的形式「命定之死」，用來擊殺癲火之王；是瑪莉卡為了防範癲火準備的殺手鐧<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊一 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=225s" target="_blank" rel="noopener">03:45</a>；§區塊四 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1466s" target="_blank" rel="noopener">24:26</a>］</span></li>
+<li>影片的形容：梅琳娜生前死後都是「瑪莉卡的槍」<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1838s" target="_blank" rel="noopener">30:38</a>］</span></li>
+<li>在褪色者時期復活；如果碎片戰爭成功選出新王，就不會有癲火的可能，她也不會出現<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=2164s" target="_blank" rel="noopener">36:04</a>］</span></li>
+<li>如果把褪色者看成神人，梅琳娜就是瑪莉卡送給褪色者的「影子」<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=2391s" target="_blank" rel="noopener">39:51</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p32">褪色者</a>、<a class="wl" href="#p10">死亡盧恩</a>、<a class="wl" href="#p24">神人</a>、<a class="wl" href="#p15">瑪莉卡的詭計</a>、<a class="wl" href="#p25">結局光譜</a></li>
+</ul></article><article id="p09" hidden><p class="meta">概念　·　資料來源：環學19, 環學10</p><h2>權力層級</h2>
+<blockquote>交界地的「權力金字塔」：越往上的人知道得越多，越往下的人只看得到上一層。理解這張圖，就知道每個角色在故事裡的位置。</blockquote>
+<h3>金字塔（由上而下）</h3>
+<h4>隱藏者：無上意志</h4>
+<ul>
+<li>沒有任何生命明確說明無上意志在哪裡；它是死是活無法驗證也不重要，只要代理人還在，它的權力就不會消失<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊六 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1562s" target="_blank" rel="noopener">26:02</a>］</span></li>
+</ul>
+<h4>規劃者：瑪莉卡</h4>
+<ul>
+<li>建立政教合一的黃金樹國度：在宗教上是神、在國家上是女王、在家族中是母親<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊五 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1291s" target="_blank" rel="noopener">21:31</a>］</span></li>
+<li>又親手打破自己建立的權力結構，讓凝固的權力重新流動，是交界地的殉道者<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊五 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1325s" target="_blank" rel="noopener">22:05</a>］</span></li>
+</ul>
+<h4>維護者：半神與軍隊</h4>
+<ul>
+<li>軍隊保護的不是民眾，而是它所屬的權力中心<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊四 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=813s" target="_blank" rel="noopener">13:33</a>］</span></li>
+<li>半神與神人制度不是來自瑪莉卡，而是她背後的無上意志；影子野獸和大盧恩由指頭決定<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊四 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=889s" target="_blank" rel="noopener">14:49</a>］</span></li>
+</ul>
+<h4>大多數：黃金貴族與魔法師</h4>
+<ul>
+<li>貴族因信仰而得利，因得利而固執，因固執而扭曲<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊三 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=536s" target="_blank" rel="noopener">08:56</a>］</span></li>
+<li>即使黃金樹被火焚燒，灰城的靈魂仍說：「看啊，黃金樹依舊聳立，受到毀滅火焰焚燒還是屹立不倒，哈哈，既然如此，我們就還是黃金之民。」<span class="tag t-text">文本</span> <span class="cite">［環學19 §區塊三 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=536s" target="_blank" rel="noopener">08:56</a>］</span></li>
+<li>魔法師因求知、挑戰權力而得利：信仰追求穩定，知識追求創新<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊三 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=587s" target="_blank" rel="noopener">09:47</a>］</span></li>
+</ul>
+<h4>最底層：隨從、混種、礦工</h4>
+<ul>
+<li>生命可消耗、可替代；《隨從的骨灰》說，人會成為隨從和能力、才能、意志無關，只因生來身形瘦小<span class="tag t-text">文本</span> <span class="cite">［環學19 §區塊二 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=288s" target="_blank" rel="noopener">04:48</a>］</span></li>
+<li>混種的骨灰：「混種的誕生據說是接觸了熔爐所降下的懲罰，因此他們生來就是奴隸，被稱為玷汙者」<span class="tag t-text">文本</span> <span class="cite">［環學19 §區塊二 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=288s" target="_blank" rel="noopener">04:48</a>］</span></li>
+<li>奴隸的共同特徵是「被定義」，而定義的特權來自當權者；例如熔爐百相被瑪莉卡定義為下等之後，整個族群都成為奴隸<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊二 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=376s" target="_blank" rel="noopener">06:16</a>；<a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=451s" target="_blank" rel="noopener">07:31</a>］</span></li>
+</ul>
+<h3>資訊壁壘</h3>
+<ul>
+<li>不同階層得到的資訊不同：普通貴族和士兵不知道瑪莉卡背後還有更強的力量，在他們眼中瑪莉卡就是終極<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊四 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=889s" target="_blank" rel="noopener">14:49</a>］</span></li>
+<li>半神和神人都見過指頭，所以無上意志的存在對他們幾乎是已知的<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊四 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=889s" target="_blank" rel="noopener">14:49</a>］</span></li>
+<li>只有成為士兵才能靠近半神，成為半神才能靠近瑪莉卡，成為瑪莉卡才能靠近艾爾登之獸，成為無上意志才能擊殺無上意志<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊六 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1835s" target="_blank" rel="noopener">30:35</a>］</span></li>
+<li><b>褪色者是例外</b>：瑪莉卡用賜福把褪色者從士兵階層直接拉到半神階層，讓他們看得到雙指，所以才有資格爭奪王位 → 見 <a class="wl" href="#p32">褪色者</a><span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊四 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=989s" target="_blank" rel="noopener">16:29</a>］</span></li>
+<li><b>菈妮是另一個例外</b>：她是唯一由棋子變成棋手的生命 → 見 <a class="wl" href="#p28">菈妮</a><span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊六 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1677s" target="_blank" rel="noopener">27:57</a>］</span></li>
+<li><b>金面具的侷限</b>也是資訊壁壘：他推論出瑪莉卡就是拉達岡，卻不知道瑪莉卡背後還有無上意志，所以無法突破黃金律法 → 見 <a class="wl" href="#p34">金面具</a><span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊三 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=1055s" target="_blank" rel="noopener">17:35</a>］</span></li>
+</ul>
+<h3>所有人都是棋子</h3>
+<ul>
+<li>士兵、半神、艾爾登之王都是棋子，從未獲得執棋的權力；連火山官邸的揭竿而起，也是神鋪好的道路之一<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊四 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1090s" target="_blank" rel="noopener">18:10</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p13">無上意志</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p02">半神</a>、<a class="wl" href="#p24">神人</a>、<a class="wl" href="#p32">褪色者</a>、<a class="wl" href="#p28">菈妮</a>、<a class="wl" href="#p37">黃金律法</a>、<a class="wl" href="#p05">惡兆之子</a>、<a class="wl" href="#p34">金面具</a></li>
+</ul></article><article id="p10" hidden><p class="meta">概念　·　資料來源：環學01重製, 環學08</p><h2>死亡盧恩</h2>
+<blockquote>「死亡」本身的力量。黃金時代它被封印起來，所以黃金之民不會真正死去；整部劇情的關鍵之一，就是死亡盧恩被偷出來與被釋放。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>宵色眼眸女王被黑劍瑪利喀斯擊敗，命定之死也因此被封印：「然而當宵色眼眸女王敗給黑劍瑪利喀斯，命定之死也受到了封印」<span class="tag t-text">文本</span> <span class="cite">［環學01重製 §區塊三 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=669s" target="_blank" rel="noopener">11:09</a>］</span></li>
+<li>黃金時代由黑劍掌握死亡盧恩，作為瑪莉卡的私人武力，用來威懾、消滅不聽話的勢力與叛徒<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=956s" target="_blank" rel="noopener">15:56</a>］</span></li>
+<li>黑刀陰謀之夜：菈妮從黑劍手中偷出死亡盧恩，用法術嵌入刺客的短刀 → 見 <a class="wl" href="#p39">黑刀陰謀之夜</a><span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1612s" target="_blank" rel="noopener">26:52</a>］</span></li>
+<li>葛德溫取得死亡盧恩之力後，經由黃金樹大樹根擴散死亡，墓穴成為死誕者的據點<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1612s" target="_blank" rel="noopener">26:52</a>］</span></li>
+<li>燒樹之後，褪色者被送到法姆·亞茲拉，目的是殺死黑劍、解放死亡盧恩，讓死亡回到交界地，這是「達成瑪莉卡的願望」<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2269s" target="_blank" rel="noopener">37:49</a>］</span></li>
+<li>死亡回歸後，原本永生不死、承受活著之苦的黃金之民，終於可以用死亡解脫<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2269s" target="_blank" rel="noopener">37:49</a>］</span></li>
+</ul>
+<h4>死亡的演變（環學08）</h4>
+<ul>
+<li><b>古龍時代——死亡是儀式</b>：外在神祇雙鳥的使徒「死之鳥」主持死亡儀式，用白色、寒冷的靈火焚燒遺體；影片比喻為殯儀館<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊二 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=380s" target="_blank" rel="noopener">06:20</a>］</span></li>
+<li><b>遠古黃金樹時代——死亡被握在神人手中</b>：死亡的力量轉到神皮和神人宵色眼眸女王手上；《狩獵神祇大劍》是女王的聖劍，神皮使徒的黑焰由此而來<span class="tag t-text">文本</span> <span class="cite">［環學08 §區塊二 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=488s" target="_blank" rel="noopener">08:08</a>］</span></li>
+<li>雙鳥本身或部分力量可能被轉化成了狩獵神祇大劍<span class="tag t-guess">推測</span> <span class="cite">［環學08 §區塊二 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=488s" target="_blank" rel="noopener">08:08</a>］</span></li>
+<li><b>黃金律法時代——封印死亡</b>：影片轉述恩雅的說明：死亡盧恩就是命定之死，是黃金律法誕生之初首先去除並封印的黑暗影子<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊二 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=653s" target="_blank" rel="noopener">10:53</a>］</span></li>
+<li><b>法環破碎後——死亡被放出</b>：被偷走的死亡盧恩化為死根，產生 <a class="wl" href="#p11">死誕者</a><span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊二 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=712s" target="_blank" rel="noopener">11:52</a>］</span></li>
+<li>瑪莉卡對死亡盧恩的「放與收」：讓女王自由使用是「放」，讓黑劍封印是「收」，黑刀陰謀之夜讓葛德溫繼承是再一次的「放」<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1952s" target="_blank" rel="noopener">32:32</a>］</span></li>
+</ul>
+<h4>黑劍死後誰擁有死亡盧恩</h4>
+<ul>
+<li>所有大盧恩褪色者都能取得，唯獨死亡盧恩明確告訴你無法獲得——它不屬於褪色者<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊四 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1466s" target="_blank" rel="noopener">24:26</a>］</span></li>
+<li>直接受益的只有兩人：擁有命定之死的 <a class="wl" href="#p08">梅琳娜</a>，以及給人「生」而非「死」的死王子 <a class="wl" href="#p30">葛德溫</a><span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊一 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=225s" target="_blank" rel="noopener">03:45</a>；§區塊四 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1466s" target="_blank" rel="noopener">24:26</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p37">黃金律法</a>、<a class="wl" href="#p39">黑刀陰謀之夜</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p38">黃金樹</a>、<a class="wl" href="#p11">死誕者</a>、<a class="wl" href="#p30">葛德溫</a>、<a class="wl" href="#p08">梅琳娜</a></li>
+</ul></article><article id="p11" hidden><p class="meta">概念　·　資料來源：環學01重製, 環學03, 環學08</p><h2>死誕者</h2>
+<blockquote>「死了之後又復活」的人。黑刀陰謀之夜後，死亡之力沿著黃金樹的樹根擴散，讓靈魂無法正常回歸黃金樹，這就是黃金律法的漏洞。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>骨灰文本：死誕者的靈魂只要沒受到致命傷就能不停復活，這是接觸「死根」而受到玷汙的下場<span class="tag t-text">文本</span> <span class="cite">［環學08 §區塊二 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=712s" target="_blank" rel="noopener">11:52</a>］</span></li>
+<li>《死根》：陰謀之夜被偷走的死亡盧恩造成半神最初的死亡後，化為死根，經地底的大樹根在交界地各處萌生；樹根的軸心正是死王子葛德溫<span class="tag t-text">文本</span> <span class="cite">［環學08 §區塊二 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=712s" target="_blank" rel="noopener">11:52</a>］</span></li>
+<li>原本吸收靈魂、讓靈魂歸樹的墓穴，變成死誕者的溫床<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊一 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=150s" target="_blank" rel="noopener">02:30</a>；環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1612s" target="_blank" rel="noopener">26:52</a>］</span></li>
+<li>死誕者不是讓黃金之民「不死」，而是讓他們以死亡的方式重新復活，從黃金樹的信奉者轉為死亡力量的信奉者<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1144s" target="_blank" rel="noopener">19:04</a>］</span></li>
+<li>黃金律法不允許「因死亡而誕生」的存在，執行過黃金律法禱告的武器對死誕者傷害特別大<span class="tag t-text">文本</span> <span class="cite">［環學08 §區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1144s" target="_blank" rel="noopener">19:04</a>］</span></li>
+<li>法環破碎後，「不死」的能力反而沒有出現在黃金一族身上，而是出現在死誕者身上<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊二 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=712s" target="_blank" rel="noopener">11:52</a>］</span></li>
+</ul>
+<h3>獵殺死誕者的人</h3>
+<ul>
+<li>黃金基本主義者 D 殺人後說：「萬分抱歉，我現在無法替你處理後事。既然沒有遭遇死誕，靈魂終究會回歸大樹。」影片解讀：D 懷疑對方是死誕者，所以在旁邊等，看他會不會復活<span class="tag t-text">文本</span> <span class="cite">［環學08 §區塊二 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=712s" target="_blank" rel="noopener">11:52</a>］</span></li>
+<li>野獸司祭吞食死根以減少它的影響，手下 D 負責獵殺、判斷並摘除死根<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1298s" target="_blank" rel="noopener">21:38</a>］</span></li>
+<li>站在死誕者這邊的是死眠少女菲雅：她活著時是死亡的象徵（擁抱會降低生命上限），死後卻是生的象徵（死者會從她身邊復活）<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊一 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=32s" target="_blank" rel="noopener">00:32</a>］</span></li>
+</ul>
+<h3>為什麼重要</h3>
+<ul>
+<li>環學03：沒有死誕者這個「bug」，黃金基本主義幾乎無敵<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊五 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1801s" target="_blank" rel="noopener">30:01</a>］</span></li>
+<li>即使用黃金基本主義修復法環，死誕者也沒被清除，所以那個結局叫「衰退時代」<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊六 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=2061s" target="_blank" rel="noopener">34:21</a>］</span></li>
+<li>在法環的世界觀裡，生與死都只是生命的狀態，不是「死＝壞、生＝好」；死誕者就是死亡反過來養育生命的例子<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=2391s" target="_blank" rel="noopener">39:51</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p10">死亡盧恩</a>、<a class="wl" href="#p30">葛德溫</a>、<a class="wl" href="#p39">黑刀陰謀之夜</a>、<a class="wl" href="#p37">黃金律法</a>、<a class="wl" href="#p38">黃金樹</a></li>
+</ul></article><article id="p12" hidden><p class="meta">事件　·　資料來源：環學01重製, 環學03</p><h2>法環破碎</h2>
+<blockquote>瑪莉卡親手打碎艾爾登法環。法環的碎片「大盧恩」散落在半神手中，世界從此失序。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>瑪莉卡事先悄悄製作能打碎法環的石槌<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1448s" target="_blank" rel="noopener">24:08</a>］</span></li>
+<li>黑刀陰謀之夜準備完成後，瑪莉卡打碎法環，徹底破壞她和雙指的聯繫<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1703s" target="_blank" rel="noopener">28:23</a>］</span></li>
+<li>結果：雙指被逼得必須囚禁瑪莉卡，同時也囚禁拉達岡<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1703s" target="_blank" rel="noopener">28:23</a>］</span></li>
+<li>因為黃金樹吸收靈魂的能力已被死誕者破壞，雙指唯一的辦法是收回大盧恩修復法環 → 引發 <a class="wl" href="#p23">破碎戰爭</a><span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1703s" target="_blank" rel="noopener">28:23</a>］</span></li>
+<li>雙指給褪色者的官方說法：瑪莉卡犯下大罪，敲碎了維持和平的法環，是亂象的罪魁禍首<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">31:54</a>］</span></li>
+</ul>
+<h3>兩種觀點（教學重點）</h3>
+<ul>
+<li><b>雙指的說法</b>：瑪莉卡是罪人。</li>
+<li><b>影片的解讀</b>：打碎法環是瑪莉卡反抗雙指、反抗無上意志的計畫。</li>
+</ul>
+<p>→ 同一件事，從不同立場看會得出完全不同的結論，這也是解讀法環劇情的樂趣<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2628s" target="_blank" rel="noopener">43:48</a>］</span></p>
+<ul>
+<li>指頭巫女的說法：「作為神卻讓律法破碎，那是犯下大錯的懲罰，即使受到重罰仍舊是神，也就是律法的容器」<span class="tag t-text">文本</span> <span class="cite">［環學03 §區塊四 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1503s" target="_blank" rel="noopener">25:03</a>］</span></li>
+<li>瑪莉卡敲碎法環的那一刻，就證明她背叛了無上意志<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊四 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1594s" target="_blank" rel="noopener">26:34</a>］</span></li>
+<li>瑪莉卡早已預料到後續發展，留下真言：「你們能成為任何東西，能成為王者也能當上神」<span class="tag t-text">文本</span> <span class="cite">［環學03 §區塊四 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1422s" target="_blank" rel="noopener">23:42</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p27">艾爾登法環</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p35">雙指</a>、<a class="wl" href="#p39">黑刀陰謀之夜</a>、<a class="wl" href="#p23">破碎戰爭</a>、<a class="wl" href="#p15">瑪莉卡的詭計</a></li>
+</ul>
+<h3>⚠ 矛盾與更正</h3>
+<ul>
+<li>事件順序（黑刀之夜和法環破碎誰先）兩集說法不同 → 見 <a class="wl" href="#p39">黑刀陰謀之夜</a> 的 C4。</li>
+</ul></article><article id="p13" hidden><p class="meta">人物與勢力　·　資料來源：環學01重製, 環學03, 環學19</p><h2>無上意志</h2>
+<blockquote>來自宇宙的外神，自己不直接出手，而是透過使者（指頭之母、指頭、艾爾登之獸）操縱交界地。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>交界地的生命日漸活躍時，無上意志投下使者：初始的黃金流星「指頭之母」，以及隨之而來的「艾爾登之獸」<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊一 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=120s" target="_blank" rel="noopener">02:00</a>］</span></li>
+<li>永恆之城造出能弒神的獵殺指頭刀後，指頭之母聯繫無上意志，降下第二顆流星阿斯特爾毀滅永恆之城<span class="tag t-guess">推測</span>（影片自稱「推論」） <span class="cite">［環學01重製 §區塊二 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=238s" target="_blank" rel="noopener">03:58</a>］</span></li>
+<li>艾爾登之獸寄居在黃金樹內，是「黃金律法掩蓋下的最終神明」，也是褪色者最後要擊敗的對象<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=848s" target="_blank" rel="noopener">14:08</a>；§區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2269s" target="_blank" rel="noopener">37:49</a>］</span></li>
+<li>在結局光譜中，無上意志代表「繁衍」那一端；它與癲火都是法環世界規律的人格化<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2375s" target="_blank" rel="noopener">39:35</a>；<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2628s" target="_blank" rel="noopener">43:48</a>］</span></li>
+<li>環學03 的結論：艾爾登法環不是無上意志的力量，而是交界地的原始力量，無上意志只能強行奪取、不停吸收；艾爾登之獸和艾爾登流星才明確屬於無上意志<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊六 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1993s" target="_blank" rel="noopener">33:13</a>］</span></li>
+<li>只有一個結局（修復黃金基本主義）符合雙指與無上意志的願望，但那個結局的文本稱之為「衰退時代」<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊六 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=2061s" target="_blank" rel="noopener">34:21</a>］</span></li>
+<li>交界地也一直被其他外神覬覦：《蒙格的聖矛》說它是「與外在神祇聯繫用的祭祀用具」，蒙格背後是「真實之母」<span class="tag t-text">文本</span> <span class="cite">［環學03 §區塊五 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1944s" target="_blank" rel="noopener">32:24</a>］</span></li>
+<li>環學19：權力不需要所有者親力親為；無上意志是死是活無法驗證也不重要，只要代理人瑪莉卡存在，它的權力就不會消失<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊六 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1562s" target="_blank" rel="noopener">26:02</a>］</span></li>
+<li>遊戲中沒有任何生命明確說出無上意志在哪：瑪莉卡無法聯繫，艾爾登之獸沉默不語，雙指答應要與無上意志溝通後一去不回<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊六 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1562s" target="_blank" rel="noopener">26:02</a>］</span></li>
+<li>交界地的人們跪拜的不是無上意志本身，而是跪拜它所得到的「權力虛像」<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊六 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1562s" target="_blank" rel="noopener">26:02</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p35">雙指</a>、<a class="wl" href="#p27">艾爾登法環</a>、<a class="wl" href="#p25">結局光譜</a>、<a class="wl" href="#p15">瑪莉卡的詭計</a>、<a class="wl" href="#p09">權力層級</a></li>
+</ul></article><article id="p14" hidden><p class="meta">人物與勢力　·　資料來源：環學01重製, 環學03, 環學08, 環學19</p><h2>瑪莉卡</h2>
+<blockquote>黃金時代的神、黃金樹與黃金律法的建立者。她親手打碎了艾爾登法環，是整個故事的起點，也是最大的謎。</blockquote>
+<h3>重點</h3>
+<h4>出身與成神</h4>
+<ul>
+<li>在幽影地北方的巫者村長大；村旁可能有指頭遺跡，因此被指頭選為神人，獲得影子野獸瑪利喀斯<span class="tag t-guess">推測</span> <span class="cite">［環學01重製 §區塊三 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=494s" target="_blank" rel="noopener">08:14</a>］</span></li>
+<li>與角人聯手擊敗另一位神人「宵色眼眸女王」，利用女王殘存的力量進入神之門、獻祭女王，獲得自己的律法而成神<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊三 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=669s" target="_blank" rel="noopener">11:09</a>］</span></li>
+<li>成神需要「王」：葛弗雷的肉體提供定位，所以瑪莉卡成神時葛弗雷已經是她的王<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊三 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=669s" target="_blank" rel="noopener">11:09</a>］</span></li>
+</ul>
+<h4>黃金時代</h4>
+<ul>
+<li>在亞壇高原種下黃金樹、建立黃金律法；與葛弗雷生下葛德溫、蒙葛特、蒙格<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊三 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=669s" target="_blank" rel="noopener">11:09</a>；§區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=917s" target="_blank" rel="noopener">15:17</a>］</span></li>
+<li>拉達岡是她的「半身」，對外瑪莉卡是神、拉達岡是王夫<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1190s" target="_blank" rel="noopener">19:50</a>］</span></li>
+<li>奪走葛弗雷和戰士們的賜福並將他們放逐，影片認為這是她反抗雙指的布局之一<span class="tag t-inter">考據</span>；真言：「我將奪走你們的賜福……」<span class="tag t-text">文本</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=956s" target="_blank" rel="noopener">15:56</a>］</span></li>
+</ul>
+<h4>反抗雙指</h4>
+<ul>
+<li>暗中準備：建立圓桌廳堂、關入能打造弒神武器的鐵匠、培養指頭巫女，並製作能打碎法環的石槌<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1448s" target="_blank" rel="noopener">24:08</a>］</span></li>
+<li>發動 <a class="wl" href="#p39">黑刀陰謀之夜</a>，接著打碎艾爾登法環，之後被雙指囚禁在黃金樹內<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1612s" target="_blank" rel="noopener">26:52</a>–<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">28:50</a>］</span></li>
+<li>對半神孩子們的真言：「半神啊，我可愛的孩子啊……但是當你們沒有成為任一存在，就會被拋棄並且成為祭品。」<span class="tag t-text">文本</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">28:50</a>］</span></li>
+<li>最後的後手是褪色者：「在你們面臨死亡之後，那被奪去的會再歸還，返回交界地……」<span class="tag t-text">文本</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">31:54</a>］</span></li>
+</ul>
+<h4>環學03 的補充</h4>
+<ul>
+<li>為了生出能接替自己的神人，進行了四次繁衍試驗；這可能是無上意志強迫的 → 見 <a class="wl" href="#p15">瑪莉卡的詭計</a><span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1342s" target="_blank" rel="noopener">22:22</a>］</span></li>
+<li>黃金基本主義時代，王城放的是拉達岡而不是瑪莉卡的雕像，她已逐漸失去權力<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊五 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1712s" target="_blank" rel="noopener">28:32</a>］</span></li>
+<li>拉達岡雖是她的半身，不代表她認同拉達岡；她打碎法環時把拉達岡一起困在黃金樹裡<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊五 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1712s" target="_blank" rel="noopener">28:32</a>］</span></li>
+<li>最終目的：把世界還給交界地的所有生命，而不是背後操控的神祇<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊六 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=2133s" target="_blank" rel="noopener">35:33</a>］</span></li>
+</ul>
+<h4>環學08 的補充</h4>
+<ul>
+<li>黑刀陰謀之夜的真正主謀；她背叛了黑劍，不和黑劍商量，因為影子野獸是指頭派來的監視者<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=2164s" target="_blank" rel="noopener">36:04</a>］</span></li>
+<li>把子嗣分成兩派：知情參與陰謀的（菈妮、葛德溫），和不知情、去打碎片戰爭的<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1654s" target="_blank" rel="noopener">27:34</a>］</span></li>
+<li>讓曾擁有死亡盧恩的梅琳娜復活，協助褪色者成王、提防癲火<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=2391s" target="_blank" rel="noopener">39:51</a>］</span></li>
+</ul>
+<h4>環學19 的補充：權力的規劃者</h4>
+<ul>
+<li>建國的八項規劃：選最強的戰士葛弗雷當王夫；封印死亡盧恩讓戰士不死；生育半神作為各軍隊的權力核心；啟動戰爭（巨人之戰、古龍之戰）；信仰隨戰爭傳播；用聯姻侵蝕他國；重新定義對錯；拉攏或排除非黃金樹勢力<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊五 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1143s" target="_blank" rel="noopener">19:03</a>］</span></li>
+<li>重新定義對錯：「我在此宣告，去探索黃金律法，明瞭何為正當性之理……盲從時代已經走向了終結，我的同志啊，勿須再猶豫不決。」<span class="tag t-text">文本</span> <span class="cite">［環學19 §區塊五 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1143s" target="_blank" rel="noopener">19:03</a>］</span></li>
+<li>對非黃金樹勢力：「黃金樹是掌管一切的存在，做出抉擇吧，要融入律法，還是脫離律法淪為無力的邊境之流。」拒絕融入的商人和癲火被封印、活埋<span class="tag t-text">文本</span> <span class="cite">［環學19 §區塊五 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1143s" target="_blank" rel="noopener">19:03</a>］</span></li>
+<li>和拉達岡的分歧在於黃金基本主義是否已成死水、需要變革：瑪莉卡認為需要，拉達岡認為不需要；信仰的崩塌總是來自高層，所以是瑪莉卡敲碎了法環<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊三 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=647s" target="_blank" rel="noopener">10:47</a>］</span></li>
+<li>打破自己建立的權力結構，黑刀陰謀之夜是她「殺身證道」的手段；她是交界地的殉道者<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊五 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1325s" target="_blank" rel="noopener">22:05</a>］</span></li>
+<li>破碎戰爭後，人們紀念她的標記是一名女子被綁在圓弧上，正是她被困在黃金樹中受罰的姿態<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊五 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1325s" target="_blank" rel="noopener">22:05</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p35">雙指</a>、<a class="wl" href="#p06">拉達岡</a>、<a class="wl" href="#p29">葛弗雷</a>、<a class="wl" href="#p38">黃金樹</a>、<a class="wl" href="#p37">黃金律法</a>、<a class="wl" href="#p12">法環破碎</a>、<a class="wl" href="#p32">褪色者</a>、<a class="wl" href="#p15">瑪莉卡的詭計</a>、<a class="wl" href="#p24">神人</a>、<a class="wl" href="#p30">葛德溫</a>、<a class="wl" href="#p08">梅琳娜</a>、<a class="wl" href="#p09">權力層級</a></li>
+</ul>
+<h3>⚠ 矛盾與更正</h3>
+<ul>
+<li><b>C2 瑪莉卡的出身</b>：</li>
+<ul>
+<li><a class="wl" href="#p17">環學01重製</a>（較新，正文採用）：在幽影地北方的巫者村長大<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊三 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=494s" target="_blank" rel="noopener">08:14</a>］</span></li>
+<li><a class="wl" href="#p18">環學03</a>：「遊戲明確說」瑪莉卡是來自交界地之外的希人<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=742s" target="_blank" rel="noopener">12:22</a>］</span></li>
+<li>兩者未必互斥（外來者也可能在巫者村長大），但影片沒有說明，Wiki 不自行調和。</li>
+<li><b>C2 補充（環學08）</b>：《希人盧恩》文本「據說希人來自交界地之外，與瑪莉卡女王是同族」<span class="tag t-text">文本</span> <span class="cite">［環學08 §區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=990s" target="_blank" rel="noopener">16:30</a>］</span>。這是遊戲文本，支持環學03 的希人說；依衝突規則正文仍採環學01重製，簡報不提出身（使用者同意 Q10）。</li>
+</ul>
+</ul></article><article id="p15" hidden><p class="meta">事件　·　資料來源：環學03, 環學08</p><h2>瑪莉卡的詭計</h2>
+<blockquote>環學03 提出、環學08 修正的核心論點：瑪莉卡表面上是無上意志的代理人，實際上一步步布局反抗它，並準備了三層備案，目的是把世界還給交界地的生命。</blockquote>
+<h3>一、四次繁衍試驗<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1342s" target="_blank" rel="noopener">22:22</a>］</span></h3>
+<div class="tw"><table><thead><tr><th>#</th><th>方式</th><th>結果</th></tr></thead><tbody><tr><td>1</td><td>瑪莉卡 × 葛弗雷</td><td>只有葛德溫可用；蒙葛特、蒙格是惡兆之子</td></tr><tr><td>2</td><td>瑪莉卡分裂自己，融入熔爐／巨人之力</td><td>得到半身拉達岡（紅髮）</td></tr><tr><td>3</td><td>拉達岡 × 滿月女王蕾娜菈</td><td>神人菈妮，以及拉塔恩、拉卡德</td></tr><tr><td>4</td><td>拉達岡帶回猩紅腐敗後與瑪莉卡「自交」</td><td>神人米凱拉、瑪蓮妮亞，但身體都無法承受（腐敗、永遠年幼）</td></tr></tbody></table></div>
+<ul>
+<li>繁衍的本質可能是吸收、掠奪其他力量<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1017s" target="_blank" rel="noopener">16:57</a>］</span></li>
+<li>這些繁衍未必出於自願：無上意志可能強迫她生出能取代自己、又親近無上意志的子嗣，代表瑪莉卡註定被奴役、註定死亡 → 所以反叛不可避免<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1342s" target="_blank" rel="noopener">22:22</a>］</span></li>
+</ul>
+<h3>二、整體流程與三層備案（修正版，環學08，正文採用）<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=2164s" target="_blank" rel="noopener">36:04</a>；<a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=2391s" target="_blank" rel="noopener">39:51</a>］</span></h3>
+<p><b>前置：黑刀陰謀之夜</b>（瑪莉卡是主謀）→ 釋放死亡盧恩，由葛德溫繼承，產生死誕者 → <b>打碎法環</b>，把自己和拉達岡一起困在黃金樹裡，逼雙指必須修復法環。</p>
+<div class="tw"><table><thead><tr><th>備案</th><th>內容</th><th>預定勝者</th><th>結果</th></tr></thead><tbody><tr><td>第一層</td><td>碎片戰爭：讓不知情的子嗣爭奪王位</td><td>米凱拉</td><td>米凱拉被信奉真實之母的蒙格奪走</td></tr><tr><td>第二層</td><td>召回褪色者</td><td>葛弗雷（所以最後的動畫中葛弗雷會出現）</td><td>見下方</td></tr><tr><td>第三層（托底）</td><td>死亡盧恩自主蔓延，死誕者佔領交界地</td><td>死王子葛德溫</td><td>不論哪個結局都會發生</td></tr></tbody></table></div>
+<ul>
+<li>第二層的結果：葛弗雷確實走到了黃金樹前的最後一步，若不是殺出褪色者這個「程咬金」，進去救妻子的應該是他<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊五 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1712s" target="_blank" rel="noopener">28:32</a>］</span></li>
+<li>子嗣分成兩派：知情參與陰謀的（菈妮、葛德溫），和不知情、被留給碎片戰爭的<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1654s" target="_blank" rel="noopener">27:34</a>］</span></li>
+<li>拿到《褻瀆之爪》的拉卡德另有殺死黑劍、釋放剩餘死亡盧恩的任務，但沒有成功<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=2164s" target="_blank" rel="noopener">36:04</a>］</span></li>
+<li>為了防範癲火，讓擁有命定之死的 <a class="wl" href="#p08">梅琳娜</a> 復活、陪伴褪色者<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=2391s" target="_blank" rel="noopener">39:51</a>］</span></li>
+</ul>
+<h3>三、最關鍵的一步：黑刀陰謀之夜</h3>
+<ul>
+<li>作者認為整個詭計最重要的是 <a class="wl" href="#p39">黑刀陰謀之夜</a>：沒有「死誕者」這個漏洞，黃金基本主義和無上意志幾乎無敵<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊五 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1801s" target="_blank" rel="noopener">30:01</a>］</span></li>
+<li>「被陰謀」的不是葛德溫（成為死王子，有結局能用他的遺產改變律法）、不是菈妮（靈魂移入人偶並殺害雙指）、也不是瑪莉卡（打碎法環、拖拉達岡下水），而是無上意志<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊五 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1801s" target="_blank" rel="noopener">30:01</a>］</span></li>
+<li>殺死自己孩子的陰謀之夜，反而代表瑪莉卡的反抗：這是她對死亡盧恩的再一次「放」<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1952s" target="_blank" rel="noopener">32:32</a>］</span></li>
+</ul>
+<h3>結果</h3>
+<ul>
+<li>這個詭計除了耗時之外幾乎不會失敗：只有一個結局符合雙指的願望（修復黃金基本主義），而且連那個結局的文本都稱之為「衰退時代」，因為死誕者根本沒被清除<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊六 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=2061s" target="_blank" rel="noopener">34:21</a>］</span></li>
+<li>瑪莉卡的最終目的是把世界還給交界地的所有生命，而不是交給背後操控的神祇<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊六 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=2133s" target="_blank" rel="noopener">35:33</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p13">無上意志</a>、<a class="wl" href="#p35">雙指</a>、<a class="wl" href="#p06">拉達岡</a>、<a class="wl" href="#p24">神人</a>、<a class="wl" href="#p39">黑刀陰謀之夜</a>、<a class="wl" href="#p12">法環破碎</a>、<a class="wl" href="#p32">褪色者</a>、<a class="wl" href="#p30">葛德溫</a>、<a class="wl" href="#p08">梅琳娜</a>、<a class="wl" href="#p11">死誕者</a></li>
+</ul>
+<h3>⚠ 矛盾與更正</h3>
+<ul>
+<li><b>C5 三層詭計的內容</b>：環學03 的初版是 ①打碎法環、困住拉達岡 ②預料半神內戰（留下真言「你們能夠成為任何存在，能夠成為王者也能夠當上神」）③沒人成王時召回褪色者<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊五 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1712s" target="_blank" rel="noopener">28:32</a>］</span>。較新的環學08 改成上方「三層備案」的修正版（正文採用，使用者同意 Q9）：打碎法環變成前置步驟，第三層換成死王子托底。</li>
+</ul></article><article id="p16" hidden><p class="meta">人物與勢力　·　資料來源：環學01重製, 環學03, 環學15</p><h2>瑪蓮妮亞</h2>
+<blockquote>拉達岡與瑪莉卡「自交」生下的女兒、米凱拉的妹妹。天生帶著猩紅腐敗，在艾奧尼亞之戰中讓腐敗之花綻放，把蓋利德染成紅土。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>拉達岡帶回猩紅腐敗後與瑪莉卡自交所生，紅髮、體內寄宿猩紅腐敗，是「腐敗即生」的神人<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1184s" target="_blank" rel="noopener">19:44</a>；環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1448s" target="_blank" rel="noopener">24:08</a>］</span></li>
+<li>被稱為「米凱拉之刃」；在破碎戰爭中與最強的半神拉塔恩打了艾奧尼亞之戰<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">28:50</a>］</span></li>
+<li>艾奧尼亞劍碑：「艾奧尼亞戰爭，拉塔恩、瑪蓮妮亞戰成平手，腥紅腐敗之花怒放」<span class="tag t-text">文本</span> <span class="cite">［環學15 §區塊六 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=2102s" target="_blank" rel="noopener">35:02</a>］</span></li>
+<li>她率領的淨腐騎士確實戰無不勝<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊五 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=2063s" target="_blank" rel="noopener">34:23</a>］</span></li>
+<li>用盡全力後被騎士救回聖樹；褪色者到來時她在聖樹瀕死沉睡，等待哥哥米凱拉回來<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">28:50</a>；§區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2127s" target="_blank" rel="noopener">35:27</a>］</span></li>
+<li>她抗爭腐敗的自尊有一部分遺留在艾奧尼亞，最後化為米莉森等人<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">28:50</a>］</span></li>
+</ul>
+<h4>她接受腐敗了嗎？</h4>
+<ul>
+<li>畫面上看起來像接受了（放任蟲子蔓延、二階段叫「腐敗女神」），但作者認為「腐敗女神」和「碎星」一樣只是稱號<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊六 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=2213s" target="_blank" rel="noopener">36:53</a>］</span></li>
+<li>她的大盧恩文本：因為半身腐敗，恩惠的效率會降低，「然而恩惠之中仍存有瑪蓮妮亞的對抗意志」<span class="tag t-text">文本</span> <span class="cite">［環學15 §區塊六 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=2213s" target="_blank" rel="noopener">36:53</a>］</span></li>
+<li>作者的結論：她沒有接受腐敗，每次開花都是迫不得已、以自己的意志和生命為代價利用腐敗；蟲子則是「以可憐之姿行可惡之事」，逼她開花<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊六 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=2213s" target="_blank" rel="noopener">36:53</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p06">拉達岡</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p24">神人</a>、<a class="wl" href="#p23">破碎戰爭</a>、<a class="wl" href="#p02">半神</a>、<a class="wl" href="#p26">考據方法</a></li>
+</ul>
+<h3>⚠ 矛盾與更正</h3>
+<ul>
+<li>艾奧尼亞之戰的起因（C8）兩集說法不同 → 見 <a class="wl" href="#p23">破碎戰爭</a>。</li>
+</ul></article><article id="p17" hidden><p class="meta">影片摘要</p><h2>環學01重製：重製時間線——從生命熔爐到結局光譜</h2>
+<blockquote>環學系列最後一期，加入 DLC（幽影地）內容後，重新把整個世界史從頭講一遍。是本 Wiki 的時間線骨架。</blockquote>
+<h3>六個區塊</h3>
+<div class="tw"><table><thead><tr><th>區塊</th><th>時間</th><th>內容</th></tr></thead><tbody><tr><td>一 宇宙與熔爐</td><td>00:14–02:21</td><td>生命從熔爐分化、死亡與靈魂聚集於幽影地、無上意志降下指頭之母</td></tr><tr><td>二 古龍時代</td><td>02:21–06:33</td><td>指頭與龍族合作賜予法環、永恆之城與獵殺指頭刀、龍王時代結束</td></tr><tr><td>三 角人時代</td><td>06:35–14:08</td><td>角人降神、巫者、瑪莉卡擊敗宵色眼眸女王後成神</td></tr><tr><td>四 黃金時代</td><td>14:08–24:08</td><td>黃金律法、賜福、兩次擴張、葛弗雷褪色、聖戰</td></tr><tr><td>五 法環破碎</td><td>24:08–31:23</td><td>瑪莉卡與拉達岡內鬥、黑刀陰謀之夜、法環破碎、破碎戰爭</td></tr><tr><td>六 褪色者與結局</td><td>31:54–46:51</td><td>褪色者回歸、追殺半神、燒樹、結局光譜</td></tr></tbody></table></div>
+<h3>這篇產生／更新的頁面</h3>
+<p><a class="wl" href="#p07">時代總覽</a>、<a class="wl" href="#p27">艾爾登法環</a>、<a class="wl" href="#p38">黃金樹</a>、<a class="wl" href="#p37">黃金律法</a>、<a class="wl" href="#p33">賜福</a>、<a class="wl" href="#p03">大盧恩</a>、<a class="wl" href="#p10">死亡盧恩</a>、<a class="wl" href="#p01">交界地</a>、<a class="wl" href="#p04">幽影地</a>、<a class="wl" href="#p13">無上意志</a>、<a class="wl" href="#p35">雙指</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p06">拉達岡</a>、<a class="wl" href="#p29">葛弗雷</a>、<a class="wl" href="#p32">褪色者</a>、<a class="wl" href="#p02">半神</a>、<a class="wl" href="#p39">黑刀陰謀之夜</a>、<a class="wl" href="#p12">法環破碎</a>、<a class="wl" href="#p23">破碎戰爭</a>、<a class="wl" href="#p25">結局光譜</a></p>
+<h3>注意</h3>
+<ul>
+<li>影片作者自己說，這集<b>沒有引用大量文本</b>，論據都在之前各集<span class="tag t-inter">考據</span><span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2628s" target="_blank" rel="noopener">43:48</a>］</span>。所以本集的說法大多標成<span class="tag t-inter">考據</span>，要等其他集補上文本證據。</li>
+</ul></article><article id="p18" hidden><p class="meta">影片摘要</p><h2>環學03：瑪莉卡詭計與艾爾登法環本質</h2>
+<blockquote>以「瑪莉卡的軌跡」為主線：先說明法環的本質，再整理瑪莉卡的四次繁衍試驗，最後解析她反抗無上意志的三層詭計。DLC 推出前的集數。</blockquote>
+<h3>六個區塊</h3>
+<div class="tw"><table><thead><tr><th>區塊</th><th>時間</th><th>內容</th></tr></thead><tbody><tr><td>一 序章</td><td>01:08–03:33</td><td>褪色者是瑪莉卡棋盤上的棋子</td></tr><tr><td>二 何為艾爾登法環</td><td>03:33–12:22</td><td>顏色＝力量來源、龍王也是艾爾登之王、法環標誌是持有者的烙印、熔爐樹與黃金樹</td></tr><tr><td>三 四次繁衍</td><td>12:22–23:42</td><td>葛弗雷 → 拉達岡 → 蕾娜菈 → 自交；神人與影子</td></tr><tr><td>四 破碎戰爭的必然</td><td>23:42–27:40</td><td>事件時序、大盧恩由雙指授予、原本的計畫</td></tr><tr><td>五 三層詭計</td><td>27:40–33:13</td><td>黑刀之夜才是最關鍵的一步、無上意志的窘境、外神</td></tr><tr><td>六 結語</td><td>33:13–37:56</td><td>法環不屬於無上意志、瑪莉卡想把世界還給生命</td></tr></tbody></table></div>
+<h3>這篇產生／更新的頁面</h3>
+<ul>
+<li>新增：<a class="wl" href="#p24">神人</a>、<a class="wl" href="#p05">惡兆之子</a>、<a class="wl" href="#p28">菈妮</a>、<a class="wl" href="#p15">瑪莉卡的詭計</a></li>
+<li>更新：<a class="wl" href="#p27">艾爾登法環</a>、<a class="wl" href="#p38">黃金樹</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p06">拉達岡</a>、<a class="wl" href="#p35">雙指</a>、<a class="wl" href="#p03">大盧恩</a>、<a class="wl" href="#p39">黑刀陰謀之夜</a>、<a class="wl" href="#p12">法環破碎</a>、<a class="wl" href="#p32">褪色者</a>、<a class="wl" href="#p13">無上意志</a></li>
+</ul>
+<h3>與其他來源的衝突</h3>
+<ul>
+<li>與 <a class="wl" href="#p17">環學01重製</a> 有 4 處不同（法環來源、瑪莉卡出身、大盧恩送出時間、事件順序），已記在各頁「⚠ 矛盾與更正」。</li>
+<li>依 CLAUDE.md 衝突規則：環學01重製較新，正文以它為準。</li>
+</ul>
+<h3>未收入</h3>
+<ul>
+<li>與《黑暗靈魂》、喬治·R·R·馬丁、現實金融資本的比較（與法環本身無關）。</li>
+<li>米凱拉性別（來自解包的刪除內容，不是正式遊戲內容）。</li>
+</ul></article><article id="p19" hidden><p class="meta">影片摘要</p><h2>環學08：黑刀陰謀之夜始末——死亡盧恩的轉移與「躺贏之王」葛德溫</h2>
+<blockquote>以「死亡在交界地的演變」為主線，完整拆解黑刀陰謀之夜的流程與參與者的得失，並提出「瑪莉卡詭計修正版」。</blockquote>
+<h3>五個區塊</h3>
+<div class="tw"><table><thead><tr><th>區塊</th><th>時間</th><th>內容</th></tr></thead><tbody><tr><td>一 菲雅與死亡的雙重性</td><td>00:00–06:20</td><td>前期更正（四個圈）、菲雅、葛德溫被移到地底、死亡孕育生命</td></tr><tr><td>二 死亡的演變</td><td>06:20–13:28</td><td>死之鳥 → 宵色眼眸女王 → 黑劍封印 → 死誕者</td></tr><tr><td>三 陰謀之夜的經過與目的</td><td>13:32–24:24</td><td>死亡咒痕、「常理而言」的破綻、死誕者、無魂半神、三類結局</td></tr><tr><td>四 葛德溫的「躺贏」</td><td>24:26–27:21</td><td>黑劍必死、史東薇爾城的侵蝕</td></tr><tr><td>五 瑪莉卡詭計的補充</td><td>27:34–42:35</td><td>兩派子嗣、菈妮與葛德溫的風險收益、詭計修正版</td></tr></tbody></table></div>
+<h3>這篇產生／更新的頁面</h3>
+<ul>
+<li>新增：<a class="wl" href="#p11">死誕者</a>、<a class="wl" href="#p30">葛德溫</a>、<a class="wl" href="#p08">梅琳娜</a></li>
+<li>更新：<a class="wl" href="#p10">死亡盧恩</a>、<a class="wl" href="#p39">黑刀陰謀之夜</a>、<a class="wl" href="#p15">瑪莉卡的詭計</a>、<a class="wl" href="#p28">菈妮</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p25">結局光譜</a>、<a class="wl" href="#p37">黃金律法</a>、<a class="wl" href="#p27">艾爾登法環</a></li>
+</ul>
+<h3>與其他來源的關係</h3>
+<ul>
+<li>開頭更正「上一期」（環學07，不在本 Wiki）的「六個圈」為四個圈<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊一 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=0s" target="_blank" rel="noopener">00:00</a>］</span></li>
+<li>「瑪莉卡詭計修正版」取代 <a class="wl" href="#p18">環學03</a> 的三層詭計（C5）；葛德溫是否自願的問題（C6）在本集有了答案。</li>
+</ul>
+<h3>未收入</h3>
+<ul>
+<li>與《隻狼》等宮崎英高其他作品的比較。</li>
+<li>刪減內容中的米凱拉結局文本（解包／刪除內容不收）。</li>
+</ul></article><article id="p20" hidden><p class="meta">影片摘要</p><h2>環學10：結局的含義——金面具與食糞者，理智與詛咒的兩端</h2>
+<blockquote>解析金面具的「完美律法」與食糞者的「詛咒」兩個結局，最後用結局光譜總結全部結局。</blockquote>
+<h3>五個區塊</h3>
+<div class="tw"><table><thead><tr><th>區塊</th><th>時間</th><th>內容</th></tr></thead><tbody><tr><td>一 各勢力的引導</td><td>00:54–02:48</td><td>結局是最終答案；圓桌廳堂的刺客</td></tr><tr><td>二 預言家的矛盾</td><td>03:28–07:32</td><td>柯林：信奉黃金樹卻預見燒樹</td></tr><tr><td>三 金面具</td><td>07:36–18:33</td><td>拉達岡就是瑪莉卡；完美律法；資訊不對稱</td></tr><tr><td>四 食糞者</td><td>18:33–28:31</td><td>三類被鄙夷者、醜陋的賜福、詛咒之後仍有詛咒</td></tr><tr><td>五 結局光譜與意義</td><td>28:31–36:41</td><td>光譜排列、多結局的意義、不要神話遊戲</td></tr></tbody></table></div>
+<h3>這篇產生／更新的頁面</h3>
+<ul>
+<li>新增：<a class="wl" href="#p34">金面具</a>、<a class="wl" href="#p36">食糞者</a></li>
+<li>更新：<a class="wl" href="#p25">結局光譜</a>（合併 C10）、<a class="wl" href="#p06">拉達岡</a>、<a class="wl" href="#p37">黃金律法</a>、<a class="wl" href="#p05">惡兆之子</a>、<a class="wl" href="#p35">雙指</a>、<a class="wl" href="#p09">權力層級</a></li>
+</ul>
+<h3>未收入</h3>
+<ul>
+<li>和《黑暗靈魂》結局的比較。</li>
+<li>挖掘出的 NPC 模型（解包內容）。</li>
+</ul></article><article id="p21" hidden><p class="meta">影片摘要</p><h2>環學15：破碎戰爭始末——惡兆之子的反擊與半神們的潰敗</h2>
+<blockquote>依序整理破碎戰爭的各場戰役：兩次羅德爾保衛戰、火山官邸之戰、艾奧尼亞之戰；並說明作者「以文本為主」的考據方法。</blockquote>
+<h3>六個區塊</h3>
+<div class="tw"><table><thead><tr><th>區塊</th><th>時間</th><th>內容</th></tr></thead><tbody><tr><td>一 起因與弒神</td><td>02:05–04:32</td><td>雙指慫恿＋瑪莉卡安排；弒神＝取代神的職能</td></tr><tr><td>二 第一次保衛戰（城外）</td><td>04:57–12:54</td><td>蒙格的鮮血陰謀；推理過程示範</td></tr><tr><td>三 第一次保衛戰（城內）</td><td>13:31–22:12</td><td>蒙葛特擊敗葛瑞克奪位</td></tr><tr><td>四 第二次保衛戰</td><td>22:37–29:08</td><td>惡兆妖鬼是蒙葛特的分身；調香師；王城瓦解</td></tr><tr><td>五 最慘烈的戰場</td><td>29:08–34:57</td><td>火山官邸、利耶尼亞、蓋利德、艾奧尼亞</td></tr><tr><td>六 視覺與文本</td><td>35:02–41:46</td><td>開花地點、瑪蓮妮亞是否接受腐敗、為何選文本</td></tr></tbody></table></div>
+<h3>這篇產生／更新的頁面</h3>
+<ul>
+<li>新增：<a class="wl" href="#p31">蒙葛特</a>、<a class="wl" href="#p16">瑪蓮妮亞</a>、<a class="wl" href="#p26">考據方法</a></li>
+<li>更新：<a class="wl" href="#p23">破碎戰爭</a>、<a class="wl" href="#p02">半神</a>、<a class="wl" href="#p05">惡兆之子</a>、<a class="wl" href="#p35">雙指</a>、<a class="wl" href="#p32">褪色者</a>、<a class="wl" href="#p01">交界地</a></li>
+</ul>
+<h3>與其他來源的衝突</h3>
+<ul>
+<li>C7（米凱拉與蒙格）、C8（艾奧尼亞之戰的起因）與 <a class="wl" href="#p17">環學01重製</a> 不同，正文採用 01重製；C9 是遊戲文本自身的矛盾。見 <a class="wl" href="#p23">破碎戰爭</a>。</li>
+</ul>
+<h3>未收入</h3>
+<ul>
+<li>刪除的 NPC 對話（惡兆獵人、葛瑞克的刪減台詞）。</li>
+<li>和《黑暗靈魂》、戰國函谷關的比喻。</li>
+<li>對「上一期」（環學14，不在 raw）的兩項更正。</li>
+</ul></article><article id="p22" hidden><p class="meta">影片摘要</p><h2>環學19：無上意志——從奴隸到隱藏者的權力層級</h2>
+<blockquote>第一季最後一期。用「權力」的角度由下往上拆解交界地：奴隸、貴族與魔法師、軍隊、瑪莉卡，到最上層的無上意志。</blockquote>
+<h3>六個區塊</h3>
+<div class="tw"><table><thead><tr><th>區塊</th><th>時間</th><th>內容</th></tr></thead><tbody><tr><td>一 權力敘事</td><td>00:48–04:20</td><td>和其他作品比較（未收入）</td></tr><tr><td>二 最底層</td><td>04:48–08:52</td><td>隨從、混種、礦工；「被定義」</td></tr><tr><td>三 大多數</td><td>08:56–13:31</td><td>貴族與魔法師；瑪莉卡與拉達岡的分歧</td></tr><tr><td>四 維護者</td><td>13:33–19:03</td><td>軍隊、資訊壁壘、褪色者被拉升到半神階層</td></tr><tr><td>五 規劃者</td><td>19:03–24:01</td><td>瑪莉卡的八項規劃、政教合一、殉道</td></tr><tr><td>六 隱藏者</td><td>24:01–32:11</td><td>無上意志是權力的虛像；菈妮由棋子變棋手</td></tr></tbody></table></div>
+<h3>這篇產生／更新的頁面</h3>
+<ul>
+<li>新增：<a class="wl" href="#p09">權力層級</a></li>
+<li>更新：<a class="wl" href="#p13">無上意志</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p32">褪色者</a>、<a class="wl" href="#p28">菈妮</a>、<a class="wl" href="#p06">拉達岡</a>、<a class="wl" href="#p35">雙指</a>、<a class="wl" href="#p02">半神</a>、<a class="wl" href="#p37">黃金律法</a></li>
+</ul>
+<h3>未收入</h3>
+<ul>
+<li>和宮崎英高其他作品、《明日方舟》、富豪排行榜、歐洲中世紀的比較。</li>
+<li>與法環劇情無關的人生／社會評論（權力即權衡、權力的輪迴等）。</li>
+</ul></article><article id="p23" hidden><p class="meta">事件　·　資料來源：環學01重製, 環學15</p><h2>破碎戰爭</h2>
+<blockquote>法環破碎後，半神們為了爭奪大盧恩而互相廝殺的大戰。結果沒有人贏，交界地從此殘破。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>本質仍是黃金王朝內鬥，對立雙方從「瑪莉卡 vs 拉達岡」變成「雙指 vs 瑪莉卡」<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">28:50</a>］</span></li>
+<li>目標：攻陷王城、取得至少兩個大盧恩修復法環，讓新王迎娶瑪莉卡，延續雙指的神王體系<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">28:50</a>］</span></li>
+<li>原本被關在下水道的惡兆雙子（蒙葛特、蒙格）因為瑪莉卡消失而失去禁錮，回到地面，成功擋下兩次聯軍，讓戰爭陷入泥沼<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">28:50</a>］</span></li>
+<li>王城保衛戰本質上是葛弗雷的子嗣對拉達岡的子嗣（接肢葛瑞克是叛徒）<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">28:50</a>］</span></li>
+<li>最大的變數是米凱拉：魅惑了來偷襲的蒙格，並命令瑪蓮妮亞逼拉塔恩當他的王；拉塔恩拒絕 → 艾奧尼亞之戰<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">28:50</a>］</span></li>
+<li>艾奧尼亞之戰：猩紅腐敗之花綻放，蓋利德變成紅土、天空被染紅；拉塔恩被腐敗侵蝕，瑪蓮妮亞被騎士救回聖樹<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">28:50</a>］</span></li>
+<li>結局：半神們想結束戰爭的行動徹底失敗，黃金王朝分裂，各自割據<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">28:50</a>］</span></li>
+</ul>
+<h4>戰爭的經過（環學15）<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊二 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=297s" target="_blank" rel="noopener">04:57</a>；§區塊五 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=1748s" target="_blank" rel="noopener">29:08</a>；<a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=1988s" target="_blank" rel="noopener">33:08</a>］</span></h4>
+<div class="tw"><table><thead><tr><th>階段</th><th>戰場</th><th>經過</th><th>結果</th></tr></thead><tbody><tr><td>1</td><td>第一次羅德爾保衛戰（城外）</td><td>君王聯軍在亞壇高原集結</td><td>聯軍內部分裂，連外城牆都沒碰到</td></tr><tr><td>2</td><td>第一次羅德爾保衛戰（城內）</td><td>蒙葛特擊敗佔據王城的接肢葛瑞克一派</td><td>蒙葛特奪得王位，葛瑞克逃出王城</td></tr><tr><td>3</td><td>第二次羅德爾保衛戰</td><td>蒙葛特以惡兆妖鬼的身分作戰</td><td>聯軍被打退、四散</td></tr><tr><td>4</td><td>火山官邸之戰</td><td>拉卡德對王城，戰況最慘烈</td><td>雙方永久對峙，沒有贏家</td></tr><tr><td>5</td><td>艾奧尼亞之戰（最後一戰）</td><td>瑪蓮妮亞對拉塔恩</td><td>猩紅腐敗之花綻放，蓋利德被腐敗蔓延</td></tr></tbody></table></div>
+<ul>
+<li>起因：既有雙指用大盧恩慫恿，也有瑪莉卡的刻意安排，兩者難以分清誰在利用誰<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊一 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=125s" target="_blank" rel="noopener">02:05</a>］</span></li>
+<li>宣傳片文本：「諸位半神拿到艾爾登法環的碎片，卻因為那股力量墮入歧途、陷入瘋狂，引發破碎戰爭」；在戰爭的最後，無上意志放逐了他們<span class="tag t-text">文本</span> <span class="cite">［環學15 §區塊一 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=125s" target="_blank" rel="noopener">02:05</a>］</span></li>
+<li>「弒神」的本質不是破壞神的地位，而是取代神的職能；半神是最初的「啃食者」：組成聯軍進攻王城，敗退後各自割據、逐漸腐爛<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊一 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=234s" target="_blank" rel="noopener">03:54</a>］</span></li>
+<li><b>鮮血陰謀</b>：蒙格以瑪莉卡第二教堂為核心，用咒血讓聯軍士兵「畏血癲狂」、互相殘殺；作者自己說這沒有直接文本證據<span class="tag t-guess">推測</span> <span class="cite">［環學15 §區塊二 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=705s" target="_blank" rel="noopener">11:45</a>］</span></li>
+<li>第一次的失敗地點在王城內：《葛瑞克士兵的骨灰》說他們是「逃出黃金王城的戰敗軍」<span class="tag t-text">文本</span> <span class="cite">［環學15 §區塊三 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=811s" target="_blank" rel="noopener">13:31</a>］</span></li>
+<li>調香師被送上戰場，「香藥化為毒，液化為火藥」；戰後王城的權貴與調香師技術大量外流，王城雖勝，卻沒有人再尊崇它<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊四 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=1541s" target="_blank" rel="noopener">25:41</a>；<a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=1703s" target="_blank" rel="noopener">28:23</a>］</span></li>
+<li>火山官邸之戰：移送罪人之路兩旁掛滿屍體，用來威懾敵人；士兵的靈魂控訴「不會有人繼續跟隨你的」<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊五 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=1748s" target="_blank" rel="noopener">29:08</a>］</span></li>
+<li>聯軍的仗都是打不贏就跑，私下的兩方戰鬥（火山、蓋利德）卻不死不休，作者懷疑聯軍時各方都在「划水」<span class="tag t-guess">推測</span> <span class="cite">［環學15 §區塊五 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=1988s" target="_blank" rel="noopener">33:08</a>］</span></li>
+<li>結論：強大的半神已無法成為神，能繼承世界力量、推動世界前進的只能是力量弱小的人<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊六 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=2374s" target="_blank" rel="noopener">39:34</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p12">法環破碎</a>、<a class="wl" href="#p03">大盧恩</a>、<a class="wl" href="#p02">半神</a>、<a class="wl" href="#p35">雙指</a>、<a class="wl" href="#p31">蒙葛特</a>、<a class="wl" href="#p16">瑪蓮妮亞</a>、<a class="wl" href="#p05">惡兆之子</a>、<a class="wl" href="#p26">考據方法</a></li>
+</ul>
+<h3>⚠ 矛盾與更正</h3>
+<ul>
+<li><b>C7 米凱拉與蒙格</b>：</li>
+<ul>
+<li><a class="wl" href="#p17">環學01重製</a>（較新，正文採用）：蒙格來聖樹偷襲時，被米凱拉魅惑<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">28:50</a>］</span></li>
+<li><a class="wl" href="#p21">環學15</a>：鮮血陰謀的「背面」意義是蒙格擄走米凱拉，讓聯軍永久分裂<span class="tag t-guess">推測</span> <span class="cite">［環學15 §區塊二 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=705s" target="_blank" rel="noopener">11:45</a>］</span>；<a class="wl" href="#p19">環學08</a> 也說米凱拉被蒙格奪走<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=2164s" target="_blank" rel="noopener">36:04</a>］</span></li>
+<li>兩者不一定互斥（擄走後才被魅惑也說得通），但影片沒有交代，Wiki 不自行調和。</li>
+</ul>
+<li><b>C8 艾奧尼亞之戰的起因</b>：</li>
+<ul>
+<li><a class="wl" href="#p17">環學01重製</a>（較新，正文採用）：米凱拉命令瑪蓮妮亞逼拉塔恩履行兒時約定、成為他的王；拉塔恩拒絕<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">28:50</a>］</span></li>
+<li><a class="wl" href="#p21">環學15</a>：米凱拉失蹤後，瑪蓮妮亞帶著憤怒的聖樹士兵來找哥哥，和看守此地的拉塔恩交戰<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊五 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=1988s" target="_blank" rel="noopener">33:08</a>］</span></li>
+</ul>
+<li><b>C9 艾奧尼亞之戰的勝負（遊戲文本自身的矛盾）</b>：艾奧尼亞劍碑說「戰成平手」，《紅獅子騎士鎧甲》說紅獅子騎士敗給猩紅腐敗、淪為戰敗軍。作者認為不論哪個，都看得出淨腐騎士確實戰無不勝<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊五 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=2063s" target="_blank" rel="noopener">34:23</a>］</span></li>
+</ul></article><article id="p24" hidden><p class="meta">概念　·　資料來源：環學01重製, 環學03</p><h2>神人</h2>
+<blockquote>被雙指選中的「下一任神的候選人」。被選中的同時會得到一隻「影子」負責監視。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>菈妮的話：「半神之中只有我、米凱拉還有瑪蓮妮亞是神人，我們各自被不同的雙指找到，成為神的候選人，預定繼瑪莉卡女王之後成為下一個時代的神。」<span class="tag t-text">文本</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1095s" target="_blank" rel="noopener">18:15</a>］</span></li>
+<li>瑪莉卡本身也曾是神人（被指頭選中），同時代另一位神人是宵色眼眸女王<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊三 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=494s" target="_blank" rel="noopener">08:14</a>；<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=573s" target="_blank" rel="noopener">09:33</a>］</span></li>
+<li>繁衍的目的是吸收其他神祇和勢力的力量、生出優秀的「種子」，這些種子就是神人<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1095s" target="_blank" rel="noopener">18:15</a>］</span></li>
+<li>神人被找到時會立刻被賜予影子，作為成神前的監控；如果神人違背雙指的道路，影子就會發狂追殺主人<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1095s" target="_blank" rel="noopener">18:15</a>］</span></li>
+<li>伊吉談菈妮的影子布萊澤：「當菈妮大人作為神人拒絕成為雙指擺佈的傀儡，從那一刻起影子就會發狂，這是註定好的事」<span class="tag t-text">文本</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1095s" target="_blank" rel="noopener">18:15</a>］</span></li>
+<li>雙指原本的計畫是逐漸培養或洗腦神人來取代瑪莉卡，所以神人都是女性（菈妮、瑪蓮妮亞，或能成為女性的雙性米凱拉）<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊四 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1594s" target="_blank" rel="noopener">26:34</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p35">雙指</a>、<a class="wl" href="#p28">菈妮</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p15">瑪莉卡的詭計</a>、<a class="wl" href="#p02">半神</a></li>
+</ul></article><article id="p25" hidden><p class="meta">概念　·　資料來源：環學01重製, 環學08, 環學10</p><h2>結局光譜</h2>
+<blockquote>影片作者的框架：遊戲的各個結局不是「好結局／壞結局」，而是不同的意識形態選擇，可以排在一條光譜上。</blockquote>
+<h3>光譜（左 → 右）：合併版<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2375s" target="_blank" rel="noopener">39:35</a>；環學10 §區塊五 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=1711s" target="_blank" rel="noopener">28:31</a>］</span></h3>
+<div class="tw"><table><thead><tr><th>位置</th><th>結局／理念</th><th>含義</th></tr></thead><tbody><tr><td>最左</td><td>無上意志的繁衍（01重製）</td><td>生命與群星交流、不斷擴張出新形態</td></tr><tr><td>左</td><td>菈妮的群星時代</td><td>律法不借用瑪莉卡的身體，選擇權下放給每個人</td></tr><tr><td>中左</td><td>金面具的完美律法</td><td>群星在黃金律法裡的「降級版」：想讓神退出直接干涉，又不想換掉黃金律法</td></tr><tr><td>中央</td><td>死誕者（死王子） vs 修復黃金基本主義（拉達岡）</td><td>兩者是主要敵對，非此即彼</td></tr><tr><td>中右</td><td>食糞者的詛咒</td><td>癲火在黃金律法裡的「降級版」：厭惡這個世界，又不想用癲火毀掉它</td></tr><tr><td>右</td><td>米凱拉的溫柔律法（01重製，DLC）</td><td>人們在愛的魅惑中集體和諧，但沒有選擇的權利</td></tr><tr><td>最右</td><td>癲火的歸一</td><td>精神加上肉體的歸一，回到沒有分化的混沌，就像最初的生命熔爐</td></tr></tbody></table></div>
+<p>（中左到中右的細排來自環學10；最左與右的兩格是環學01重製在 DLC 後加入的。合併方式經使用者同意 Q20。）</p>
+<h3>重點</h3>
+<ul>
+<li>兩個極端是「不擇手段的繁衍」與「不擇手段的歸一」<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2375s" target="_blank" rel="noopener">39:35</a>］</span></li>
+<li>中間那一類結局：瑪莉卡以死換來一次選擇權，但只開放給王一個人；每個選擇都有風險<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2375s" target="_blank" rel="noopener">39:35</a>］</span></li>
+<li>凡是借用瑪莉卡的身體當容器的律法，都是黃金律法的分支（基本主義、金面具、死王子……），沒有打破無上意志的束縛，只是黃金律法下的改朝換代<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊三 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=528s" target="_blank" rel="noopener">08:48</a>］</span></li>
+<li>作者的現實比喻：菈妮的結局像「從封建到民主」的巨大進步，以瑪莉卡為容器的結局像封建時代的朝代更替<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊三 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=528s" target="_blank" rel="noopener">08:48</a>］</span></li>
+<li>菈妮的群星結局是神的離去、把權力還給人民，所以菈妮和褪色者都去了星空，而不是留在黃金樹裡<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊五 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=2112s" target="_blank" rel="noopener">35:12</a>］</span></li>
+<li>作者的結論：沒有能讓所有人滿意的選擇；對結局的最終判斷「與事實無關而與理念相關」<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2628s" target="_blank" rel="noopener">43:48</a>］</span></li>
+</ul>
+<h4>環學08 的另一種分法：三類結局</h4>
+<ul>
+<li><b>正向破局（菈妮）</b>：律法不嵌入法環，黃金律法失效，換成星星與月亮的律法<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1238s" target="_blank" rel="noopener">20:38</a>］</span></li>
+<li><b>負向破局（癲火）</b>：連艾爾登法環和瑪莉卡都一併否定<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1238s" target="_blank" rel="noopener">20:38</a>］</span></li>
+<li><b>框架內修改（死誕者、金面具等）</b>：維持黃金律法、不打破法環的約束，只是改掉黃金基本主義死氣沉沉的內容<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1238s" target="_blank" rel="noopener">20:38</a>］</span></li>
+<li>葛德溫結局的動畫中，環狀的死亡咒痕會嵌入瑪莉卡的身體<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1144s" target="_blank" rel="noopener">19:04</a>］</span></li>
+</ul>
+<h4>結局的意義（環學10）</h4>
+<ul>
+<li>結局是冒險的階段性結束，不代表世界結束；癲火線結束後梅琳娜會來追殺你，告訴你故事仍在繼續，只是你玩不到了<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊五 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=1804s" target="_blank" rel="noopener">30:04</a>］</span></li>
+<li>結局也反映玩家自己的認知：覺得世界不值得就選擇點火；但癲火只承諾讓你燒，不承諾燒完後重建<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊五 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=1804s" target="_blank" rel="noopener">30:04</a>］</span></li>
+<li>「不要神話遊戲」：有些事只能接受（例如金面具和食糞者為什麼能做出修復盧恩——「因為他們就是能」）<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊五 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=1958s" target="_blank" rel="noopener">32:38</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p32">褪色者</a>、<a class="wl" href="#p13">無上意志</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p07">時代總覽</a>、<a class="wl" href="#p30">葛德溫</a>、<a class="wl" href="#p28">菈妮</a>、<a class="wl" href="#p34">金面具</a>、<a class="wl" href="#p36">食糞者</a>、<a class="wl" href="#p11">死誕者</a>、<a class="wl" href="#p26">考據方法</a></li>
+</ul>
+<h3>⚠ 矛盾與更正</h3>
+<ul>
+<li><b>C10 光譜的排列</b>：環學10 的光譜是「菈妮 → 金面具 → 死誕者／基本主義 → 食糞者 → 癲火」<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊五 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=1711s" target="_blank" rel="noopener">28:31</a>］</span>；環學01重製（較新）兩端多了無上意志的繁衍與米凱拉的溫柔律法，中間只寫成一格「瑪莉卡框架下的各律法」<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2375s" target="_blank" rel="noopener">39:35</a>］</span>。兩者不矛盾，已合併成上表。</li>
+</ul></article><article id="p26" hidden><p class="meta">概念　·　資料來源：環學01重製, 環學03, 環學15</p><h2>考據方法</h2>
+<blockquote>法環的故事沒有直接講出來，玩家要從道具說明、NPC 台詞、場景擺設拼湊。這頁整理環學作者怎麼拼、以及他自己承認的限制。</blockquote>
+<h3>作者的原則</h3>
+<ul>
+<li><b>文本優先</b>：有文本時選文本，沒有文本才看畫面，兩者衝突時選文本<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊六 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=2213s" target="_blank" rel="noopener">36:53</a>］</span></li>
+<li>理由：文本更能表現敘事者的基本邏輯，畫面有更多干擾因素<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊六 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=2340s" target="_blank" rel="noopener">39:00</a>］</span></li>
+<li><b>一步步提高判斷的機率</b>：示範推理時，先假設劍碑正面或背面是戰場各占 50%，再依背面的血薔薇、血指等道具把判斷提高到「教堂這一面 75%」、再到 90%<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊二 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=382s" target="_blank" rel="noopener">06:22</a>］</span></li>
+<li>作者也承認，這種推論沒有直接文本證據就不是百分之百正確，只是「相對靠譜」<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊二 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=705s" target="_blank" rel="noopener">11:45</a>］</span></li>
+<li>「老魂學」的寫法：設定與劇情互相穿插，以整體思路搭配文本證據層層引申，結論往往反直覺<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊六 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1993s" target="_blank" rel="noopener">33:13</a>］</span></li>
+</ul>
+<h3>限制</h3>
+<ul>
+<li>文本本身也可能互相矛盾：艾奧尼亞劍碑說拉塔恩和瑪蓮妮亞「戰成平手」，紅獅子騎士鎧甲卻說他們「淪為戰敗軍」<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊五 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=2063s" target="_blank" rel="noopener">34:23</a>］</span></li>
+<li>遊戲是許多人在不同時間拼湊出來的商業產品，不可能完美，出現互相矛盾的內容很正常，所以應該關注思想、不要揪住細節<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊六 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=2374s" target="_blank" rel="noopener">39:34</a>］</span></li>
+<li>魂類遊戲沒有標準答案；對結局的最終判斷「與事實無關而與理念相關」<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2628s" target="_blank" rel="noopener">43:48</a>］</span></li>
+</ul>
+<h3>和本 Wiki 的對應（Wiki 維護者的說明，不是影片內容）</h3>
+<p>本 Wiki 的<span class="tag t-text">文本</span><span class="tag t-inter">考據</span><span class="tag t-guess">推測</span>三級標籤，就是把上面的原則落實到每一條重點：<span class="tag t-text">文本</span>是作者說的「文本」，<span class="tag t-inter">考據</span>是作者從文本引申出的解讀，<span class="tag t-guess">推測</span>是作者自己承認沒有直接證據的推論。</p>
+<p>另外，整理多集時會發現作者的觀點前後不同（瑪莉卡的出身、三層詭計的內容），所以本 Wiki 用「⚠ 矛盾與更正」區保留兩種說法 → 見 <a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p15">瑪莉卡的詭計</a>。這是整理時的觀察，影片本身沒有這樣說。</p>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p25">結局光譜</a>、<a class="wl" href="#p16">瑪蓮妮亞</a>、<a class="wl" href="#p23">破碎戰爭</a>、<a class="wl" href="#p15">瑪莉卡的詭計</a></li>
+</ul></article><article id="p27" hidden><p class="meta">概念　·　資料來源：環學01重製, 環學03, 環學08</p><h2>艾爾登法環</h2>
+<blockquote>遊戲名稱的由來：交界地的力量來源。誰掌握它，誰就是這個時代的「艾爾登之王」；黃金時代由外神無上意志透過使者控制它。（法環最初從哪來，各集說法不同，見下方 ⚠）</blockquote>
+<h3>重點</h3>
+<ul>
+<li>古龍時代，指頭之母誕下的使徒「指頭」與龍族合作，把艾爾登法環賜給龍族；所以龍族的靈廟可以看到法環，龍王的力量同時帶有自身的紅色和法環的金色<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊二 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=178s" target="_blank" rel="noopener">02:58</a>］</span></li>
+<li>黃金律法時代初期，瑪莉卡與雙指的理念高度重合，艾爾登之獸也寄居在黃金樹內，分歧要到之後才顯現<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=848s" target="_blank" rel="noopener">14:08</a>］</span></li>
+<li>瑪莉卡用石槌打碎法環，徹底切斷和雙指的聯繫，逼得雙指必須囚禁她 → 見 <a class="wl" href="#p12">法環破碎</a><span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1703s" target="_blank" rel="noopener">28:23</a>］</span></li>
+<li>雙指想修復法環的方法，是把分給半神的 <a class="wl" href="#p03">大盧恩</a> 收回來 → 引發 <a class="wl" href="#p23">破碎戰爭</a><span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1703s" target="_blank" rel="noopener">28:23</a>］</span></li>
+<li>褪色者進入黃金樹後，看到艾爾登法環被鑄入瑪莉卡／拉達岡的體內<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2269s" target="_blank" rel="noopener">37:49</a>］</span></li>
+<li>擊敗艾爾登之獸、吸收法環之力之後，多數結局仍以瑪莉卡已死的身軀當作法環的容器<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2375s" target="_blank" rel="noopener">39:35</a>］</span></li>
+<li>顏色代表力量的來源：熔爐時代是紅色、黃金律法是金色、死亡是黑色；例如死龍吸收死亡後，雷電從紅變黑<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊二 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=213s" target="_blank" rel="noopener">03:33</a>］</span></li>
+<li>《龍王的追憶》：龍王「據說是黃金樹時代之前的艾爾登之王，然而神祇已經離開，王依舊等待祂的歸來」<span class="tag t-text">文本</span> <span class="cite">［環學03 §區塊二 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=304s" target="_blank" rel="noopener">05:04</a>］</span></li>
+<li>所以艾爾登之王不只一位：龍王也曾是艾爾登之王，而且龍王與霍拉·路、拉達岡明顯不屬於同一勢力，卻都得到艾爾登之王的稱號<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊二 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=304s" target="_blank" rel="noopener">05:04</a>］</span></li>
+<li>法環上最顯眼的圓環不是重點，圓環背後的「烙印」才是持有者的標誌：古龍時代的烙印像樹根，黃金樹時代的是方格（拉達岡）<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊二 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=392s" target="_blank" rel="noopener">06:32</a>］</span></li>
+<li>作者的比喻：法環像一輛車，標誌像駕照，換了車主標誌就換人；誰掌握這股力量，誰就是這個時代的艾爾登之王<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊二 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=483s" target="_blank" rel="noopener">08:03</a>］</span></li>
+<li>各半神也在自己的大盧恩上刻了自己的烙印<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊二 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=483s" target="_blank" rel="noopener">08:03</a>］</span></li>
+<li>法環破碎不是真的把標誌打碎分掉，否則最後不會在拉達岡身上看到完整的標誌；比較像是雙指拿出部分象徵之力送出去<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊四 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1503s" target="_blank" rel="noopener">25:03</a>］</span></li>
+<li>龍王的艾爾登法環只有四個圈：作者在環學08 開頭更正了「上一期」說的六個圈<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊一 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=0s" target="_blank" rel="noopener">00:00</a>］</span></li>
+<li>古龍後裔隨著法環轉移，從不死走向死亡（《龍王岩劍》：沒有永恆生命、渺小的龍族後裔）<span class="tag t-text">文本</span> <span class="cite">［環學08 §區塊二 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=653s" target="_blank" rel="noopener">10:53</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p13">無上意志</a>、<a class="wl" href="#p35">雙指</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p03">大盧恩</a>、<a class="wl" href="#p12">法環破碎</a>、<a class="wl" href="#p25">結局光譜</a></li>
+</ul>
+<h3>⚠ 矛盾與更正</h3>
+<ul>
+<li><b>C1 法環從哪來</b>：</li>
+<ul>
+<li><a class="wl" href="#p17">環學01重製</a>（較新，正文採用）：指頭與龍族合作，把法環「賜予」龍族<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊二 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=178s" target="_blank" rel="noopener">02:58</a>］</span></li>
+<li><a class="wl" href="#p18">環學03</a>：法環是交界地原本就有的力量，源自熔爐；最初佔據它的是龍王與龍族背後離開的神，之後是瑪莉卡與背後的無上意志；無上意志只能強行奪取<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊二 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=483s" target="_blank" rel="noopener">08:03</a>；§區塊六 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1993s" target="_blank" rel="noopener">33:13</a>］</span></li>
+<li>簡報處理（使用者同意 Q6）：只講「法環是世界的力量來源，誰掌握它誰就是王」，來源爭議放進階補充。</li>
+</ul>
+</ul></article><article id="p28" hidden><p class="meta">人物與勢力　·　資料來源：環學01重製, 環學03, 環學08, 環學19</p><h2>菈妮</h2>
+<blockquote>拉達岡與滿月女王蕾娜菈的女兒，也是神人。她拒絕被雙指操縱，在黑刀陰謀之夜殺死自己的肉體；她的結局是「群星時代」。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>拉達岡與卡利亞的滿月女王蕾娜菈的子嗣之一，是其中唯一成為神人的孩子<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1190s" target="_blank" rel="noopener">19:50</a>；環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1095s" target="_blank" rel="noopener">18:15</a>］</span></li>
+<li>雙指賜給她的影子是狼人布萊澤<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1095s" target="_blank" rel="noopener">18:15</a>］</span></li>
+<li>伊吉說：「當菈妮大人作為神人拒絕成為雙指擺佈的傀儡，從那一刻起影子就會發狂」<span class="tag t-text">文本</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1095s" target="_blank" rel="noopener">18:15</a>］</span></li>
+<li>黑刀陰謀之夜：從黑劍手中偷出死亡盧恩，嵌入刺客的短刀，殺死自己的肉體，靈魂移入雪魔女模樣的人偶<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1612s" target="_blank" rel="noopener">26:52</a>］</span></li>
+<li>她自己的說法：「但是我拒絕了雙指，我竊走了死亡盧恩，殺害、拋棄自己身為神人的身體，因為我拒絕受那種存在的操縱。」<span class="tag t-text">文本</span> <span class="cite">［環學03 §區塊五 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1660s" target="_blank" rel="noopener">27:40</a>］</span></li>
+<li>褪色者回歸時，她自願走上神人的黑暗道路，尋找能殺死指頭的「獵殺指頭刀」<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">31:54</a>］</span></li>
+<li>獵殺指頭刀是古龍時代永恆之城造出的弒神武器，目的就是傷害無上意志與它的使者<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊二 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=238s" target="_blank" rel="noopener">03:58</a>］</span></li>
+<li>她最後殺害雙指；她的結局是帶著伴侶前往星空<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊五 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1801s" target="_blank" rel="noopener">30:01</a>］</span>，即 <a class="wl" href="#p25">結局光譜</a> 中的「群星時代」：選擇權下放給每一個人<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2375s" target="_blank" rel="noopener">39:35</a>］</span></li>
+<li>她和葛德溫都屬於「知情並參與陰謀」的一派；兩人必須同時死去才能存活，一旦失手就白白犧牲<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1654s" target="_blank" rel="noopener">27:34</a>；<a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1670s" target="_blank" rel="noopener">27:50</a>］</span></li>
+<li>收藏獵殺指頭刀的箱子，沒有接觸菈妮支線就打不開，會提示「沒有命運相關的人無法打開」<span class="tag t-text">文本</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1670s" target="_blank" rel="noopener">27:50</a>］</span></li>
+<li>殺死雙指後她說：「其實我很慶幸自己的王是你。我要前往夜空，我的律法所在……」無論褪色者是否成王，她都已前往星空<span class="tag t-text">文本</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1670s" target="_blank" rel="noopener">27:50</a>］</span></li>
+<li>她的律法：「我的律法不是黃金，而是星星與月亮冰冷黑夜的律法」；律法不嵌入法環，是打破法環的「正向破局」<span class="tag t-text">文本</span> <span class="cite">［環學08 §區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1238s" target="_blank" rel="noopener">20:38</a>］</span></li>
+<li>影片認為葛德溫是「躺贏」，菈妮才是真正打開新局面的人——風險越大，越可能破局<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1838s" target="_blank" rel="noopener">30:38</a>］</span></li>
+<li>環學19：若交界地是棋盤、生命是棋子、外神是棋手，菈妮是唯一由棋子轉變為棋手的生命<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊六 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1677s" target="_blank" rel="noopener">27:57</a>］</span></li>
+<li>有人認為她只是被群星利用的傀儡；作者認為到了宇宙、打破外神壟斷的資訊壁壘後，她就是另一個無上意志，究竟是被欺騙還是合作，答案是「不知道」<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊六 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1754s" target="_blank" rel="noopener">29:14</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p24">神人</a>、<a class="wl" href="#p06">拉達岡</a>、<a class="wl" href="#p39">黑刀陰謀之夜</a>、<a class="wl" href="#p10">死亡盧恩</a>、<a class="wl" href="#p35">雙指</a>、<a class="wl" href="#p25">結局光譜</a>、<a class="wl" href="#p30">葛德溫</a>、<a class="wl" href="#p09">權力層級</a></li>
+</ul></article><article id="p29" hidden><p class="meta">人物與勢力　·　資料來源：環學01重製</p><h2>葛弗雷</h2>
+<blockquote>瑪莉卡的第一位王，也是第一個「褪色者」：被奪走賜福、放逐到交界地之外。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>原本是北方高地的獵熊戰士，瑪莉卡在幽影地時期遇到的第一個王<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊三 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=669s" target="_blank" rel="noopener">11:09</a>］</span></li>
+<li>在黃金樹下宣示成為黃金王朝的初始艾爾登之王，被稱為戰王，後來成為拉塔恩崇拜的對象<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=848s" target="_blank" rel="noopener">14:08</a>］</span></li>
+<li>與瑪莉卡生下葛德溫、蒙葛特、蒙格<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=917s" target="_blank" rel="noopener">15:17</a>］</span></li>
+<li>帶領巨人之戰；第二次遠征時賜福變弱，到蓋利德交界處徹底成為褪色者，乘船離開交界地<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=956s" target="_blank" rel="noopener">15:56</a>］</span></li>
+<li>蒙葛特守在王城等待葛弗雷歸來，或許在他眼中只有葛弗雷有資格當艾爾登之王<span class="tag t-guess">推測</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2127s" target="_blank" rel="noopener">35:27</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p32">褪色者</a>、<a class="wl" href="#p33">賜福</a>、<a class="wl" href="#p02">半神</a></li>
+</ul></article><article id="p30" hidden><p class="meta">人物與勢力　·　資料來源：環學01重製, 環學03, 環學08</p><h2>葛德溫</h2>
+<blockquote>瑪莉卡與葛弗雷的長子，「黃金葛德溫」。他在黑刀陰謀之夜靈魂死去、肉體活著，成為「死王子」，也是死誕者的源頭。</blockquote>
+<h3>重點</h3>
+<h4>生前</h4>
+<ul>
+<li>瑪莉卡與葛弗雷的孩子，金髮，偏向瑪莉卡的血脈；是第一次繁衍中唯一「可用」的孩子<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=742s" target="_blank" rel="noopener">12:22</a>；<a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1342s" target="_blank" rel="noopener">22:22</a>］</span></li>
+<li>古龍襲擊王城時留守，不但守住王城，還吸納古龍之力，讓古龍禱告成為黃金王朝的一部分<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=956s" target="_blank" rel="noopener">15:56</a>］</span></li>
+</ul>
+<h4>黑刀陰謀之夜</h4>
+<ul>
+<li>屬於「知情並參與陰謀」的一派；這也是能和古龍打成平手的他，在片頭安靜接受死亡的原因<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1654s" target="_blank" rel="noopener">27:34</a>；§區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1298s" target="_blank" rel="noopener">21:38</a>］</span></li>
+<li>必須和菈妮同時死亡，兩人各得一半的死亡咒痕，他成為靈魂方面的初始死者（無魂半神）<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=849s" target="_blank" rel="noopener">14:09</a>］</span></li>
+<li>被移到王城最底處的深根底層。可能是厭惡他的黃金一族做的；恩雅說：「葛德溫大人啊……您本該喪命的呀……黃金之子竟然成為了死誕者，還有什麼事比這更不堪的呢？」<span class="tag t-text">文本</span> <span class="cite">［環學08 §區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=990s" target="_blank" rel="noopener">16:30</a>］</span></li>
+<li>另一種可能是黑刀希人刺客把他搬到地底：死地有很多大肚子螞蟻，常掉落《希人盧恩》，可能是吃了刺客的屍體<span class="tag t-guess">推測</span> <span class="cite">［環學08 §區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=990s" target="_blank" rel="noopener">16:30</a>］</span></li>
+</ul>
+<h4>死王子</h4>
+<ul>
+<li>在黃金樹根底和好友死龍相依為命；死龍吸收他的死亡之力，保證他不會徹底死去<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2127s" target="_blank" rel="noopener">35:27</a>］</span></li>
+<li>死根以他為軸心擴散；史東薇爾城地底的巨大臉皮旁可撿到《死王子膿瘡》，文本說那是死王子的臉，城內早已布滿死亡的荊棘<span class="tag t-text">文本</span> <span class="cite">［環學08 §區塊四 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1562s" target="_blank" rel="noopener">26:02</a>］</span></li>
+<li><b>「躺贏」</b>：不管走哪個結局都得殺死黑劍、釋放死亡盧恩，葛德溫必然繼承大部分力量，成為像宵色眼眸女王那樣的黑暗之王；他唯一的風險是「無魂半神」那一步要成功<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1838s" target="_blank" rel="noopener">30:38</a>］</span></li>
+<li>遇到死眠少女菲雅後，有一個結局能把死誕者的律法變成明面上的律法<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1838s" target="_blank" rel="noopener">30:38</a>；環學03 §區塊五 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1801s" target="_blank" rel="noopener">30:01</a>］</span></li>
+<li>他是瑪莉卡詭計的最後托底：就算褪色者失敗，死王子也會成為交界地最後的死亡之王<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=2164s" target="_blank" rel="noopener">36:04</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p39">黑刀陰謀之夜</a>、<a class="wl" href="#p11">死誕者</a>、<a class="wl" href="#p10">死亡盧恩</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p29">葛弗雷</a>、<a class="wl" href="#p28">菈妮</a>、<a class="wl" href="#p15">瑪莉卡的詭計</a></li>
+</ul>
+<h3>⚠ 矛盾與更正</h3>
+<ul>
+<li><b>C6 葛德溫是否自願</b>：環學03 說影片沒有下定論<span class="tag t-guess">推測</span> <span class="cite">［環學03 §區塊五 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1660s" target="_blank" rel="noopener">27:40</a>］</span>；較新的環學08 把他歸為知情並參與的一派（正文採用）。</li>
+</ul></article><article id="p31" hidden><p class="meta">人物與勢力　·　資料來源：環學01重製, 環學03, 環學15</p><h2>蒙葛特</h2>
+<blockquote>瑪莉卡和葛弗雷的兒子，長角的「惡兆之子」。被父母丟棄在下水道，卻在破碎戰爭中奪下王城、守護黃金樹。</blockquote>
+<h3>重點</h3>
+<h4>出身</h4>
+<ul>
+<li>瑪莉卡與葛弗雷的孩子，帶有角人特徵，被稱為熔爐百相；和孿生兄弟蒙格一起被丟棄在王城下水道<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=917s" target="_blank" rel="noopener">15:17</a>］</span></li>
+<li>角只切了一半，可能是自己切的<span class="tag t-guess">推測</span>；他的追憶說他仍願成為黃金樹之王，「不是因為被愛想要回報，而是單純地希望去愛」<span class="tag t-text">文本</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=870s" target="_blank" rel="noopener">14:30</a>］</span></li>
+</ul>
+<h4>破碎戰爭</h4>
+<ul>
+<li>瑪莉卡消失後回到地面，和蒙格一起擋下兩次聯軍<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">28:50</a>］</span></li>
+<li>第一次羅德爾保衛戰中，在王城內擊敗佔據王城的接肢葛瑞克一派、奪下王位<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊三 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=880s" target="_blank" rel="noopener">14:40</a>］</span></li>
+<li>證據之一：蒙葛特的大盧恩記載「惡兆王為黃金一族的成員，且確實是羅德爾之王」<span class="tag t-text">文本</span> <span class="cite">［環學15 §區塊三 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=880s" target="_blank" rel="noopener">14:40</a>］</span></li>
+<li>兩次保衛戰中他可能不是以本尊作戰，而是以分身「惡兆妖鬼」作戰；惡兆妖鬼就是他的分身<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊四 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=1382s" target="_blank" rel="noopener">23:02</a>］</span></li>
+<li>劍碑：「惡兆妖鬼讓成群英雄血流成河，黃金樹屹立不搖」<span class="tag t-text">文本</span> <span class="cite">［環學15 §區塊四 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=1357s" target="_blank" rel="noopener">22:37</a>］</span></li>
+</ul>
+<h4>和褪色者的關係</h4>
+<ul>
+<li>以惡兆妖鬼馬爾基特的身分登場：「褪色者，受愚昧的野心之火擺弄，妄想得到艾爾登法環。那麼，連同那陣火在內都該撲滅……」<span class="tag t-text">文本</span> <span class="cite">［環學15 §區塊三 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=1036s" target="_blank" rel="noopener">17:16</a>］</span></li>
+<li>他出現在史東薇爾城前，是為了阻止褪色者得到法環，不是在保護葛瑞克<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊三 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=1036s" target="_blank" rel="noopener">17:16</a>］</span></li>
+<li>褪色者攻入王城時，他守在城內卻沒戴王冠，以忠誠守護瑪莉卡時代的黃金；或許在他眼中只有葛弗雷有資格當艾爾登之王<span class="tag t-guess">推測</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2127s" target="_blank" rel="noopener">35:27</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p05">惡兆之子</a>、<a class="wl" href="#p29">葛弗雷</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p23">破碎戰爭</a>、<a class="wl" href="#p02">半神</a>、<a class="wl" href="#p32">褪色者</a></li>
+</ul></article><article id="p32" hidden><p class="meta">人物與勢力　·　資料來源：環學01重製, 環學03, 環學15, 環學19</p><h2>褪色者</h2>
+<blockquote>被奪走賜福、放逐出交界地的人；在法環破碎後重新被召回。玩家扮演的就是一名「無名褪色者」。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>起源：瑪莉卡奪走葛弗雷與其戰士的賜福，眼睛「暗淡褪色」，並把他們放逐到交界地之外<span class="tag t-text">文本</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=956s" target="_blank" rel="noopener">15:56</a>］</span></li>
+<li>破碎戰爭陷入僵局時，瑪莉卡的後手褪色者登場：「那被奪去的會再歸還，返回交界地……謁見艾爾登法環」<span class="tag t-text">文本</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">31:54</a>］</span></li>
+<li>主角死後得到賜福的光而甦醒；本該帶領他的指頭巫女已經死去<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">31:54</a>］</span></li>
+<li>巫女留下的遺言：「即便引導早已破碎，也請你當上艾爾登之王。」<span class="tag t-text">文本</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">31:54</a>］</span></li>
+<li>雙指給的任務：收集半神的大盧恩 → 前往王城 → 進入黃金樹修復法環 → 迎娶瑪莉卡、成為艾爾登之王<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">31:54</a>］</span></li>
+<li>冒險中會遇到梅琳娜（解讀瑪莉卡真言、陪伴褪色者）、菈妮（尋找獵殺指頭刀）等人<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">31:54</a>］</span></li>
+<li>在死亡盧恩的加持下，褪色者最後能夠弒神、擊敗艾爾登之獸<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2269s" target="_blank" rel="noopener">37:49</a>］</span></li>
+<li>指頭巫女說出褪色者的道路：「褪色者，朝著黃金樹前進，謁見瑪莉卡女神吧，成為艾爾登之王，然後修復黃金律法。」<span class="tag t-text">文本</span> <span class="cite">［環學03 §區塊一 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=68s" target="_blank" rel="noopener">01:08</a>］</span></li>
+<li>但交界地並不歡迎褪色者；雙指的禱告直言：「在引導之路的前頭敵人無數，習武修士、魔法師、古龍騎士，甚至是黃金後裔」<span class="tag t-text">文本</span> <span class="cite">［環學03 §區塊一 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=68s" target="_blank" rel="noopener">01:08</a>］</span></li>
+<li>褪色者的生、死、復活都在瑪莉卡設下的軌跡中，是神明棋盤上的一枚棋子<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊一 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=148s" target="_blank" rel="noopener">02:28</a>］</span></li>
+<li>瑪莉卡或許期待最後救她的是她的王葛弗雷，而不是默默無聞的褪色者<span class="tag t-guess">推測</span> <span class="cite">［環學03 §區塊五 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1712s" target="_blank" rel="noopener">28:32</a>］</span></li>
+<li>即使成王，也只有在眾多結局中「選擇」的權利，沒有「開創」的權利；在法環的世界裡，王更像打手，真正決定走向的是王背後的神<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊六 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=2162s" target="_blank" rel="noopener">36:02</a>］</span></li>
+<li>菈妮初見時的提醒：「我想不會再見面了，仔細品嘗交界地的滋味吧。我很期待啊，你們褪色者會服從雙指到什麼時候。」<span class="tag t-text">文本</span> <span class="cite">［環學15 §區塊一 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=206s" target="_blank" rel="noopener">03:26</a>］</span></li>
+<li>圓桌廳堂的鐵匠是瑪莉卡的遺產，負責替褪色者打造弒神的武器<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊一 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=234s" target="_blank" rel="noopener">03:54</a>］</span></li>
+<li>半神已無法成為神，能繼承世界力量的只能是弱小的人；褪色者要麼與其合作，要麼成為其食糧<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊六 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=2374s" target="_blank" rel="noopener">39:34</a>］</span></li>
+<li>為什麼原本是葛弗雷手下的士兵，回來後卻和葛弗雷有相同的爭奪王位資格？因為瑪莉卡用賜福把褪色者從士兵階層直接拉到半神階層，讓他們看得到雙指 → 見 <a class="wl" href="#p09">權力層級</a><span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊四 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=989s" target="_blank" rel="noopener">16:29</a>］</span></li>
+<li>褪色者能見到雙指，不是雙指的饋贈，而是瑪莉卡的逼迫；王城外的真言「半神啊，我可愛的孩子們啊……」同樣也是對褪色者說的<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊四 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=989s" target="_blank" rel="noopener">16:29</a>］</span></li>
+<li>讓褪色者離開交界地的是瑪莉卡，讓他們回來的也是瑪莉卡，離開與回歸都是她計謀的一部分<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊四 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1090s" target="_blank" rel="noopener">18:10</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p33">賜福</a>、<a class="wl" href="#p29">葛弗雷</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p03">大盧恩</a>、<a class="wl" href="#p25">結局光譜</a>、<a class="wl" href="#p15">瑪莉卡的詭計</a>、<a class="wl" href="#p28">菈妮</a>、<a class="wl" href="#p09">權力層級</a></li>
+</ul></article><article id="p33" hidden><p class="meta">概念　·　資料來源：環學01重製</p><h2>賜福</h2>
+<blockquote>黃金樹發散到各地的恩惠；接受賜福的人會被納入黃金律法，最明顯的特徵是眼睛變成金色。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>黃金樹壯大、王城羅德爾建成後，黃金賜福擴散到各地；接受賜福的人融入黃金律法、成為信徒，眼眸變成金色<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=848s" target="_blank" rel="noopener">14:08</a>］</span></li>
+<li>第二次遠征時，葛弗雷的賜福開始變弱，並在軍隊中蔓延，最後成為被剝奪賜福的「褪色者」，乘船離開交界地<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=956s" target="_blank" rel="noopener">15:56</a>］</span></li>
+<li>瑪莉卡的真言：「吾王啊，王的戰士啊，我將奪走你們的賜福，當你們的雙眸暗淡褪色，我將放逐你們於交界地之外……」<span class="tag t-text">文本</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=956s" target="_blank" rel="noopener">15:56</a>］</span></li>
+<li>開場動畫中，瑪莉卡最後的黃金賜福落在已死之人手中 → 褪色者因此復活回歸<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">31:54</a>］</span></li>
+<li>交界地殘破到連賜福的引導都無法準確顯示在褪色者眼中<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">31:54</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p32">褪色者</a>、<a class="wl" href="#p29">葛弗雷</a>、<a class="wl" href="#p37">黃金律法</a>、<a class="wl" href="#p14">瑪莉卡</a></li>
+</ul></article><article id="p34" hidden><p class="meta">人物與勢力　·　資料來源：環學10</p><h2>金面具</h2>
+<blockquote>一位不說話、只用手指比劃思考的褪色者學者，由弟子柯林代為解讀。他推論出「拉達岡就是瑪莉卡」，並找到能讓神隱身幕後的「完美律法」。</blockquote>
+<h3>重點</h3>
+<h4>身分</h4>
+<ul>
+<li>片頭動畫中他背後的標誌是瑪莉卡時期的禱告背景，暗示他是黃金樹時期被流放的褪色者<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊三 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=456s" target="_blank" rel="noopener">07:36</a>］</span></li>
+<li>柯林的介紹：「他在過去作為褪色者，人還在交界地之外的地方時，就能夠準確地預言賜福的指引即將到來，是一名大學者。」<span class="tag t-text">文本</span> <span class="cite">［環學10 §區塊三 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=456s" target="_blank" rel="noopener">07:36</a>］</span></li>
+<li>他認同學問、反對信仰的狂熱：「將學問轉為信仰的狂熱太過容易了，那群愚蠢的善人只希望有絕對邪惡的存在罷了，這怎麼能夠稱得上是律法的基本呢？」<span class="tag t-text">文本</span> <span class="cite">［環學10 §區塊三 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=456s" target="_blank" rel="noopener">07:36</a>］</span></li>
+<li>他不說話，由柯林讀他手指的紋路來轉述，像褪色者版本的「指頭與解指巫女」；柯林的轉述有沒有自我加工無從得知<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊三 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=582s" target="_blank" rel="noopener">09:42</a>］</span></li>
+</ul>
+<h4>發現</h4>
+<ul>
+<li>柯林：「在黃金律法之中，瑪莉卡女王為唯一神，事實如此。但現在卻找到了瑪莉卡的第二任丈夫——王夫拉達岡的名字。」<span class="tag t-text">文本</span> <span class="cite">［環學10 §區塊三 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=636s" target="_blank" rel="noopener">10:36</a>］</span></li>
+<li>結論：「拉達岡的真實身分就是瑪莉卡。」<span class="tag t-text">文本</span> <span class="cite">［環學10 §區塊三 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=724s" target="_blank" rel="noopener">12:04</a>］</span></li>
+<li>連他都不知道這件事，暗示整個交界地沒幾個人知道拉達岡就是瑪莉卡<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊三 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=636s" target="_blank" rel="noopener">10:36</a>］</span></li>
+</ul>
+<h4>完美律法</h4>
+<ul>
+<li>《完美律法的修復盧恩》：目前黃金律法的不完美是觀點動搖的主因，「不需要像人一樣擁有喜怒哀樂的神存在」<span class="tag t-text">文本</span> <span class="cite">［環學10 §區塊三 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=974s" target="_blank" rel="noopener">16:14</a>］</span></li>
+<li>結局：神隱去、不直接參與，世界依律法運行；民眾透過法律回饋給神，神透過修改法律回應，法律成為兩者衝突的緩衝帶<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊三 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=974s" target="_blank" rel="noopener">16:14</a>］</span></li>
+<li>作者的比喻：這是隱藏神權的人神共治，像「沒有實權的君權神授」<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊五 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=2112s" target="_blank" rel="noopener">35:12</a>］</span></li>
+<li>侷限：他知道瑪莉卡就是拉達岡，卻不知道瑪莉卡只是無上意志的代言人；限制他的不是能力而是資訊不對稱<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊三 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=1055s" target="_blank" rel="noopener">17:35</a>］</span></li>
+</ul>
+<h4>柯林：信仰者與求道者</h4>
+<ul>
+<li>柯林是被流放的預言家，仍信奉雙指，卻因信仰得到燒樹的預言，陷入無法自證的死結<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊二 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=254s" target="_blank" rel="noopener">04:14</a>］</span></li>
+<li>柯林和金面具分別代表「信仰者」與「求道者」：信仰者求的是救贖，求道者求的是究極<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊三 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=842s" target="_blank" rel="noopener">14:02</a>］</span></li>
+<li>燒樹後柯林跪在黃金樹前說：「我終於明白了，老師只是個瘋子，堅信那傲慢又荒誕的妄想，否定黃金律法的完美……」<span class="tag t-text">文本</span> <span class="cite">［環學10 §區塊三 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=842s" target="_blank" rel="noopener">14:02</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p06">拉達岡</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p37">黃金律法</a>、<a class="wl" href="#p25">結局光譜</a>、<a class="wl" href="#p09">權力層級</a>、<a class="wl" href="#p36">食糞者</a></li>
+</ul></article><article id="p35" hidden><p class="meta">人物與勢力　·　資料來源：環學01重製, 環學03, 環學15, 環學19, 環學10</p><h2>雙指（指頭）</h2>
+<blockquote>無上意志在交界地的代理人：一隻會動的巨大手指，負責挑選「神人」、賜予力量，並在背後操控神與王。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>指頭之母誕下使徒「指頭」，指頭先與龍族合作、賜予艾爾登法環<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊二 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=178s" target="_blank" rel="noopener">02:58</a>］</span></li>
+<li>龍族衰落後，指頭吸收龍族手下的獸人當作「影子野獸」，負責盯住合作的神、防止神再次離開（例：黑劍）<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊二 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=346s" target="_blank" rel="noopener">05:46</a>］</span></li>
+<li>雙指的狡猾在於永遠多頭下注，只要扶持的代理人贏就好：瑪莉卡時代有兩位神人，黃金王朝後期又選了三位<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊三 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=573s" target="_blank" rel="noopener">09:33</a>］</span></li>
+<li>瑪莉卡就是被指頭選中的神人，並獲得影子野獸瑪利喀斯<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊三 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=494s" target="_blank" rel="noopener">08:14</a>］</span></li>
+<li>黃金王朝穩定後，雙指選出菈妮、米凱拉、瑪蓮妮亞三位神人，準備時機成熟時取代瑪莉卡，成為受雙指操縱的新神<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1448s" target="_blank" rel="noopener">24:08</a>］</span></li>
+<li>法環破碎後，雙指群體開始逐漸死去；圓桌廳堂唯一活著的雙指也皮膚潰爛、衰老不堪。影片暫時理解為：法環破碎後沒有力量供給<span class="tag t-guess">推測</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">28:50</a>］</span></li>
+<li>褪色者回歸時，雙指從黃金王朝背後走到正面舞台，藏在圓桌廳堂中，透過指頭巫女恩雅說話<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">31:54</a>］</span></li>
+<li>神人被找到時會立刻得到「影子」作為監控；違背雙指時影子會發狂追殺主人 → 見 <a class="wl" href="#p24">神人</a><span class="tag t-text">文本</span> <span class="cite">［環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1095s" target="_blank" rel="noopener">18:15</a>］</span></li>
+<li>原本的計畫是用神人（都是女性）平穩取代瑪莉卡；破碎戰爭對雙指來說是不該發生的意外<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊四 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1594s" target="_blank" rel="noopener">26:34</a>］</span></li>
+<li>慫恿半神互相殘殺，最後又拋棄他們：「在許久許久以前，無上意志早已捨棄了那群半神」<span class="tag t-text">文本</span> <span class="cite">［環學03 §區塊五 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1880s" target="_blank" rel="noopener">31:20</a>］</span></li>
+<li>口頭上說不會放棄世界，但褪色者真要釋放死亡盧恩時，雙指卻一動不動<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊五 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1880s" target="_blank" rel="noopener">31:20</a>］</span></li>
+<li>破碎戰爭既有雙指用大盧恩慫恿，也有瑪莉卡的安排；瑪莉卡成為無上意志的代言人後，兩者難以分清誰在利用誰<span class="tag t-inter">考據</span> <span class="cite">［環學15 §區塊一 <a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=125s" target="_blank" rel="noopener">02:05</a>］</span></li>
+<li>半神與神人制度來自無上意志，影子野獸與大盧恩的賜予由指頭決定<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊四 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=889s" target="_blank" rel="noopener">14:49</a>］</span></li>
+<li>法環破碎後，雙指答應要與無上意志溝通，之後卻一去不回<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊六 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1562s" target="_blank" rel="noopener">26:02</a>］</span></li>
+<li>《刺客步伐》：過去作為圓桌廳堂的刺客、侍奉雙指的人們執行的禱告，負責處理那些背離引導的褪色者<span class="tag t-text">文本</span> <span class="cite">［環學10 §區塊一 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=95s" target="_blank" rel="noopener">01:35</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p13">無上意志</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p03">大盧恩</a>、<a class="wl" href="#p23">破碎戰爭</a>、<a class="wl" href="#p32">褪色者</a>、<a class="wl" href="#p24">神人</a>、<a class="wl" href="#p15">瑪莉卡的詭計</a>、<a class="wl" href="#p09">權力層級</a></li>
+</ul></article><article id="p36" hidden><p class="meta">人物與勢力　·　資料來源：環學10</p><h2>食糞者</h2>
+<blockquote>一個被眾人唾棄的人，想用「詛咒」玷汙整個世界的律法。他的結局是讓人人都成為詛咒之子。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>王城之下有人倒吊著高呼：「放我出去，讓我吃，讓我玷汙，吃盡你們的一切，玷汙你們的未來。」作者指出食糞者在交界地之外也是被眾人唾棄、倒吊而死，對世人的詛咒因此植入心底<span class="tag t-text">文本</span> <span class="cite">［環學10 §區塊四 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=1113s" target="_blank" rel="noopener">18:33</a>］</span></li>
+<li>他稱詛咒為「醜陋的賜福」：「你曾經感應過詛咒嗎？那受人恐懼嫌惡的生命束縛，那醜陋的賜福。」<span class="tag t-text">文本</span> <span class="cite">［環學10 §區塊四 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=1220s" target="_blank" rel="noopener">20:20</a>］</span></li>
+<li>「賜福」是黃金樹佔據的神聖詞彙，反對者只能加上貶義詞綴；就像拉卡德的行為被稱為「叛律」<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊四 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=1220s" target="_blank" rel="noopener">20:20</a>］</span></li>
+<li>他身上集合三種被鄙夷者：盔甲上是惡兆之子被削下的角，武器是巨人中體型嬌小又醜陋的米洛斯，他自己則是人類中被鄙夷的醜陋者<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊四 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=1318s" target="_blank" rel="noopener">21:58</a>］</span></li>
+<li>《溫床的詛咒》：食糞者把屍體當作溫床培育詛咒，死者因此不能回歸黃金樹，受到永恆的詛咒<span class="tag t-text">文本</span> <span class="cite">［環學10 §區塊四 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=1503s" target="_blank" rel="noopener">25:03</a>］</span></li>
+<li>圓桌廳堂盡頭堆著屍體，作者認為那才是玷汙的溫床；食糞者只是找到玷汙之物並產生玷汙<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊四 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=1152s" target="_blank" rel="noopener">19:12</a>］</span></li>
+</ul>
+<h4>他的結局</h4>
+<ul>
+<li>祝福：「周而復始，永不間斷地侵蝕我吧。玷汙律法，直到詛咒法環降臨於世……」<span class="tag t-text">文本</span> <span class="cite">［環學10 §區塊四 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=1561s" target="_blank" rel="noopener">26:01</a>］</span></li>
+<li>在食糞者眼中，人人都是詛咒之子時，詛咒就不存在了<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊四 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=1561s" target="_blank" rel="noopener">26:01</a>］</span></li>
+<li>這個結局要收集四五個溫床的詛咒，比其他律法結局麻煩，或許表示瑪莉卡比較排斥這個選擇<span class="tag t-guess">推測</span> <span class="cite">［環學10 §區塊四 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=1561s" target="_blank" rel="noopener">26:01</a>］</span></li>
+<li>作者認為這是一廂情願：去掉被詛咒的生命後，剩下的群體會再分化出新的詛咒，周而復始；世界無法消除鄙夷，只能盡量減少鄙夷的傷害<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊四 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=1637s" target="_blank" rel="noopener">27:17</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p05">惡兆之子</a>、<a class="wl" href="#p25">結局光譜</a>、<a class="wl" href="#p34">金面具</a>、<a class="wl" href="#p37">黃金律法</a>、<a class="wl" href="#p09">權力層級</a></li>
+</ul></article><article id="p37" hidden><p class="meta">概念　·　資料來源：環學01重製, 環學08, 環學19, 環學10</p><h2>黃金律法</h2>
+<blockquote>瑪莉卡建立的世界規則：掌管黃金之民的生與死，讓信徒不會真正死去。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>死亡盧恩被封印後，黃金之力把信徒的靈魂和肉體緊緊綁在一起，形成不死的軍隊；想死只能透過歸樹。黃金律法因此成為掌管黃金之民生死的至高律法<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=848s" target="_blank" rel="noopener">14:08</a>］</span></li>
+<li>第一次擴張結束後，除了蓋利德和火山地區，幾乎整個交界地都歸於黃金樹之下，黃金律法成為主流<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1133s" target="_blank" rel="noopener">18:53</a>］</span></li>
+<li>黃金律法強調「純粹的文明」：瑪莉卡把黃金王朝定義為文明，把熔爐百相（有角、返祖特徵的孩子）定義為低賤的野人，並把這類孩子丟進王城下水道，包括她親生的蒙格和蒙葛特<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=917s" target="_blank" rel="noopener">15:17</a>］</span></li>
+<li>拉達岡在黃金律法底下另外發展出「黃金基本主義」，最後形成瑪莉卡是外在律法、拉達岡是內在律法的局面<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1448s" target="_blank" rel="noopener">24:08</a>］</span></li>
+<li>黃金律法時代，信奉者受黃金樹賜福，終將成為像神明一樣永恆不死的生命<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊二 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=653s" target="_blank" rel="noopener">10:53</a>］</span></li>
+<li>黃金律法不允許「因死亡而誕生」的存在；受死亡盧恩侵蝕又能死而復生的人，是黃金基本主義無法接受的畸形 → 見 <a class="wl" href="#p11">死誕者</a><span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊一 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=150s" target="_blank" rel="noopener">02:30</a>；§區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1144s" target="_blank" rel="noopener">19:04</a>］</span></li>
+<li>影片認為「永生不死」才是真正的畸形：不死會導致迅速而永恆的階級固化，生命無法進化<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊一 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=256s" target="_blank" rel="noopener">04:16</a>］</span></li>
+<li>環學19：黃金樹是政教合一的國度，神與教皇是瑪莉卡，王（葛弗雷、拉達岡）受命於神之下<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊五 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1291s" target="_blank" rel="noopener">21:31</a>］</span></li>
+<li>黃金樹是「人的時代」而不是熔爐百相的時代，所以瑪莉卡否定、封印自己的惡兆之子，黃金居民也丟棄自己的惡兆之子<span class="tag t-inter">考據</span> <span class="cite">［環學19 §區塊五 <a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1143s" target="_blank" rel="noopener">19:03</a>］</span></li>
+<li>凡是以瑪莉卡為神之虛像、借用她的身體當容器的律法，都算黃金律法的分支：拉達岡的基本主義、金面具、死王子都是；只有菈妮的律法「不是黃金」<span class="tag t-inter">考據</span> <span class="cite">［環學10 §區塊三 <a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=528s" target="_blank" rel="noopener">08:48</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p06">拉達岡</a>、<a class="wl" href="#p38">黃金樹</a>、<a class="wl" href="#p33">賜福</a>、<a class="wl" href="#p10">死亡盧恩</a>、<a class="wl" href="#p25">結局光譜</a>、<a class="wl" href="#p11">死誕者</a>、<a class="wl" href="#p09">權力層級</a>、<a class="wl" href="#p34">金面具</a></li>
+</ul></article><article id="p38" hidden><p class="meta">概念　·　資料來源：環學01重製, 環學03</p><h2>黃金樹</h2>
+<blockquote>瑪莉卡成神後種下的巨樹，是黃金王朝的信仰中心；按照影片的解讀，它本質上是一個「收集靈魂的機器」。</blockquote>
+<h3>重點</h3>
+<ul>
+<li>瑪莉卡成神後把根據地搬離幽影地，到更北邊的亞壇高原種下黃金樹<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊三 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=669s" target="_blank" rel="noopener">11:09</a>］</span></li>
+<li>黃金樹可能和聖樹一樣，是用瑪莉卡的血澆灌長成的<span class="tag t-guess">推測</span> <span class="cite">［環學01重製 §區塊三 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=669s" target="_blank" rel="noopener">11:09</a>］</span></li>
+<li>艾爾登之獸寄居在黃金樹內<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=848s" target="_blank" rel="noopener">14:08</a>］</span></li>
+<li>黃金樹的本質是靈魂收集器、一座巨大的靈魂墓碑；梅瑟莫的聖戰封印幽影地，就是要逼死者的靈魂改去黃金樹<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1307s" target="_blank" rel="noopener">21:47</a>］</span></li>
+<li>黃金之民想死，只能透過「歸樹」，而資格掌握在瑪莉卡等人手中<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=848s" target="_blank" rel="noopener">14:08</a>］</span></li>
+<li>黑刀陰謀之夜之後，死亡之力經由黃金樹最底層的大樹根擴散，干擾歸樹 → 削弱黃金樹<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1612s" target="_blank" rel="noopener">26:52</a>］</span></li>
+<li>拉達岡在黃金樹入口設下拒絕之刺，讓沒有人能進入；褪色者必須「燒樹」才能進去<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊六 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2269s" target="_blank" rel="noopener">37:49</a>］</span></li>
+<li>《托勒密之矛》等熔爐騎士道具提到「據說初始黃金樹的性質更接近生命」，並帶有紅色<span class="tag t-text">文本</span> <span class="cite">［環學03 §區塊二 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=602s" target="_blank" rel="noopener">10:02</a>］</span></li>
+<li>因此黃金樹可能不是無上意志帶來的，而是熔爐自己演變成樹，再被無上意志佔據；紅色在過程中逐漸變成代表無上意志的金色<span class="tag t-guess">推測</span> <span class="cite">［環學03 §區塊二 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=602s" target="_blank" rel="noopener">10:02</a>］</span></li>
+<li>死誕者出現後，黃金樹成了「只能往外吐錢、無法回收的 ATM」，遲早耗盡<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊五 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1660s" target="_blank" rel="noopener">27:40</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p37">黃金律法</a>、<a class="wl" href="#p04">幽影地</a>、<a class="wl" href="#p10">死亡盧恩</a>、<a class="wl" href="#p06">拉達岡</a></li>
+</ul></article><article id="p39" hidden><p class="meta">事件　·　資料來源：環學01重製, 環學03, 環學08</p><h2>黑刀陰謀之夜</h2>
+<blockquote>刺客用偷來的「死亡」之力殺死半神的一夜：交界地第一次有神的子嗣真正死去，也是法環破碎的前奏。</blockquote>
+<h3>經過</h3>
+<ul>
+<li>影片認為這是瑪莉卡發動的第一次攻勢，她手上有三張牌<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1612s" target="_blank" rel="noopener">26:52</a>］</span>：</li>
+<ol>
+<li><b>菈妮</b>：不願受指頭擺布；她偷出黑劍手中的死亡盧恩，用法術嵌入刺客的短刀</li>
+<li><b>希人刺客</b>：瑪莉卡的私人武力（黑刀刺客）</li>
+<li><b>葛德溫</b>：「黃金孝子」，乖乖接受母親派來的刺客</li>
+</ol>
+<li>菈妮的目的：殺死自己的肉體，擺脫雙指的監控，走上神人的黑暗道路——殺死指頭、前往星空<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1612s" target="_blank" rel="noopener">26:52</a>］</span></li>
+</ul>
+<h3>結果</h3>
+<ul>
+<li>菈妮與葛德溫在同一時刻死去<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1612s" target="_blank" rel="noopener">26:52</a>］</span></li>
+<ul>
+<li>菈妮：肉體死亡、靈魂存活，靈魂移入雪魔女模樣的人偶</li>
+<li>葛德溫：肉體存活、靈魂死亡，成為「無魂半神」（死王子）</li>
+</ul>
+<li>葛德溫獲得死亡盧恩之力，經由黃金樹最底層的大樹根擴散，干擾歸樹儀式，墓穴成為死誕者的據點，從根本上阻止黃金樹吸收靈魂<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1612s" target="_blank" rel="noopener">26:52</a>］</span></li>
+<li>之後很長一段時間，代表雙指利益的拉達岡黃金基本主義專門針對死誕者（代表人物：D）<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1612s" target="_blank" rel="noopener">26:52</a>］</span></li>
+</ul>
+<h4>環學03 的補充</h4>
+<ul>
+<li>菈妮的說法：「但是我拒絕了雙指，我竊走了死亡盧恩，殺害、拋棄自己身為神人的身體，因為我拒絕受那種存在的操縱。」<span class="tag t-text">文本</span> <span class="cite">［環學03 §區塊五 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1660s" target="_blank" rel="noopener">27:40</a>］</span></li>
+<li>葛德溫是為了和菈妮一起拒絕操縱而故意死亡，還是真的倒楣被殺？影片沒有下定論<span class="tag t-guess">推測</span> <span class="cite">［環學03 §區塊五 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1660s" target="_blank" rel="noopener">27:40</a>］</span></li>
+<li>作者認為這是瑪莉卡詭計中<b>最關鍵的一步</b>：沒有死誕者這個漏洞，黃金基本主義和無上意志幾乎無敵 → 見 <a class="wl" href="#p15">瑪莉卡的詭計</a><span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊五 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1801s" target="_blank" rel="noopener">30:01</a>］</span></li>
+</ul>
+<h4>環學08 的補充：真正的主謀與流程</h4>
+<ul>
+<li>黑劍的死亡盧恩被盜走一部分；菈妮用魔法把碎片之力注入刺客的刀中，形成「黑刀烙印」<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=812s" target="_blank" rel="noopener">13:32</a>］</span></li>
+<li>持黑刀的是歸屬瑪莉卡的希人刺客，午夜潛入王城殺害葛德溫；同時菈妮在神授塔死去<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=812s" target="_blank" rel="noopener">13:32</a>］</span></li>
+<li>《死亡咒痕》：半神第一次死亡時「常理而言」會刻下一道圓環，但這次有兩位初始死者，所以分成兩個缺半的環：菈妮是肉體方面、葛德溫是靈魂方面的初始死者<span class="tag t-text">文本</span> <span class="cite">［環學08 §區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=849s" target="_blank" rel="noopener">14:09</a>］</span></li>
+<li>既然是「常理」，代表以前就有神被殺過；知道這個常理、又同時經歷遠古黃金樹與黃金律法兩個時代的，只有瑪莉卡 → <b>瑪莉卡才是主謀，菈妮只是明面上的主謀</b><span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=849s" target="_blank" rel="noopener">14:09</a>；§區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=2164s" target="_blank" rel="noopener">36:04</a>］</span></li>
+<li>兩人必須「同時」死去才能各得半環而存活，這麼高難度的同步不可能是突發刺殺<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1298s" target="_blank" rel="noopener">21:38</a>］</span></li>
+<li>菈妮留下另一塊碎片，化為《褻瀆之爪》送給哥哥拉卡德，讓他日後挑戰黑劍——黑劍必須死，從這一夜就埋下伏筆<span class="tag t-text">文本</span> <span class="cite">［環學08 §區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1298s" target="_blank" rel="noopener">21:38</a>］</span></li>
+<li>必須在王城動手，是為了讓死亡盧恩經由葛德溫沿大樹根擴散到各墓地，打亂黃金基本主義的歸樹體系<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1298s" target="_blank" rel="noopener">21:38</a>］</span></li>
+<li>最直接的結果不是葛德溫之死，而是 <a class="wl" href="#p11">死誕者</a> 的產生<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊三 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=990s" target="_blank" rel="noopener">16:30</a>］</span></li>
+<li>影片認為陰謀的最終目的：打破黃金基本主義造成的階級固化，提供一條雖然血腥、但能讓生命在黑暗中看見光的流動通道<span class="tag t-inter">考據</span> <span class="cite">［環學08 §區塊五 <a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=2164s" target="_blank" rel="noopener">36:04</a>］</span></li>
+</ul>
+<h3>相關頁面</h3>
+<ul>
+<li><a class="wl" href="#p10">死亡盧恩</a>、<a class="wl" href="#p14">瑪莉卡</a>、<a class="wl" href="#p12">法環破碎</a>、<a class="wl" href="#p38">黃金樹</a>、<a class="wl" href="#p15">瑪莉卡的詭計</a>、<a class="wl" href="#p28">菈妮</a>、<a class="wl" href="#p11">死誕者</a>、<a class="wl" href="#p30">葛德溫</a></li>
+</ul>
+<h3>⚠ 矛盾與更正</h3>
+<ul>
+<li><b>C4 事件順序</b>：</li>
+<ul>
+<li><a class="wl" href="#p17">環學01重製</a>（較新，正文採用）：黑刀陰謀之夜 → 法環破碎<span class="tag t-inter">考據</span> <span class="cite">［環學01重製 §區塊五 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1703s" target="_blank" rel="noopener">28:23</a>］</span></li>
+<li><a class="wl" href="#p18">環學03</a>：片頭動畫的順序是先法環破碎；宣傳片文本則暗示黑刀之夜在前。作者表示兩種都不影響解析<span class="tag t-inter">考據</span> <span class="cite">［環學03 §區塊四 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1422s" target="_blank" rel="noopener">23:42</a>］</span></li>
+</ul>
+<li><b>C6 葛德溫是否自願</b>：環學03 說未定<span class="tag t-guess">推測</span>；較新的環學08 認為他知情並參與（正文採用）→ 見 <a class="wl" href="#p30">葛德溫</a>。</li>
+</ul></article><article id="rules" hidden><h2>艾爾登法環劇情 LLM Wiki — 維護規則（Schema）</h2>
+<p>這個資料夾是一個由 LLM 維護、人類審核的知識庫。主題：《艾爾登法環》世界觀與主線劇情（以 YouTube「環學」系列考據影片為來源）。</p>
+<h3>資料夾</h3>
+<ul>
+<li><code>raw/</code>：原始資料（環學各集整理稿）。<b>只讀，不可修改。</b></li>
+<li><code>wiki/index.md</code>：所有頁面的目錄，每頁一行＋一句話摘要。每次新增頁面都要更新。</li>
+<li><code>wiki/log.md</code>：時間順序的操作紀錄（ingest / query / lint / 修正），只追加不刪改。</li>
+<li><code>wiki/sources/</code>：每篇 raw 資料一頁摘要。</li>
+<li><code>wiki/entities/</code>：人物、勢力、神祇（例：瑪莉卡、雙指、褪色者）。</li>
+<li><code>wiki/concepts/</code>：抽象概念與設定（例：艾爾登法環、黃金律法、大盧恩、死亡盧恩）。</li>
+<li><code>wiki/events/</code>：歷史事件（例：黑刀陰謀之夜、法環破碎、破碎戰爭）。</li>
+<li><code>slides/</code>：由 Wiki 產生的教學簡報。</li>
+<li><code>report/</code>：繳交用的流程說明、執行紀錄、反思。</li>
+</ul>
+<h3>頁面格式</h3>
+<pre>---
+type: entity | concept | event | source
+aliases: [其他稱呼]
+sources: [環學01重製, 環學08]
+updated: YYYY-MM-DD
+---
+# 頁面名稱
+&gt; 一句話定義（給完全沒玩過的人看）
+
+## 重點
+- 敘述…〔標籤〕 [來源]
+
+## 相關頁面
+- [[其他頁面]]
+
+## ⚠ 矛盾與更正（有才寫）</pre>
+<h3>標籤規則（每一條重點都必須有標籤）</h3>
+<ul>
+<li><span class="tag t-text">文本</span>：影片中直接引用的遊戲內文字（物品說明、NPC 台詞、真言）。</li>
+<li><span class="tag t-inter">考據</span>：影片作者的解讀，但影片以肯定語氣陳述。</li>
+<li><span class="tag t-guess">推測</span>：影片自己標明「推測／或許／可能／發散思維」的內容。</li>
+<li>不確定屬於哪一類時，往保守方向標（<span class="tag t-inter">考據</span>→<span class="tag t-guess">推測</span>）。</li>
+<li><span class="tag t-text">文本</span>的條目必須真的含有引文（「」或《》），而且引文要能在 raw 找到；同一行如果同時有解讀和引文，要拆成兩條（2026-11-14 加入，見 lint L10）。</li>
+</ul>
+<h3>來源引用格式</h3>
+<p><code><span class="cite">［環學01重製 §區塊三 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=573s" target="_blank" rel="noopener">09:33</a>］</span></code>＝集數、區塊、影片時間點。每一條重點至少一個來源。</p>
+<p>Wiki 中<b>不可出現 raw 裡沒有的內容</b>；我（LLM）自己的遊戲知識不能寫進來。</p>
+<h3>操作</h3>
+<ol>
+<li><b>Ingest（先討論、後生成）</b>：讀一篇 raw → 在對話中提出「重點／要新增或修改的頁面／與現有頁面的衝突」→ 使用者確認或修正 → 才寫入頁面、更新 index、記 log。討論內容存到 <code>report/ingest討論紀錄.md</code>。</li>
+<li><b>Query</b>：回答問題時先讀 <code>index.md</code> 找頁面，答案標出所用頁面；有價值的答案可回存成新頁面。</li>
+<li><b>Lint</b>：每次 ingest 後執行，全部通過才算完成。</li>
+<ul>
+<li><code>py -X utf8 tools/lint.py</code>：L1 斷連結、L2 沒標籤、L3 沒來源、L4 孤兒頁、L5 引文不在 raw、L6 時間點不存在、L7 raw 沒有的英文詞、L8 index 不一致</li>
+<li><code>py -X utf8 tools/ground.py</code>：L9 引用對照（重點與所引段落的用字重疊率 &lt; 0.4 → 人工確認）</li>
+<li>人工複查：index 摘要是否正確、⚠ 區是否完整（這兩項工具檢查不了）</li>
+</ul>
+</ol>
+<h3>命名</h3>
+<ul>
+<li>一律用台灣譯名（與 raw 一致），檔名＝頁面名稱，例：<code>wiki/entities/瑪莉卡.md</code>。</li>
+</ul>
+<h3>衝突處理（2026-11-14 使用者同意，ingest 環學03 時加入）</h3>
+<ul>
+<li>兩集說法不同時，<b>兩種都保留</b>：正文以「較新的一集」為準，另一集的說法寫在該頁的「⚠ 矛盾與更正」區，並註明集數。</li>
+<li>集數新舊：環學01重製 是系列最後一期（DLC 後），比其他所有集數都新；其他依編號先後。</li>
+<li>若是作者自己在影片中明確更正前說（例：環學08 更正上一期〔環學07〕的「六個圈」為四個圈），舊說法直接標為「已被作者更正」。</li>
+</ul></article><article id="log" hidden><h2>操作紀錄</h2>
+<h3>[2026-11-14] setup | 建立 Wiki</h3>
+<ul>
+<li>從「生成式AI向量資料庫/data/notes」複製 6 集整理稿到 raw/：環學01重製、03、08、10、15、19。</li>
+<li>建立 CLAUDE.md（頁面格式、<span class="tag t-text">文本</span><span class="tag t-inter">考據</span><span class="tag t-guess">推測</span>標籤規則、來源引用格式）。</li>
+</ul>
+<h3>[2026-11-14] ingest-討論 | 環學01重製</h3>
+<ul>
+<li>已讀完，提出頁面清單與待決問題，等待使用者確認（見 report/ingest討論紀錄.md）。</li>
+<li>使用者回覆：Q1–Q4 全部照建議（DLC 在 Wiki 照實記錄、簡報只帶過；結局光譜開一頁；三種標籤；頁面清單照列）。</li>
+</ul>
+<h3>[2026-11-14] ingest | 環學01重製</h3>
+<ul>
+<li>新增 21 頁：sources 1、concepts 9、entities 7、events 4（含使用者同意新增的「結局光譜」）。</li>
+<li>預留「⚠ 待查」：艾爾登法環（環學08 圈數更正）、黑刀陰謀之夜（環學03/08）、破碎戰爭（環學15）、結局光譜（環學10）。</li>
+</ul>
+<h3>[2026-11-14] lint | 第 1 次 → 37 個問題</h3>
+<ul>
+<li>L7 ×28：frontmatter aliases 中加了英文名（Erdtree、Tarnished、Greater Will…），raw 裡沒有 → <b>LLM 自身知識混入</b>，違反 CLAUDE.md 規則。已全部刪除。</li>
+<li>L2 ×8：表格列沒有標籤 → 屬於 lint 誤報（表格上方已有標籤與來源）；修改 lint 讓表格沿用上一行的標籤。</li>
+<li>L3 ×1：時代總覽「死亡的力量轉移」一句沒有來源 → 已補上三個來源。</li>
+<li>L7 誤報（ingest、vs、影片 ID）→ 加入白名單。</li>
+<li>L5（引文是否存在 raw）、L6（時間點是否存在）：0 個問題。</li>
+<li>報告：report/lint/01_環學01重製_第1次.md</li>
+</ul>
+<h3>[2026-11-14] lint | 第 2 次 → 0 個問題</h3>
+<ul>
+<li>報告：report/lint/01_環學01重製_第2次.md</li>
+</ul>
+<h3>[2026-11-14] ingest-討論 | 環學03</h3>
+<ul>
+<li>已讀完。提出 4 個新頁、10 個要更新的頁、4 個與環學01重製的衝突（C1–C4），以及 Q5–Q8，等待使用者確認。</li>
+<li>使用者回覆：Q5–Q8 全部照建議。衝突處理規則寫入 CLAUDE.md。</li>
+</ul>
+<h3>[2026-11-14] ingest | 環學03</h3>
+<ul>
+<li>新增 5 頁：sources/環學03、concepts/神人、concepts/惡兆之子、entities/菈妮、events/瑪莉卡的詭計。</li>
+<li>更新 10 頁：艾爾登法環（改寫定義＋C1）、黃金樹、瑪莉卡（C2）、拉達岡、雙指、大盧恩（C3）、黑刀陰謀之夜（C4）、法環破碎、褪色者、無上意志。</li>
+</ul>
+<h3>[2026-11-14] lint | 第 1 次 → 25 個問題，其中大多是 lint 自己的 bug</h3>
+<ul>
+<li>L3 ×18、L2 ×5：<b>lint 的來源正規表達式寫錯</b>（<code>重製?</code> 讓「重」變成必要字元），所以只認得「環學01重製」，環學03 的來源全部被當成「沒有來源」。</li>
+<ul>
+<li>連帶發現：第 1 篇時寫了一個繞過條件（<code><span class="tag t-inter">考據</span> [</code> 就當作有來源），掩蓋了這個 bug；L6 也從來沒有真正檢查過其他集數的時間點。</li>
+<li>修正：正規表達式改成 <code>(?:重製)?</code>；刪掉繞過條件，讓 L3 變嚴格；一個方括號內有多集來源時分段檢查。</li>
+</ul>
+<li>L6 ×1：<code><span class="cite">［環學01重製 §區塊四 <a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1190s" target="_blank" rel="noopener">19:50</a>；環學03 §區塊三 <a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1095s" target="_blank" rel="noopener">18:15</a>］</span></code> 被當成都是 01重製 → 同上，改成分段解析。</li>
+<li>L7 ×1：CLAUDE（檔名）→ 白名單。</li>
+<li>報告：report/lint/02_環學03_第1次.md</li>
+</ul>
+<h3>[2026-11-14] lint | 第 2、3 次 → 0 個問題（第 3 次為移除繞過條件後的嚴格版）</h3>
+<ul>
+<li>另外做了一個故意出錯的測試頁（捏造引文、錯誤時間點、沒標籤、沒來源、斷連結、英文別名），7 種檢查都有抓到，確認 lint 不是「什麼都放過」。</li>
+</ul>
+<h3>[2026-11-14] 人工複查 index → 2 個錯誤（lint 抓不到）</h3>
+<ul>
+<li>「艾爾登法環」摘要仍是舊定義（無上意志賜予），頁面已依 C1 改寫 → 摘要沒有跟著更新。</li>
+<li>「黑刀陰謀之夜」摘要寫「殺死葛德溫與菈妮的肉體」→ <b>事實錯誤</b>，葛德溫是肉體存活、靈魂死亡。這是第 1 篇寫 index 時就存在的錯誤。</li>
+<li>兩者已修正。lint 只檢查頁面內的重點，不檢查 index 摘要 → 列入待辦：index 摘要也要能對回頁面內容。</li>
+</ul>
+<h3>[2026-11-14] ingest-討論 | 環學08</h3>
+<ul>
+<li><b>自我更正</b>：先前在對話中說「環學08 更正環學01 的六個圈」，原文其實是更正「上一期」（環學07，不在 raw）。原因：只看了核心摘要，沒有讀原文。Wiki 頁面中沒有因此寫錯的內容，只需改掉「待查」。</li>
+<li>提出 3 個新頁、8 個要更新的頁、衝突 C5、C6、C2 補充，以及 Q9–Q12，等待使用者確認。</li>
+<li>使用者回覆：Q9–Q12 全部照建議。</li>
+</ul>
+<h3>[2026-11-14] ingest | 環學08</h3>
+<ul>
+<li>新增 4 頁：sources/環學08、concepts/死誕者、entities/葛德溫、entities/梅琳娜。</li>
+<li>更新 8 頁：死亡盧恩（死亡的四階段演變）、黑刀陰謀之夜（主謀是瑪莉卡、死亡咒痕、C6）、瑪莉卡的詭計（改為修正版＋C5）、菈妮、瑪莉卡（C2 補充：希人盧恩文本）、結局光譜（三類結局）、黃金律法、艾爾登法環（四個圈；刪除過時的「待查」）。</li>
+<li>修正 CLAUDE.md 與討論紀錄中「六個圈」的描述（更正對象是環學07）。</li>
+</ul>
+<h3>[2026-11-14] lint | 新增 L8（index 一致性）</h3>
+<ul>
+<li>上一輪人工發現 index 摘要錯誤，所以加上 L8：每個頁面都要列在 index、index 不能列不存在的頁面。（摘要內容對不對仍需人工檢查。）</li>
+<li>第 1 次 → 4 個問題，全部是 L8：新頁還沒寫進 index（預期中）。<b>內容檢查（L1–L7）第一輪就是 0 個問題</b>，和前兩篇比，生成品質因為規則清楚而變好。</li>
+<li>更新 index 後第 2 次 → 0 個問題。報告：report/lint/03_環學08_第1次.md、第2次.md</li>
+</ul>
+<h3>[2026-11-14] ingest-討論 | 環學15</h3>
+<ul>
+<li>已讀完。提出 3 個新頁、6 個要更新的頁、衝突 C7–C9（C9 是遊戲文本自身的矛盾），以及 Q13–Q16，等待使用者確認。</li>
+<li>使用者回覆：Q13–Q16 全部照建議。</li>
+</ul>
+<h3>[2026-11-14] ingest | 環學15</h3>
+<ul>
+<li>新增 4 頁：sources/環學15、entities/蒙葛特、entities/瑪蓮妮亞、concepts/考據方法。</li>
+<li>更新 6 頁：破碎戰爭（五階段表、鮮血陰謀<span class="tag t-guess">推測</span>、C7–C9；刪除過時的「待查」）、半神、惡兆之子、雙指、褪色者、交界地。</li>
+</ul>
+<h3>[2026-11-14] 人工複查 → 1 個錯誤（lint 抓不到）</h3>
+<ul>
+<li>「考據方法」頁寫了一條「作者的觀點也會隨時間改變」，標成<span class="tag t-inter">考據</span>並附上影片來源 → <b>錯誤歸因</b>：這是我整理多集時自己的觀察，影片沒有這樣說，卻被包裝成影片的內容。lint 只能檢查「有沒有來源」，不能檢查「來源有沒有說這句話」。</li>
+<li>修正：移到「和本 Wiki 的對應（Wiki 維護者的說明，不是影片內容）」段落，不加標籤與來源。</li>
+</ul>
+<h3>[2026-11-14] lint | 第 1 次 → 4 個問題（全部 L8，index 未更新，預期中）；更新 index 後第 2 次 → 0 個問題</h3>
+<ul>
+<li>報告：report/lint/04_環學15_第1次.md、第2次.md</li>
+</ul>
+<h3>[2026-11-14] ingest-討論 | 環學19</h3>
+<ul>
+<li>已讀完。提出 2 個新頁（含「權力層級」）、8 個要更新的頁、無實質衝突，以及 Q17–Q19。</li>
+<li>Q19 是流程改進：因為「錯誤歸因」出現兩次且 lint 抓不到，提議新增 L9（引用對照檢查）。</li>
+<li>使用者回覆：Q17–Q19 全部照建議（包含新增 L9 引用對照檢查）。</li>
+</ul>
+<h3>[2026-11-14] ingest | 環學19</h3>
+<ul>
+<li>新增 2 頁：sources/環學19、concepts/權力層級。</li>
+<li>更新 8 頁：瑪莉卡（八項規劃、殉道者）、拉達岡（真言完整版）、無上意志（權力虛像）、雙指、褪色者（被拉升到半神階層）、菈妮（棋子→棋手）、半神、黃金律法。</li>
+<li>lint 第 1 次只有 2 個 L8（index 未更新）；更新後 0 問題。報告：report/lint/05_環學19.md</li>
+</ul>
+<h3>[2026-11-14] 新增 L9 引用對照檢查（tools/ground.py）→ 對全部頁面執行</h3>
+<ul>
+<li>原因：「錯誤歸因」在人工複查中出現兩次（環學08 的表格、環學15 的考據方法），L1–L8 都抓不到。</li>
+<li>做法：依 [集數 §區塊 時間點] 找出 raw 對應段落，計算重點與段落的中文雙字組重疊率，低於 0.4 列出來給人工確認。</li>
+<li>第 1 次：340 條中 17 條低於門檻 → 人工確認 <b>5 條是真問題</b>（LLM 自己的歸納掛上影片來源 1、多寫了來源沒有的內容 1、漏引段落 2、引錯段落 1），已全部修正。這 5 條在先前的 lint 與人工複查都沒被發現。</li>
+<li>調整 L9：先拆 ［［連結］］ 再拆來源（之前把 <a class="wl" href="#p17">環學01重製</a> 誤當成來源方括號）；少於 6 個雙字組的標題句略過。</li>
+<li>第 2 次：13 條低於門檻，全部確認為衝突摘要／標題句／正確的改寫。</li>
+<li>紀錄：report/ground/第1次_人工確認.md、第2次_修正後.md</li>
+</ul>
+<h3>[2026-11-14] ingest-討論 | 環學10（最後一篇）</h3>
+<ul>
+<li>已讀完。提出 2 個新頁、6 個要更新的頁、C10（結局光譜排列，建議合併），以及 Q20–Q22。</li>
+<li>使用者回覆：Q20–Q22 全部照建議。</li>
+</ul>
+<h3>[2026-11-14] ingest | 環學10（最後一篇）</h3>
+<ul>
+<li>新增 3 頁：sources/環學10、entities/金面具、entities/食糞者。</li>
+<li>結局光譜改寫成 01重製＋環學10 的合併版（C10，Q20）；收入「封建→民主」的比喻（Q21）。</li>
+<li>更新 5 頁：拉達岡（真實身分）、黃金律法（律法分支）、惡兆之子、雙指（刺客步伐）、權力層級（金面具的資訊壁壘）。</li>
+<li>lint：內容 0 問題，3 個 L8（index 未更新）→ 更新後 0 問題。</li>
+<li>L9：378 條中 13 條低於門檻，<b>全部是上一輪已人工確認的舊條目，本篇新寫的 38 條全部通過</b>。報告：report/ground/第3次_環學10後.md</li>
+</ul>
+<h3>[2026-11-14] 里程碑 | 6 篇 ingest 完成</h3>
+<ul>
+<li>Wiki 共 39 頁（sources 6、concepts 14、entities 14、events 5）、衝突 C1–C10、lint L1–L8 與 L9 全部通過。</li>
+</ul>
+<h3>[2026-11-14] slides-規劃 | 步驟二開始</h3>
+<ul>
+<li>寫好 report/簡報規劃.md：學習目標 5 個、簡報 graph（含提前的「②' 對照表檢查」與 S1–S4 內容檢查）、17 張大綱，等待使用者確認 Q23–Q25。</li>
+<li>使用者回覆「繼續完成」→ Q23–Q25 照建議。</li>
+</ul>
+<h3>[2026-11-14] slides | 簡報產生 graph 執行</h3>
+<ul>
+<li>② 建立 slides/map.json（17 張 → 80 個 Wiki 引用）；②' check_map 第 1 次 0 錯誤。</li>
+<li>③ 撰寫 slides/content.json；④ check_slides 第 1 次 14 個問題（S1 1、S2 8、S3 5）→ 回 ② 補 5 個引用、回 ③ 改寫並把時間線移到第 8 張。</li>
+<li>④ 第 2 次 3 個（其中 2 個 S3 是修正時新產生的）→ 規定每次修改後全部檢查重跑；第 3 次 1 個；第 4 次 0。</li>
+<li>⑤ build_slides 產生 slides/index.html（標籤由引用的 Wiki 條目自動決定）。</li>
+<li>⑥ 瀏覽器：金字塔溢出 314px → 改版型；看畫面發現 2 句解讀被標成<span class="tag t-text">文本</span>→ 根源是 Wiki 條目混寫 → 拆開 Wiki 條目、補引用；新增 S5（文本必須含引文），又抓到 1 句。</li>
+<li>回到 Wiki 掃描：11 行<span class="tag t-text">文本</span>沒有引文 → 新增 lint L10，11 行全部修正（加上經 L5 驗證的引號，或改標<span class="tag t-inter">考據</span>）。</li>
+<li>⑥ 瀏覽器：網址 #N 不會切頁 → 加 hashchange；最終 17 張無溢出、手機無橫向溢出、主控台 0 錯誤、深淺色正常。</li>
+<li>最終：lint 0、L9 無新問題、②' 0、S1–S5 全 0。</li>
+</ul>
+<h3>[2026-11-14] 繳交前總檢查（使用者要求重新檢查所有繳交物）</h3>
+<ul>
+<li>繳交說明：原版充滿內部代號（L1–L10、S1–S5、②'、C1–C10）、兩個連結空白、只指向助教打不開的本機路徑 → 全部重寫為白話，逐項直接回答作業的問題。</li>
+<li>簡報第 4 張：引文被改寫過（「黃金樹時代之前」→「更早一個時代」）卻仍標<span class="tag t-text">文本</span>。原因：S5 只檢查有沒有引號 → 加強 S5（引號內容必須逐字出現在所引 Wiki 條目）；Wiki 拆開混寫的條目；第 4 張改引<span class="tag t-inter">考據</span>條目。重跑後其他 73 句無同類問題。</li>
+<li>反思：S2 的「8 個多寫」是灌水，實際是多寫 4、漏列引用 2、工具限制 2 → 已更正。</li>
+<li>簡報規劃與流程說明的節點編號不一致 → 在簡報規劃加註說明。</li>
+<li>新增 tools/build_site.py：產生可瀏覽的 site/（繳交入口、Wiki 瀏覽頁、流程與反思頁、簡報）。瀏覽器檢查：內部連結全部 200、Wiki 391 個頁面連結 0 斷（修正 1 個把說明文字當連結的問題）、2 張流程圖正常顯示、手機寬度三頁皆無橫向溢出、主控台 0 錯誤。</li>
+<li>最終：lint 0、L9 無新問題、②' 0、S1–S5 全 0。</li>
+</ul>
+<h3>[2026-11-14] 發佈</h3>
+<ul>
+<li>依發佈平台規範調整：網址錨點改為英數字（Wiki 頁 p01–p39、報告 flow/record/reflection…）、補 color-scheme、導覽列避開手機安全區、主頁輸出片段版 site/main.html。</li>
+<li>發佈為 claude.ai Artifact：https://claude.ai/artifact/7M5AsHW3LB8YeMarjWVZs9（index＝繳交入口、wiki.html、report.html、slides.html）。發佈後的 wiki.html 與本機 SHA-256 一致。</li>
+<li>預設為私人，需由使用者在頁面 Share 選單開放給助教。</li>
+</ul>
+<h3>[2026-11-14] 改寫個人觀點段落（使用者要求：以大學生程度重寫）</h3>
+<ul>
+<li>改寫範圍：report/反思.md（全文）、report/流程說明.md（兩段「為什麼這樣設計」與開頭）、繳交說明.md（摘要、資料來源、為什麼這樣設計、反思）。</li>
+<li>未改動：Wiki 與簡報中的<span class="tag t-inter">考據</span>內容（那是影片作者的觀點）、執行紀錄的數據。</li>
+<li>所有數字沿用原紀錄，未新增事實。</li>
+</ul>
+<h3>[2026-11-14] 整理 GitHub 上傳資料夾</h3>
+<ul>
+<li>使用者決定改用 GitHub Pages 發布。新增 tools/pack_github.py：產生 github-upload/（4 個網頁＋.nojekyll＋README＋source/ 原始檔）與 貼到繳交表單.txt。</li>
+<li>繳交說明移除 claude.ai 網址，改指向 repo 的 source/。</li>
+<li>測試：在 source/ 內重跑所有檢查皆 0 問題；以子路徑模擬 GitHub Pages，4 頁 200、內部連結全通、流程圖由 CDN 繪出、Wiki 連結 0 斷、主控台 0 錯誤。</li>
+<li>注意：GitHub 網頁上傳一次上限 100 個檔案，本資料夾 105 個 → 上傳步驟.md 提供指令法與分兩批的網頁法。</li>
+</ul>
+<h3>[2026-11-14] 合併成單一作業報告 HTML</h3>
+<ul>
+<li>使用者要求：LLM Wiki 以外的繳交內容整理成一份 HTML。</li>
+<li>site/index.html 改為「作業報告」：依作業要求 1～6 排列（主題簡介、Wiki 連結、簡報連結、流程圖與說明、執行紀錄、反思），附錄放每集討論紀錄與簡報規劃；原本的 report.html 併入後刪除。</li>
+<li>github-upload/ 改為 3 個網頁（index＝作業報告、wiki、slides）；README 與 貼到繳交表單.txt 的連結改為 index.html#intro／#flow／#record／#reflection。</li>
+<li>測試：章節 7 個、目錄錨點 0 斷、內部連結 200、流程圖 2 張、無橫向溢出、主控台 0 錯誤。</li>
+</ul></article></main></div><script>
+function show(){const id=decodeURIComponent(location.hash.slice(1))||'home';
+let found=false;document.querySelectorAll('main article').forEach(a=>{const on=a.id===id;a.hidden=!on;if(on)found=true;});
+if(!found)document.getElementById('home').hidden=false;window.scrollTo(0,0);}
+window.addEventListener('hashchange',show);show();
+</script></body></html>

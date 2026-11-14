@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>艾爾登法環世界觀入門</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0f0d0a;
+  --bg2: #17140f;
+  --panel: #1f1b14;
+  --line: #3a3224;
+  --text: #ece4d4;
+  --muted: #a89c86;
+  --gold: #d9b45a;
+  --gold2: #f3d98c;
+  --t-text: #6fbf8e;
+  --t-inter: #d9b45a;
+  --t-guess: #e07a5f;
+  --t-dispute: #a98be0;
+  --star: #7fa8e6;
+  --fire: #e8653a;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f6f1e6; --bg2: #efe7d6; --panel: #fffaf0; --line: #d8ccb2;
+    --text: #2a2418; --muted: #6e624c; --gold: #9a7420; --gold2: #7a5a12;
+    --t-text: #2f7d4f; --t-inter: #9a7420; --t-guess: #b8492c; --t-dispute: #6a4cb0;
+    --star: #3a64a8; --fire: #c4471f; color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --bg: #f6f1e6; --bg2: #efe7d6; --panel: #fffaf0; --line: #d8ccb2;
+  --text: #2a2418; --muted: #6e624c; --gold: #9a7420; --gold2: #7a5a12;
+  --t-text: #2f7d4f; --t-inter: #9a7420; --t-guess: #b8492c; --t-dispute: #6a4cb0;
+  --star: #3a64a8; --fire: #c4471f; color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: radial-gradient(ellipse at 50% -10%, color-mix(in srgb, var(--gold) 14%, transparent), transparent 60%), var(--bg);
+  color: var(--text);
+  font-family: "Noto Sans TC", system-ui, sans-serif;
+  font-size: clamp(15px, 1.25vw + 8px, 21px);
+  line-height: 1.7;
+  overflow: hidden;
+}
+h1, h2, h3 { font-family: "Noto Serif TC", serif; margin: 0; line-height: 1.3; }
+h2 { font-size: 1.9em; color: var(--gold2); }
+h3 { font-size: 1.05em; color: var(--gold); margin-bottom: .3em; }
+a { color: var(--gold); }
+.deck { position: fixed; inset: env(safe-area-inset-top, 0px) 0 calc(56px + env(safe-area-inset-bottom, 0px)) 0; }
+.slide { position: absolute; inset: 0; display: none; overflow-y: auto; padding: clamp(16px, 4vw, 56px); }
+.slide.active { display: block; animation: fade .35s ease; }
+@keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.inner { max-width: 1120px; margin: 0 auto; min-height: 100%; display: flex; flex-direction: column; }
+header { border-bottom: 1px solid var(--line); padding-bottom: .5em; margin-bottom: 1em; }
+.kicker { margin: 0 0 .2em; color: var(--muted); font-size: .85em; letter-spacing: .08em; }
+.body { flex: 1; }
+footer { margin-top: 1.2em; padding-top: .6em; border-top: 1px dashed var(--line); color: var(--muted); font-size: .72em; }
+ul.items { list-style: none; padding: 0; margin: 0; display: grid; gap: .7em; }
+ul.items > li { background: var(--panel); border: 1px solid var(--line); border-left: 3px solid var(--gold); border-radius: 8px; padding: .6em .9em; }
+dfn { font-style: normal; color: var(--gold2); font-weight: 700; border-bottom: 1px dotted var(--gold); }
+.tag { display: inline-block; font: 500 .62em/1 "Noto Sans TC", sans-serif; padding: .35em .55em; border-radius: 99px; border: 1px solid currentColor; background: transparent; cursor: pointer; vertical-align: .15em; margin-left: .25em; }
+.tag.t-text { color: var(--t-text); } .tag.t-inter { color: var(--t-inter); } .tag.t-guess { color: var(--t-guess); } .tag.t-dispute { color: var(--t-dispute); }
+.tag:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--gold2); outline-offset: 2px; }
+.src { display: block; margin-top: .35em; font-size: .72em; color: var(--muted); background: var(--bg2); border-radius: 6px; padding: .35em .6em; }
+.src[hidden] { display: none; }
+.note { color: var(--muted); font-size: .85em; margin-top: 1em; }
+/* cover */
+.s-cover .inner { justify-content: center; align-items: center; text-align: center; }
+.cover h1 { font-size: clamp(2em, 5vw, 3.6em); font-weight: 900; color: var(--gold2); letter-spacing: .04em; }
+.cover .eyebrow { color: var(--muted); letter-spacing: .2em; font-size: .8em; }
+.cover .sub { color: var(--text); margin: .6em 0 1.4em; }
+.cover .hint { color: var(--muted); font-size: .8em; }
+.ring { width: min(260px, 50vw); aspect-ratio: 1; margin: 0 auto 1.4em; border-radius: 50%;
+  background:
+    radial-gradient(circle, transparent 38%, var(--gold) 39%, var(--gold) 40%, transparent 41%),
+    radial-gradient(circle, transparent 52%, color-mix(in srgb, var(--gold) 70%, transparent) 53%, transparent 54.5%),
+    radial-gradient(circle, transparent 66%, color-mix(in srgb, var(--gold) 45%, transparent) 67%, transparent 68%),
+    radial-gradient(circle, color-mix(in srgb, var(--gold) 22%, transparent), transparent 70%);
+  box-shadow: 0 0 60px color-mix(in srgb, var(--gold) 25%, transparent); }
+/* goals */
+.two { display: grid; grid-template-columns: 1fr 1.2fr; gap: 1.4em; }
+ol.goals { padding: 0; list-style: none; display: grid; gap: .5em; }
+ol.goals li { display: flex; gap: .6em; align-items: baseline; }
+ol.goals b { flex: none; width: 1.7em; height: 1.7em; border-radius: 50%; display: grid; place-items: center; background: var(--gold); color: var(--bg); font-size: .8em; }
+ul.legend { list-style: none; padding: 0; margin: 1em 0 0; display: grid; gap: .35em; font-size: .85em; }
+ul.legend .tag { cursor: default; margin: 0 .5em 0 0; }
+/* pyramid */
+.pyramid { display: grid; gap: .3em; }
+.lvl { display: grid; grid-template-columns: minmax(0, 38%) 1fr; gap: 1em; align-items: center; }
+.lname { justify-self: center; width: var(--w); padding: .55em .4em; text-align: center; font-family: "Noto Serif TC", serif; font-weight: 900; font-size: .9em;
+  color: var(--bg); background: linear-gradient(180deg, var(--gold2), var(--gold)); clip-path: polygon(9% 0, 91% 0, 100% 100%, 0 100%); }
+.lvl:first-child .lname { clip-path: polygon(50% 0, 50% 0, 100% 100%, 0 100%); padding-top: 1.1em; }
+.lvl p { margin: 0; font-size: .82em; line-height: 1.5; border-left: 2px solid var(--line); padding-left: .8em; }
+/* timeline */
+ol.timeline { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: .6em; position: relative; }
+ol.timeline::before { content: ""; position: absolute; left: 0; right: 0; top: 1.05em; height: 2px; background: linear-gradient(90deg, var(--fire), var(--gold), var(--star)); }
+ol.timeline li { position: relative; padding-top: 2.4em; }
+ol.timeline li::before { content: ""; position: absolute; top: .6em; left: 0; width: 1em; height: 1em; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px var(--bg); }
+.era { font-family: "Noto Serif TC", serif; color: var(--gold2); font-weight: 900; display: block; }
+ol.timeline p { margin: .3em 0 0; font-size: .82em; }
+/* compare */
+.vs { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1em; align-items: stretch; margin-top: 1.2em; }
+.side { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 1em; }
+.side.l { border-top: 3px solid var(--muted); } .side.r { border-top: 3px solid var(--gold); }
+.side p { margin: 0; }
+.vsmark { align-self: center; font: 900 1.4em "Noto Serif TC", serif; color: var(--gold); }
+/* plan */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1em; margin-bottom: 1em; counter-reset: st; }
+.step { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: .9em; position: relative; }
+.step:not(:last-child)::after { content: "→"; position: absolute; right: -.95em; top: 40%; color: var(--gold); font-weight: 700; }
+.step p { margin: 0; font-size: .9em; }
+/* spectrum */
+.spectrum { margin-bottom: 1em; }
+.axis { display: flex; justify-content: space-between; font: 700 .85em "Noto Serif TC", serif; padding: .35em .7em; border-radius: 99px; color: #fff;
+  background: linear-gradient(90deg, var(--star), var(--gold) 50%, var(--fire)); }
+.bands { display: grid; grid-template-columns: repeat(7, 1fr); gap: .45em; margin-top: .6em; }
+.band { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: .55em; font-size: .8em; }
+.band h3 { font-size: 1em; }
+.band p { margin: 0; }
+/* quiz */
+.quiz { display: grid; gap: .7em; }
+details.q { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: .7em 1em; }
+details.q summary { cursor: pointer; }
+details.q summary b { color: var(--gold); margin-right: .4em; }
+details.q[open] summary { color: var(--gold2); }
+details.q p { margin: .6em 0 0; }
+ul.vids { font-size: .8em; padding-left: 1.2em; }
+/* nav */
+nav { position: fixed; left: 0; right: 0; bottom: 0; height: calc(56px + env(safe-area-inset-bottom, 0px)); padding-bottom: env(safe-area-inset-bottom, 0px) !important; display: flex; align-items: center; gap: .6em; padding: 0 16px; background: var(--bg2); border-top: 1px solid var(--line); }
+nav button { background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 8px; height: 38px; min-width: 44px; font-size: 16px; cursor: pointer; }
+nav button:hover { border-color: var(--gold); }
+.count { color: var(--muted); font-size: 14px; min-width: 4.5em; text-align: center; }
+.bar { flex: 1; height: 4px; background: var(--line); border-radius: 99px; overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; background: var(--gold); transition: width .3s; }
+@media (max-width: 760px) {
+  .two, .vs, .steps { grid-template-columns: 1fr; }
+  .vsmark { justify-self: center; }
+  .step:not(:last-child)::after { content: "↓"; right: auto; left: 50%; top: auto; bottom: -1.2em; }
+  ol.timeline { grid-template-columns: 1fr; }
+  ol.timeline::before { left: .45em; right: auto; top: 0; bottom: 0; width: 2px; height: auto; background: linear-gradient(180deg, var(--fire), var(--gold), var(--star)); }
+  ol.timeline li { padding: 0 0 0 2em; }
+  ol.timeline li::before { top: .4em; }
+  .bands { grid-template-columns: 1fr 1fr; }
+  .lvl { grid-template-columns: 1fr; gap: .2em; }
+  .lname { width: 100%; clip-path: none; border-radius: 6px; }
+  .lvl:first-child .lname { clip-path: none; padding-top: .55em; }
+  h2 { font-size: 1.5em; }
+}
+@media (prefers-reduced-motion: reduce) { .slide.active { animation: none; } .bar i { transition: none; } }
+</style>
+</head>
+<body>
+<main class="deck" id="deck">
+<section class="slide s-cover" id="s1" data-n="1" aria-label="第 1 張，共 17 張"><div class="inner"><div class="body"><div class="cover"><p class="eyebrow">教學簡報 · LLM Wiki 產生</p><h1>艾爾登法環世界觀入門</h1><p class="sub">法環、黃金樹與破碎戰爭——給沒玩過的人的 15 分鐘導讀</p><div class="ring" aria-hidden="true"></div><p class="hint">按 → 或點右下角開始　·　每句話旁的標籤可以點開看出處</p></div></div></div></section>
+<section class="slide s-goals" id="s2" data-n="2" aria-label="第 2 張，共 17 張"><div class="inner"><header><p class="kicker"></p><h2>這份簡報要帶你搞懂什麼</h2></header><div class="body"><div class="two"><div><h3>看完你應該能：</h3><ol class="goals"><li><b>1</b>說得出艾爾登法環、黃金樹、黃金律法是什麼</li><li><b>2</b>畫得出交界地的權力金字塔：誰在統治誰</li><li><b>3</b>講得出世界為什麼壞掉：黑刀陰謀之夜 → 法環破碎 → 破碎戰爭</li><li><b>4</b>知道玩家（褪色者）是誰、要做什麼、結局有哪些選擇</li><li><b>5</b>分得清哪些是遊戲文本、哪些是考據者的解讀</li></ol></div><div><ul class="items"><li class="claim">本簡報的內容全部來自一個 LLM Wiki，Wiki 則整理自 YouTube「環學」系列的 6 集考據影片。</li><li class="claim">有文本時選文本，沒有文本才看畫面，兩者衝突時選文本——這是考據者的原則。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：考據方法　影片：<a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=2213s" target="_blank" rel="noopener">環學15 36:53</a></span></li><li class="claim">沒有直接文本證據的推論不是百分之百正確，只是「相對靠譜」。所以每句話旁邊都標了它屬於哪一類： <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：考據方法　影片：<a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=705s" target="_blank" rel="noopener">環學15 11:45</a></span></li></ul><ul class="legend"><li><span class="tag t-text">文本</span>遊戲內的文字（道具說明、台詞）</li><li><span class="tag t-inter">考據</span>考據者從文本推出的解讀</li><li><span class="tag t-guess">推測</span>考據者自己承認沒有直接證據</li><li><span class="tag t-dispute">爭議</span>不同集數說法不同</li></ul></div></div></div><footer>📚 Wiki 來源：考據方法</footer></div></section>
+<section class="slide s-list" id="s3" data-n="3" aria-label="第 3 張，共 17 張"><div class="inner"><header><p class="kicker">你在哪裡？你是誰？</p><h2>舞台與主角</h2></header><div class="body"><ul class="items"><li class="claim"><dfn>交界地</dfn>是遊戲的舞台。它的中心是幽影地，最早是靈魂聚集、文明誕生的地方。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：交界地　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=57s" target="_blank" rel="noopener">環學01重製 00:57</a></span></li><li class="claim">主要地區：東南是紅土蓋利德、西北是火山官邸、東北雪原是聖樹，王城叫羅德爾。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：交界地　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2127s" target="_blank" rel="noopener">環學01重製 35:27</a></span></li><li class="claim"><dfn>褪色者</dfn>：被奪走<dfn>賜福</dfn>（神給的恩惠，接受的人眼睛會變成金色），眼睛「暗淡褪色」、被放逐到交界地之外的人。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：褪色者、賜福　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=956s" target="_blank" rel="noopener">環學01重製 15:56</a>、<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=848s" target="_blank" rel="noopener">環學01重製 14:08</a></span></li><li class="claim">你扮演的主角就是一名無名褪色者：死後得到賜福的光而甦醒，回到交界地。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：褪色者　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">環學01重製 31:54</a></span></li></ul></div><footer>📚 Wiki 來源：交界地、褪色者、賜福</footer></div></section>
+<section class="slide s-list" id="s4" data-n="4" aria-label="第 4 張，共 17 張"><div class="inner"><header><p class="kicker">遊戲名稱的由來</p><h2>艾爾登法環是什麼？</h2></header><div class="body"><ul class="items"><li class="claim"><dfn>艾爾登法環</dfn>是交界地的力量來源。作者的比喻：法環像一輛車，上面刻的標誌像駕照——誰掌握這股力量，誰就是這個時代的<dfn>艾爾登之王</dfn>。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：艾爾登法環　影片：<a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=483s" target="_blank" rel="noopener">環學03 08:03</a></span></li><li class="claim">所以艾爾登之王不只一位：在瑪莉卡之前，龍王也曾是艾爾登之王（道具《龍王的追憶》的說法）。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：艾爾登法環　影片：<a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=304s" target="_blank" rel="noopener">環學03 05:04</a></span></li><li class="claim">但故事開始時，法環已經碎了：<dfn>瑪莉卡</dfn>用石槌打碎法環，因此被囚禁起來。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：艾爾登法環　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1703s" target="_blank" rel="noopener">環學01重製 28:23</a></span></li></ul><p class="note">法環最初從哪裡來，各集影片說法不同，放在最後一張「爭議」。</p></div><footer>📚 Wiki 來源：艾爾登法環</footer></div></section>
+<section class="slide s-pyramid" id="s5" data-n="5" aria-label="第 5 張，共 17 張"><div class="inner"><header><p class="kicker">越往上知道得越多</p><h2>誰在統治？權力金字塔</h2></header><div class="body"><div class="pyramid"><div class="lvl" style="--w:34%"><span class="lname">無上意志</span><p class="claim"><dfn>無上意志</dfn>：來自宇宙的外神，投下使者指頭之母與艾爾登之獸；沒有任何生命說得出它在哪裡。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：權力層級、無上意志　影片：<a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1562s" target="_blank" rel="noopener">環學19 26:02</a>、<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=120s" target="_blank" rel="noopener">環學01重製 02:00</a></span></p></div><div class="lvl" style="--w:47%"><span class="lname">雙指</span><p class="claim"><dfn>雙指</dfn>：無上意志的代理人（會動的巨大手指），永遠多頭下注，挑選下一任神。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：雙指　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=573s" target="_blank" rel="noopener">環學01重製 09:33</a></span></p></div><div class="lvl" style="--w:60%"><span class="lname">瑪莉卡</span><p class="claim">瑪莉卡：黃金時代的神，在宗教上是神、在國家上是女王、在家族中是母親，建立政教合一的國度。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：權力層級　影片：<a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1291s" target="_blank" rel="noopener">環學19 21:31</a></span></p></div><div class="lvl" style="--w:74%"><span class="lname">半神</span><p class="claim"><dfn>半神</dfn>：瑪莉卡的子嗣中被選中的人；這套制度來自無上意志，由指頭決定，半神是各軍隊的權力核心。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：權力層級、半神　影片：<a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=889s" target="_blank" rel="noopener">環學19 14:49</a>、<a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=1143s" target="_blank" rel="noopener">環學19 19:03</a></span></p></div><div class="lvl" style="--w:87%"><span class="lname">貴族與魔法師</span><p class="claim">貴族因信仰而得利；即使信仰的大樹被火焚燒，仍說「我們就還是黃金之民」。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：權力層級　影片：<a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=536s" target="_blank" rel="noopener">環學19 08:56</a></span></p></div><div class="lvl" style="--w:100%"><span class="lname">隨從、混種、礦工</span><p class="claim">最底層：生命可消耗、可替代，只因「被定義」為下等。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：權力層級　影片：<a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=288s" target="_blank" rel="noopener">環學19 04:48</a>、<a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=376s" target="_blank" rel="noopener">環學19 06:16</a>、<a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=451s" target="_blank" rel="noopener">環學19 07:31</a></span></p></div></div><p class="note">↑ 越往上，知道的事情越多；越往下，只看得到上一層。</p></div><footer>📚 Wiki 來源：權力層級、無上意志、雙指、半神</footer></div></section>
+<section class="slide s-list" id="s7" data-n="6" aria-label="第 6 張，共 17 張"><div class="inner"><header><p class="kicker">金色＝黃金律法的顏色</p><h2>黃金時代：瑪莉卡的國度</h2></header><div class="body"><ul class="items"><li class="claim">瑪莉卡在亞壇高原種下<dfn>黃金樹</dfn>、建立<dfn>黃金律法</dfn>，並和第一任王葛弗雷生下葛德溫等子嗣。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：瑪莉卡　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=669s" target="_blank" rel="noopener">環學01重製 11:09</a>、<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=917s" target="_blank" rel="noopener">環學01重製 15:17</a></span></li><li class="claim">黃金樹的本質是一台「靈魂收集器」，一座巨大的靈魂墓碑。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：黃金樹　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1307s" target="_blank" rel="noopener">環學01重製 21:47</a></span></li><li class="claim">賜福從黃金樹擴散到各地；接受賜福的人融入黃金律法，最明顯的特徵是眼睛變成金色。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：賜福　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=848s" target="_blank" rel="noopener">環學01重製 14:08</a></span></li><li class="claim">黃金律法成為掌管黃金之民生與死的至高律法。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：黃金律法　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=848s" target="_blank" rel="noopener">環學01重製 14:08</a></span></li></ul></div><footer>📚 Wiki 來源：瑪莉卡、黃金樹、賜福、黃金律法</footer></div></section>
+<section class="slide s-list" id="s8" data-n="7" aria-label="第 7 張，共 17 張"><div class="inner"><header><p class="kicker">黃金律法的代價</p><h2>一個不會死的世界</h2></header><div class="body"><ul class="items"><li class="claim"><dfn>死亡盧恩</dfn>就是「死亡」本身的力量。黃金律法誕生之初，首先就把它去除並封印。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：死亡盧恩　影片：<a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=653s" target="_blank" rel="noopener">環學08 10:53</a></span></li><li class="claim">封印由瑪莉卡的私人武力「黑劍」看守。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：死亡盧恩　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=956s" target="_blank" rel="noopener">環學01重製 15:56</a></span></li><li class="claim">於是黃金之民不會真正死去；想死，只能透過<dfn>歸樹</dfn>（靈魂回到黃金樹），而資格掌握在瑪莉卡等人手中。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：黃金樹　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=848s" target="_blank" rel="noopener">環學01重製 14:08</a></span></li><li class="claim">考據者認為「永生不死」才是真正的畸形：它讓階級永遠固化，生命無法進化。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：黃金律法　影片：<a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=256s" target="_blank" rel="noopener">環學08 04:16</a></span></li></ul></div><footer>📚 Wiki 來源：死亡盧恩、黃金樹、黃金律法</footer></div></section>
+<section class="slide s-timeline" id="s6" data-n="8" aria-label="第 8 張，共 17 張"><div class="inner"><header><p class="kicker">中場回顧：到目前為止的歷史，和接下來要講的事</p><h2>六個時代</h2></header><div class="body"><ol class="timeline"><li><span class="era">1. 熔爐時代</span><p class="claim">生命從混沌的生命熔爐分化；無上意志降下指頭之母。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：時代總覽　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=14s" target="_blank" rel="noopener">環學01重製 00:14</a></span></p></li><li><span class="era">2. 古龍時代</span><p class="claim">指頭把法環賜給龍族，龍王統治；龍王時代最後結束。 <button class="tag t-guess" aria-expanded="false" title="點擊查看出處">推測</button><span class="src" hidden>Wiki：時代總覽　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=141s" target="_blank" rel="noopener">環學01重製 02:21</a></span></p></li><li><span class="era">3. 角人時代</span><p class="claim">（DLC 內容）瑪莉卡擊敗宵色眼眸女王，成為神。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：時代總覽　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=395s" target="_blank" rel="noopener">環學01重製 06:35</a></span></p></li><li><span class="era">4. 黃金時代</span><p class="claim">瑪莉卡種下黃金樹、建立黃金律法；葛弗雷被奪去賜福放逐。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：時代總覽　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=848s" target="_blank" rel="noopener">環學01重製 14:08</a></span></p></li><li><span class="era">5. 法環破碎</span><p class="claim">黑刀陰謀之夜 → 瑪莉卡打碎法環 → 破碎戰爭。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：時代總覽　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1448s" target="_blank" rel="noopener">環學01重製 24:08</a></span></p></li><li><span class="era">6. 褪色者回歸</span><p class="claim">你登場：收集<dfn>大盧恩</dfn>、燒樹、擊敗艾爾登之獸，走向結局。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：時代總覽　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">環學01重製 31:54</a></span></p></li></ol></div><footer>📚 Wiki 來源：時代總覽</footer></div></section>
+<section class="slide s-list" id="s9" data-n="9" aria-label="第 9 張，共 17 張"><div class="inner"><header><p class="kicker">世界開始壞掉的那一夜</p><h2>黑刀陰謀之夜</h2></header><div class="body"><ul class="items"><li class="claim">黑劍的死亡盧恩被偷走一塊；神人菈妮用魔法把它注入刺客的刀中。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：黑刀陰謀之夜　影片：<a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=812s" target="_blank" rel="noopener">環學08 13:32</a></span></li><li class="claim">瑪莉卡的希人刺客午夜潛入王城殺害長子葛德溫，同一時刻菈妮也死去。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：黑刀陰謀之夜　影片：<a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=812s" target="_blank" rel="noopener">環學08 13:32</a></span></li><li class="claim">兩人各得「半個」死亡咒痕：菈妮的肉體死了、靈魂活著；葛德溫的靈魂死了、肉體活著。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：黑刀陰謀之夜　影片：<a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=849s" target="_blank" rel="noopener">環學08 14:09</a></span></li><li class="claim">死亡沿著黃金樹的樹根擴散，墓穴不再讓靈魂歸樹，反而產生「<dfn>死誕者</dfn>」——只要沒受致命傷就能不停復活的人。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：死誕者　影片：<a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=150s" target="_blank" rel="noopener">環學08 02:30</a>、<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1612s" target="_blank" rel="noopener">環學01重製 26:52</a>、<a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=712s" target="_blank" rel="noopener">環學08 11:52</a></span></li><li class="claim">考據結論：真正的主謀是瑪莉卡，菈妮只是明面上的主謀。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：黑刀陰謀之夜　影片：<a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=849s" target="_blank" rel="noopener">環學08 14:09</a>、<a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=2164s" target="_blank" rel="noopener">環學08 36:04</a></span></li></ul></div><footer>📚 Wiki 來源：黑刀陰謀之夜、死誕者</footer></div></section>
+<section class="slide s-compare" id="s10" data-n="10" aria-label="第 10 張，共 17 張"><div class="inner"><header><p class="kicker">同一件事，兩種說法</p><h2>法環破碎：罪人還是反抗者？</h2></header><div class="body"><ul class="items"><li class="claim">瑪莉卡事先做好能打碎法環的石槌，打碎後被雙指囚禁在黃金樹內。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：法環破碎　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1448s" target="_blank" rel="noopener">環學01重製 24:08</a>、<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1703s" target="_blank" rel="noopener">環學01重製 28:23</a></span></li><li class="claim">法環的碎片就是大盧恩；雙指想把大盧恩收回來修復法環，於是引發戰爭。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：法環破碎　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1703s" target="_blank" rel="noopener">環學01重製 28:23</a></span></li></ul><div class="vs"><div class="side l"><h3>雙指的說法</h3><p class="claim">瑪莉卡犯下大罪，敲碎了維持和平的法環，是一切亂象的罪魁禍首。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：法環破碎　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">環學01重製 31:54</a></span></p></div><div class="vsmark">VS</div><div class="side r"><h3>考據者的解讀</h3><p class="claim">敲碎法環的那一刻，就證明瑪莉卡背叛了無上意志——這是反抗。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：法環破碎　影片：<a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1594s" target="_blank" rel="noopener">環學03 26:34</a></span></p></div></div><p class="note">同一件事，從不同立場看會得出完全不同的結論——這正是讀法環故事的樂趣。</p></div><footer>📚 Wiki 來源：法環破碎</footer></div></section>
+<section class="slide s-list" id="s11" data-n="11" aria-label="第 11 張，共 17 張"><div class="inner"><header><p class="kicker">半神搶碎片，沒有人贏</p><h2>破碎戰爭</h2></header><div class="body"><ul class="items"><li class="claim">大盧恩不是天生的，而是雙指在神授塔賜給瑪莉卡子嗣，受賜者成為半神。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：大盧恩　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1448s" target="_blank" rel="noopener">環學01重製 24:08</a></span></li><li class="claim">目標：攻陷王城、湊到至少兩個大盧恩修復法環，讓新王迎娶瑪莉卡。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：破碎戰爭　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">環學01重製 28:50</a></span></li><li class="claim">第一次王城保衛戰：聯軍在城外內部分裂、連外城牆都沒碰到；城內則由惡兆之子蒙葛特奪下王位。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：破碎戰爭</span></li><li class="claim">火山官邸之戰最慘烈，雙方永久對峙；最後一戰是艾奧尼亞之戰，瑪蓮妮亞讓猩紅腐敗之花綻放。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：破碎戰爭</span></li><li class="claim">諷刺的結論：強大的半神已無法成為神，能繼承世界的只能是力量弱小的人。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：破碎戰爭　影片：<a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=2374s" target="_blank" rel="noopener">環學15 39:34</a></span></li></ul></div><footer>📚 Wiki 來源：大盧恩、破碎戰爭</footer></div></section>
+<section class="slide s-plan" id="s12" data-n="12" aria-label="第 12 張，共 17 張"><div class="inner"><header><p class="kicker">考據者眼中的「瑪莉卡詭計」</p><h2>瑪莉卡的三層備案</h2></header><div class="body"><div class="steps"><div class="step"><h3>第一層：碎片戰爭</h3><p class="claim">讓不知情的子嗣爭奪王位，預定勝者是米凱拉——但他被蒙格奪走了。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：瑪莉卡的詭計</span></p></div><div class="step"><h3>第二層：召回褪色者</h3><p class="claim">預定勝者是葛弗雷，所以最後的動畫中葛弗雷會出現。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：瑪莉卡的詭計</span></p></div><div class="step"><h3>第三層：死王子托底</h3><p class="claim">就算都失敗，死亡盧恩也會自己蔓延，死王子葛德溫成為最後的王。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：瑪莉卡的詭計</span></p></div></div><ul class="items"><li class="claim">為了防範癲火，她還讓擁有「命定之死」的梅琳娜復活，陪伴褪色者。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：瑪莉卡的詭計、梅琳娜　影片：<a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=2391s" target="_blank" rel="noopener">環學08 39:51</a>、<a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=225s" target="_blank" rel="noopener">環學08 03:45</a>、<a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=1466s" target="_blank" rel="noopener">環學08 24:26</a></span></li><li class="claim">最終目的：把世界還給交界地的所有生命，而不是交給背後操控的神。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：瑪莉卡的詭計　影片：<a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=2133s" target="_blank" rel="noopener">環學03 35:33</a></span></li></ul></div><footer>📚 Wiki 來源：瑪莉卡的詭計、梅琳娜</footer></div></section>
+<section class="slide s-list" id="s13" data-n="13" aria-label="第 13 張，共 17 張"><div class="inner"><header><p class="kicker">為什麼是你？</p><h2>褪色者回歸：你的任務</h2></header><div class="body"><ul class="items"><li class="claim">巫女指引的道路：「褪色者，朝著黃金樹前進，謁見瑪莉卡女神吧，成為艾爾登之王，然後修復黃金律法。」 <button class="tag t-text" aria-expanded="false" title="點擊查看出處">文本</button><span class="src" hidden>Wiki：褪色者　影片：<a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=68s" target="_blank" rel="noopener">環學03 01:08</a></span></li><li class="claim">雙指給的任務：收集半神的大盧恩 → 前往王城 → 進入黃金樹修復法環 → 成為艾爾登之王。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：褪色者　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">環學01重製 31:54</a></span></li><li class="claim">拿到第一個大盧恩後，你才見得到圓桌廳堂裡的雙指。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：大盧恩　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1914s" target="_blank" rel="noopener">環學01重製 31:54</a></span></li><li class="claim">你本來只是葛弗雷手下的士兵，為什麼有資格當王？因為瑪莉卡用賜福把褪色者從士兵階層直接拉到半神階層。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：褪色者　影片：<a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=989s" target="_blank" rel="noopener">環學19 16:29</a></span></li></ul></div><footer>📚 Wiki 來源：褪色者、大盧恩</footer></div></section>
+<section class="slide s-spectrum" id="s14" data-n="14" aria-label="第 14 張，共 17 張"><div class="inner"><header><p class="kicker">沒有好結局、壞結局，只有不同的選擇</p><h2>結局光譜</h2></header><div class="body"><div class="spectrum"><div class="axis"><span>← 繁衍</span><span>歸一 →</span></div><div class="bands"><div class="band"><h3>無上意志的繁衍</h3><p class="claim">生命與群星交流、不斷擴張 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：結局光譜</span></p></div><div class="band"><h3>菈妮的群星</h3><p class="claim">選擇權下放給每個人 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：結局光譜</span></p></div><div class="band"><h3>金面具</h3><p class="claim">神退出直接干涉 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：結局光譜</span></p></div><div class="band"><h3>死王子 vs 黃金基本主義</h3><p class="claim">中央的主要對立 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：結局光譜</span></p></div><div class="band"><h3>食糞者</h3><p class="claim">厭惡世界，用詛咒玷汙律法 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：結局光譜</span></p></div><div class="band"><h3>米凱拉的溫柔律法</h3><p class="claim">愛的魅惑，但沒有選擇權 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：結局光譜</span></p></div><div class="band"><h3>癲火的歸一</h3><p class="claim">精神與肉體歸一，回到混沌 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：結局光譜</span></p></div></div></div><ul class="items"><li class="claim">作者的比喻：菈妮的結局像「從封建到民主」，以瑪莉卡為容器的結局像封建時代的朝代更替。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：結局光譜　影片：<a href="https://www.youtube.com/watch?v=ucJtQs7sV_U&t=528s" target="_blank" rel="noopener">環學10 08:48</a></span></li><li class="claim">沒有能讓所有人滿意的選擇；判斷結局「與事實無關而與理念相關」。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：結局光譜　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2628s" target="_blank" rel="noopener">環學01重製 43:48</a></span></li></ul></div><footer>📚 Wiki 來源：結局光譜</footer></div></section>
+<section class="slide s-list" id="s15" data-n="15" aria-label="第 15 張，共 17 張"><div class="inner"><header><p class="kicker">帶走這個方法</p><h2>怎麼讀法環的故事</h2></header><div class="body"><ul class="items"><li class="claim">文本優先：有文本選文本，文本和畫面衝突時也選文本。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：考據方法　影片：<a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=2213s" target="_blank" rel="noopener">環學15 36:53</a></span></li><li class="claim">因為文本更能表現敘事者的邏輯，畫面的干擾比較多。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：考據方法　影片：<a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=2340s" target="_blank" rel="noopener">環學15 39:00</a></span></li><li class="claim">但文本自己也會矛盾：劍碑說艾奧尼亞之戰「戰成平手」，鎧甲文本卻說「戰敗」。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：考據方法　影片：<a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=2063s" target="_blank" rel="noopener">環學15 34:23</a></span></li><li class="claim">遊戲是很多人在不同時間拼出來的產品，有矛盾很正常——關注思想，不要揪著細節。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：考據方法　影片：<a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=2374s" target="_blank" rel="noopener">環學15 39:34</a></span></li><li class="claim">魂類遊戲沒有標準答案。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：考據方法　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=2628s" target="_blank" rel="noopener">環學01重製 43:48</a></span></li></ul></div><footer>📚 Wiki 來源：考據方法</footer></div></section>
+<section class="slide s-quiz" id="s16" data-n="16" aria-label="第 16 張，共 17 張"><div class="inner"><header><p class="kicker">點一下看答案</p><h2>小測驗</h2></header><div class="body"><div class="quiz"><details class="q"><summary><b>Q1</b> 艾爾登法環和「艾爾登之王」是什麼關係？</summary><p class="claim">誰掌握法環這股力量，誰就是那個時代的艾爾登之王（所以龍王也曾是）。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：艾爾登法環　影片：<a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=483s" target="_blank" rel="noopener">環學03 08:03</a></span></p></details><details class="q"><summary><b>Q2</b> 黃金時代的人為什麼不會真正死去？</summary><p class="claim">因為死亡盧恩被封印，黃金之力把靈魂和肉體緊緊綁在一起；想死只能歸樹。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：黃金律法　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=848s" target="_blank" rel="noopener">環學01重製 14:08</a></span></p></details><details class="q"><summary><b>Q3</b> 考據者認為黑刀陰謀之夜真正的主謀是誰？</summary><p class="claim">瑪莉卡；菈妮只是明面上的主謀。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：黑刀陰謀之夜　影片：<a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=849s" target="_blank" rel="noopener">環學08 14:09</a>、<a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=2164s" target="_blank" rel="noopener">環學08 36:04</a></span></p></details><details class="q"><summary><b>Q4</b> 褪色者原本只是士兵，為什麼有資格爭奪王位？</summary><p class="claim">瑪莉卡用賜福把褪色者從士兵階層拉到半神階層，讓他們看得到雙指。 <button class="tag t-inter" aria-expanded="false" title="點擊查看出處">考據</button><span class="src" hidden>Wiki：褪色者　影片：<a href="https://www.youtube.com/watch?v=LiYPL6kfxik&t=989s" target="_blank" rel="noopener">環學19 16:29</a></span></p></details></div></div><footer>📚 Wiki 來源：艾爾登法環、黃金律法、黑刀陰謀之夜、褪色者</footer></div></section>
+<section class="slide s-list" id="s17" data-n="17" aria-label="第 17 張，共 17 張"><div class="inner"><header><p class="kicker">影片前後集說法不同，Wiki 兩種都保留</p><h2>延伸：還有爭議的地方</h2></header><div class="body"><ul class="items"><li class="claim">法環從哪來：較新的一集說是指頭賜給龍族；較早的一集說是交界地原本就有、無上意志只是佔據。 <button class="tag t-dispute" aria-expanded="false" title="點擊查看出處">爭議</button><span class="src" hidden>Wiki：艾爾登法環　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=178s" target="_blank" rel="noopener">環學01重製 02:58</a>、<a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=483s" target="_blank" rel="noopener">環學03 08:03</a>、<a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1993s" target="_blank" rel="noopener">環學03 33:13</a></span></li><li class="claim">瑪莉卡的出身：巫者村長大，還是來自交界地之外的希人？ <button class="tag t-dispute" aria-expanded="false" title="點擊查看出處">爭議</button><span class="src" hidden>Wiki：瑪莉卡　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=494s" target="_blank" rel="noopener">環學01重製 08:14</a>、<a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=742s" target="_blank" rel="noopener">環學03 12:22</a>、<a href="https://www.youtube.com/watch?v=7ed7fBSTWIw&t=990s" target="_blank" rel="noopener">環學08 16:30</a></span></li><li class="claim">瑪莉卡的三層詭計：初版和修正版的內容不同（本簡報用修正版）。 <button class="tag t-dispute" aria-expanded="false" title="點擊查看出處">爭議</button><span class="src" hidden>Wiki：瑪莉卡的詭計　影片：<a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w&t=1712s" target="_blank" rel="noopener">環學03 28:32</a></span></li><li class="claim">艾奧尼亞之戰的起因與勝負：起因兩集說法不同，勝負連遊戲文本自己都矛盾。 <button class="tag t-dispute" aria-expanded="false" title="點擊查看出處">爭議</button><span class="src" hidden>Wiki：破碎戰爭　影片：<a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI&t=1730s" target="_blank" rel="noopener">環學01重製 28:50</a>、<a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=1988s" target="_blank" rel="noopener">環學15 33:08</a>、<a href="https://www.youtube.com/watch?v=7GahkvqbN4A&t=2063s" target="_blank" rel="noopener">環學15 34:23</a></span></li></ul><h3>資料來源：6 集「環學」影片</h3><ul class="vids"><li><a href="https://www.youtube.com/watch?v=bJGQ7JIqYsI" target="_blank" rel="noopener">環學01重製：重製時間線——從生命熔爐到結局光譜</a></li><li><a href="https://www.youtube.com/watch?v=BfaklJ-Gh6w" target="_blank" rel="noopener">環學03：瑪莉卡詭計與艾爾登法環本質</a></li><li><a href="https://www.youtube.com/watch?v=7ed7fBSTWIw" target="_blank" rel="noopener">環學08：黑刀陰謀之夜始末——死亡盧恩的轉移與「躺贏之王」葛德溫</a></li><li><a href="https://www.youtube.com/watch?v=ucJtQs7sV_U" target="_blank" rel="noopener">環學10：結局的含義——金面具與食糞者，理智與詛咒的兩端</a></li><li><a href="https://www.youtube.com/watch?v=7GahkvqbN4A" target="_blank" rel="noopener">環學15：破碎戰爭始末——惡兆之子的反擊與半神們的潰敗</a></li><li><a href="https://www.youtube.com/watch?v=LiYPL6kfxik" target="_blank" rel="noopener">環學19：無上意志——從奴隸到隱藏者的權力層級</a></li></ul></div><footer>📚 Wiki 來源：艾爾登法環、瑪莉卡、瑪莉卡的詭計、破碎戰爭</footer></div></section>
+</main>
+<nav aria-label="投影片導覽">
+  <button id="prev" aria-label="上一張">←</button>
+  <span class="count" id="count">1 / 1</span>
+  <button id="next" aria-label="下一張">→</button>
+  <div class="bar" aria-hidden="true"><i id="bar"></i></div>
+  <button id="theme" aria-label="切換深淺色">◐</button>
+</nav>
+<script>
+(function () {
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const count = document.getElementById('count'), bar = document.getElementById('bar');
+  let cur = 0;
+  function show(i) {
+    cur = Math.max(0, Math.min(slides.length - 1, i));
+    slides.forEach((s, k) => s.classList.toggle('active', k === cur));
+    count.textContent = (cur + 1) + ' / ' + slides.length;
+    bar.style.width = ((cur + 1) / slides.length * 100) + '%';
+    if (location.hash !== '#' + (cur + 1)) history.replaceState(null, '', '#' + (cur + 1));
+    slides[cur].scrollTop = 0;
+  }
+  document.getElementById('prev').onclick = () => show(cur - 1);
+  document.getElementById('next').onclick = () => show(cur + 1);
+  document.addEventListener('keydown', e => {
+    if (e.target.closest('summary, input, textarea')) return;
+    if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); show(cur + 1); }
+    if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); show(cur - 1); }
+    if (e.key === 'Home') show(0);
+    if (e.key === 'End') show(slides.length - 1);
+  });
+  let x0 = null;
+  document.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 60) show(cur + (dx < 0 ? 1 : -1));
+    x0 = null;
+  });
+  document.addEventListener('click', e => {
+    const b = e.target.closest('.claim .tag');
+    if (!b) return;
+    const src = b.nextElementSibling;
+    src.hidden = !src.hidden;
+    b.setAttribute('aria-expanded', String(!src.hidden));
+  });
+  const root = document.documentElement;
+  try { const t = localStorage.getItem('er-theme'); if (t) root.dataset.theme = t; } catch (e) {}
+  document.getElementById('theme').onclick = () => {
+    const dark = getComputedStyle(root).getPropertyValue('--bg').trim() === '#0f0d0a';
+    root.dataset.theme = dark ? 'light' : 'dark';
+    try { localStorage.setItem('er-theme', root.dataset.theme); } catch (e) {}
+  };
+  const fromHash = () => { const h = parseInt(location.hash.slice(1), 10); return isNaN(h) ? 0 : h - 1; };
+  window.addEventListener('hashchange', () => { if (fromHash() !== cur) show(fromHash()); });
+  show(fromHash());
+})();
+</script>
+</body>
+</html>
